@@ -1,0 +1,28 @@
+<RCC>
+    <qresource prefix="/">
+        <file>icons/256/Add.png</file>
+        <file>icons/256/Alert.png</file>
+        <file>icons/256/Back.png</file>
+        <file>icons/256/Close.png</file>
+        <file>icons/256/Delete.png</file>
+        <file>icons/256/Download.png</file>
+        <file>icons/256/Forward.png</file>
+        <file>icons/256/Info.png</file>
+        <file>icons/256/Private.png</file>
+        <file>icons/256/Refresh.png</file>
+        <file>icons/256/Restart.png</file>
+        <file>icons/256/Shutdown.png</file>
+        <file>icons/24/Add.png</file>
+        <file>icons/24/Alert.png</file>
+        <file>icons/24/Back.png</file>
+        <file>icons/24/Close.png</file>
+        <file>icons/24/Delete.png</file>
+        <file>icons/24/Download.png</file>
+        <file>icons/24/Forward.png</file>
+        <file>icons/24/Info.png</file>
+        <file>icons/24/Private.png</file>
+        <file>icons/24/Refresh.png</file>
+        <file>icons/24/Restart.png</file>
+        <file>icons/24/Shutdown.png</file>
+    </qresource>
+</RCC>
