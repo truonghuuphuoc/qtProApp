@@ -28,6 +28,11 @@ private:
 
 public slots:
    void onProgressChanged(int event, int infor);
+private slots:
+   void on_mAppClean_clicked();
+   void on_mTarget_1_Clean_clicked();
+   void on_mTarget_2_Clean_clicked();
+   void on_mTarget_3_Clean_clicked();
 };
 
 #endif // MAINWINDOW_H

@@ -95,3 +95,56 @@ void MainWindow::onProgressChanged(int event, int infor) {
 
 
 }
+
+void MainWindow::on_mAppClean_clicked()
+{
+    mTarget_1_Index = 0;
+    mTarget_2_Index = 0;
+    mTarget_2_Index = 0;
+
+    ui->mTarget_1_FirstValue->setText("0");
+    ui->mTarget_2_FirstValue->setText("0");
+    ui->mTarget_3_FirstValue->setText("0");
+
+    ui->mTarget_1_SecondValue->setText("0");
+    ui->mTarget_2_SecondValue->setText("0");
+    ui->mTarget_3_SecondValue->setText("0");
+
+    ui->mTarget_1_ThirdValue->setText("0");
+    ui->mTarget_2_ThirdValue->setText("0");
+    ui->mTarget_3_ThirdValue->setText("0");
+
+    ui->mTarget_1_TotalValue->setText("0");
+    ui->mTarget_2_TotalValue->setText("0");
+    ui->mTarget_3_TotalValue->setText("0");
+}
+
+void MainWindow::on_mTarget_1_Clean_clicked()
+{
+     mTarget_1_Index = 0;
+
+     ui->mTarget_1_FirstValue->setText("0");
+     ui->mTarget_1_SecondValue->setText("0");
+     ui->mTarget_1_ThirdValue->setText("0");
+     ui->mTarget_1_TotalValue->setText("0");
+}
+
+void MainWindow::on_mTarget_2_Clean_clicked()
+{
+    mTarget_2_Index = 0;
+
+    ui->mTarget_2_FirstValue->setText("0");
+    ui->mTarget_2_SecondValue->setText("0");
+    ui->mTarget_2_ThirdValue->setText("0");
+    ui->mTarget_2_TotalValue->setText("0");
+}
+
+void MainWindow::on_mTarget_3_Clean_clicked()
+{
+    mTarget_3_Index = 0;
+
+    ui->mTarget_3_FirstValue->setText("0");
+    ui->mTarget_3_SecondValue->setText("0");
+    ui->mTarget_3_ThirdValue->setText("0");
+    ui->mTarget_3_TotalValue->setText("0");
+}
