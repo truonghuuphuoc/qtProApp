@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>977</width>
-    <height>631</height>
+    <height>647</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -53,7 +53,7 @@ QGroupBox::title {
            </property>
            <layout class="QGridLayout" name="gridLayout_6">
             <item row="0" column="0">
-             <widget class="QLabel" name="label_5">
+             <widget class="QLabel" name="mTarget_1_ThirdValue">
               <property name="font">
                <font>
                 <pointsize>24</pointsize>
@@ -84,7 +84,7 @@ QGroupBox::title {
            </property>
            <layout class="QGridLayout" name="gridLayout_7">
             <item row="0" column="0">
-             <widget class="QLabel" name="label_6">
+             <widget class="QLabel" name="mTarget_1_TotalValue">
               <property name="font">
                <font>
                 <pointsize>24</pointsize>
@@ -115,7 +115,7 @@ QGroupBox::title {
            </property>
            <layout class="QGridLayout" name="gridLayout_5">
             <item row="0" column="0">
-             <widget class="QLabel" name="label_4">
+             <widget class="QLabel" name="mTarget_1_SecondValue">
               <property name="font">
                <font>
                 <pointsize>24</pointsize>
@@ -145,7 +145,7 @@ QGroupBox::title {
            </property>
            <layout class="QGridLayout" name="gridLayout_4">
             <item row="0" column="0">
-             <widget class="QLabel" name="label_3">
+             <widget class="QLabel" name="mTarget_1_Status">
               <property name="text">
                <string/>
               </property>
@@ -174,7 +174,7 @@ QGroupBox::title {
            </property>
            <layout class="QGridLayout" name="gridLayout_8">
             <item row="0" column="0">
-             <widget class="QLabel" name="label_7">
+             <widget class="QLabel" name="mTarget_1_FirstValue">
               <property name="font">
                <font>
                 <pointsize>24</pointsize>
@@ -192,7 +192,7 @@ QGroupBox::title {
           </widget>
          </item>
          <item row="6" column="0">
-          <widget class="QPushButton" name="pushButton_2">
+          <widget class="QPushButton" name="mTarget_1_Clean">
            <property name="font">
             <font>
              <pointsize>11</pointsize>
@@ -267,7 +267,7 @@ QGroupBox::title {
            </property>
            <layout class="QGridLayout" name="gridLayout_10">
             <item row="0" column="0">
-             <widget class="QLabel" name="label_8">
+             <widget class="QLabel" name="mTarget_2_SecondValue">
               <property name="font">
                <font>
                 <pointsize>24</pointsize>
@@ -297,7 +297,7 @@ QGroupBox::title {
            </property>
            <layout class="QGridLayout" name="gridLayout_11">
             <item row="0" column="0">
-             <widget class="QLabel" name="label_9">
+             <widget class="QLabel" name="mTarget_2_Status">
               <property name="text">
                <string/>
               </property>
@@ -326,7 +326,7 @@ QGroupBox::title {
            </property>
            <layout class="QGridLayout" name="gridLayout_13">
             <item row="0" column="0">
-             <widget class="QLabel" name="label_11">
+             <widget class="QLabel" name="mTarget_2_ThirdValue">
               <property name="font">
                <font>
                 <pointsize>24</pointsize>
@@ -357,7 +357,7 @@ QGroupBox::title {
            </property>
            <layout class="QGridLayout" name="gridLayout_12">
             <item row="0" column="0">
-             <widget class="QLabel" name="label_10">
+             <widget class="QLabel" name="mTarget_2_TotalValue">
               <property name="font">
                <font>
                 <pointsize>24</pointsize>
@@ -388,7 +388,7 @@ QGroupBox::title {
            </property>
            <layout class="QGridLayout" name="gridLayout_14">
             <item row="0" column="0">
-             <widget class="QLabel" name="label_12">
+             <widget class="QLabel" name="mTarget_2_FirstValue">
               <property name="font">
                <font>
                 <pointsize>24</pointsize>
@@ -406,7 +406,7 @@ QGroupBox::title {
           </widget>
          </item>
          <item row="6" column="0">
-          <widget class="QPushButton" name="pushButton_3">
+          <widget class="QPushButton" name="mTarget_2_Clean">
            <property name="font">
             <font>
              <pointsize>11</pointsize>
@@ -481,7 +481,7 @@ QGroupBox::title {
            </property>
            <layout class="QGridLayout" name="gridLayout_16">
             <item row="0" column="0">
-             <widget class="QLabel" name="label_13">
+             <widget class="QLabel" name="mTarget_3_SecondValue">
               <property name="font">
                <font>
                 <pointsize>24</pointsize>
@@ -512,7 +512,7 @@ QGroupBox::title {
            </property>
            <layout class="QGridLayout" name="gridLayout_19">
             <item row="0" column="0">
-             <widget class="QLabel" name="label_16">
+             <widget class="QLabel" name="mTarget_3_ThirdValue">
               <property name="font">
                <font>
                 <pointsize>24</pointsize>
@@ -542,7 +542,7 @@ QGroupBox::title {
            </property>
            <layout class="QGridLayout" name="gridLayout_17">
             <item row="0" column="0">
-             <widget class="QLabel" name="label_14">
+             <widget class="QLabel" name="mTarget_3_Status">
               <property name="text">
                <string/>
               </property>
@@ -571,7 +571,7 @@ QGroupBox::title {
            </property>
            <layout class="QGridLayout" name="gridLayout_18">
             <item row="0" column="0">
-             <widget class="QLabel" name="label_15">
+             <widget class="QLabel" name="mTarget_3_TotalValue">
               <property name="font">
                <font>
                 <pointsize>24</pointsize>
@@ -602,7 +602,7 @@ QGroupBox::title {
            </property>
            <layout class="QGridLayout" name="gridLayout_20">
             <item row="0" column="0">
-             <widget class="QLabel" name="label_17">
+             <widget class="QLabel" name="mTarget_3_FirstValue">
               <property name="font">
                <font>
                 <pointsize>24</pointsize>
@@ -620,7 +620,7 @@ QGroupBox::title {
           </widget>
          </item>
          <item row="6" column="1">
-          <widget class="QPushButton" name="pushButton_4">
+          <widget class="QPushButton" name="mTarget_3_Clean">
            <property name="font">
             <font>
              <pointsize>11</pointsize>
@@ -692,14 +692,19 @@ QGroupBox::title {
            </property>
            <layout class="QGridLayout" name="gridLayout_22">
             <item row="0" column="0">
-             <widget class="QLabel" name="label_2">
+             <widget class="QLabel" name="mAppComport">
               <property name="font">
                <font>
-                <pointsize>12</pointsize>
+                <pointsize>11</pointsize>
+                <weight>75</weight>
+                <bold>true</bold>
                </font>
               </property>
               <property name="text">
                <string/>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
               </property>
              </widget>
             </item>
@@ -713,7 +718,7 @@ QGroupBox::title {
            </property>
            <layout class="QGridLayout" name="gridLayout_21">
             <item row="0" column="0">
-             <widget class="QLabel" name="label">
+             <widget class="QLabel" name="mAppStatus">
               <property name="text">
                <string/>
               </property>
@@ -735,14 +740,19 @@ QGroupBox::title {
            </property>
            <layout class="QGridLayout" name="gridLayout_23">
             <item row="0" column="0">
-             <widget class="QLabel" name="label_18">
+             <widget class="QLabel" name="mAddressStart">
               <property name="font">
                <font>
-                <pointsize>12</pointsize>
+                <pointsize>11</pointsize>
+                <weight>75</weight>
+                <bold>true</bold>
                </font>
               </property>
               <property name="text">
                <string/>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
               </property>
              </widget>
             </item>
@@ -756,7 +766,7 @@ QGroupBox::title {
            </property>
            <layout class="QGridLayout" name="gridLayout_25">
             <item row="0" column="0">
-             <widget class="QPushButton" name="pushButton_5">
+             <widget class="QPushButton" name="mAppClean">
               <property name="font">
                <font>
                 <pointsize>11</pointsize>
@@ -787,14 +797,19 @@ QGroupBox::title {
            </property>
            <layout class="QGridLayout" name="gridLayout_24">
             <item row="0" column="0">
-             <widget class="QLabel" name="label_19">
+             <widget class="QLabel" name="mAddressDest">
               <property name="font">
                <font>
-                <pointsize>12</pointsize>
+                <pointsize>11</pointsize>
+                <weight>75</weight>
+                <bold>true</bold>
                </font>
               </property>
               <property name="text">
                <string/>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
               </property>
              </widget>
             </item>
