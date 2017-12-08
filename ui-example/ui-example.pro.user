@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 4.2.1, 2017-12-05T14:33:11. -->
+<!-- Written by QtCreator 4.2.1, 2017-12-08T09:57:52. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -120,7 +120,7 @@
     <value type="bool" key="Qt4ProjectManager.Qt4BuildConfiguration.UseShadowBuild">true</value>
    </valuemap>
    <valuemap type="QVariantMap" key="ProjectExplorer.Target.BuildConfiguration.1">
-    <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory">F:/TOOL/ArmyShoot/qtAppTARGET/Error in &quot; Util.asciify(&quot;build-ui-example-Desktop_Qt_5_8_0_MSVC2013_32bit-Release&quot;)&quot;: TypeError: Property 'asciify' of object Core::Internal::UtilsJsExtension(0x77ee610) is not a function</value>
+    <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory">F:/TOOL/ArmyShoot/qtAppTARGET/ui-example</value>
     <valuemap type="QVariantMap" key="ProjectExplorer.BuildConfiguration.BuildStepList.0">
      <valuemap type="QVariantMap" key="ProjectExplorer.BuildStepList.Step.0">
       <value type="bool" key="ProjectExplorer.BuildStep.Enabled">true</value>

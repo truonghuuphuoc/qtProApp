@@ -73,8 +73,8 @@ private:
     uint8_t mRf_IsMessageRecv;
 
 
-    uint8_t mRf_StartAddress;
-    uint8_t mRf_DestinationAddress;
+    uint8_t mRf_RecvAddress;
+    uint8_t mRf_TransAddress;
 
 
     uint8_t mRf_MessageData[MESG_BUFFER_SIZE];

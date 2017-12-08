@@ -26,6 +26,10 @@ private:
     uint8_t mTarget_2_Index;
     uint8_t mTarget_3_Index;
 
+    uint8_t mTarget_1_Value[3];
+    uint8_t mTarget_2_Value[3];
+    uint8_t mTarget_3_Value[3];
+
 public slots:
    void onProgressChanged(int event, int infor);
 private slots:

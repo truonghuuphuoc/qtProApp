@@ -9,8 +9,8 @@ class phnSysConfig
 {
 public:
 
-    static uint8_t mStartAddess;
-    static uint8_t mDestAddress;
+    static uint8_t mRecvAddess;
+    static uint8_t mTransAddress;
 
     static void phnSysConfig_ReadConfig(QString path);
 };

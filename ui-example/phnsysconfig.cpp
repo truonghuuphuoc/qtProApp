@@ -4,8 +4,8 @@
 #include <QFile>
 #include <QTextStream>
 
-uint8_t phnSysConfig::mStartAddess = 0x00;
-uint8_t phnSysConfig::mDestAddress = 0x00;
+uint8_t phnSysConfig::mRecvAddess = 0x00;
+uint8_t phnSysConfig::mTransAddress = 0x00;
 
 void phnSysConfig::phnSysConfig_ReadConfig(QString path)
 {
@@ -28,15 +28,15 @@ void phnSysConfig::phnSysConfig_ReadConfig(QString path)
 
         if(fields.size() >=2)
         {
-               if(fields[0].compare("start") == 0)
+               if(fields[0].compare("recv") == 0)
                {
                     QByteArray cmd = QByteArray::fromHex(fields[1].toUtf8());
-                    mStartAddess = cmd[0];
+                    mRecvAddess = cmd[0];
                }
-               else if(fields[0].compare("dest")== 0)
+               else if(fields[0].compare("trans")== 0)
                {
                    QByteArray cmd = QByteArray::fromHex(fields[1].toUtf8());
-                   mDestAddress = cmd[0];
+                   mTransAddress = cmd[0];
                }
         }
     }

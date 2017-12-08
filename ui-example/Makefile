@@ -211,6 +211,7 @@ Makefile: ui-example.pro C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\win32-msvc2013\qmake
 		C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\features\qt_config.prf \
 		C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\win32-msvc2013\qmake.conf \
 		C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\features\spec_post.prf \
+		.qmake.stash \
 		C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\features\exclusive_builds.prf \
 		C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\features\toolchain.prf \
 		C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\features\default_pre.prf \
@@ -379,6 +380,7 @@ C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\features\qt_functions.prf:
 C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\features\qt_config.prf:
 C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\win32-msvc2013\qmake.conf:
 C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\features\spec_post.prf:
+.qmake.stash:
 C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\features\exclusive_builds.prf:
 C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\features\toolchain.prf:
 C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\features\default_pre.prf:

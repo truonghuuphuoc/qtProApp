@@ -38,3 +38,6 @@ FORMS    += mainwindow.ui
 
 RESOURCES += \
     icons.qrc
+
+
+win32:RC_ICONS = app_100.ico

@@ -9,6 +9,12 @@
 /*End message*/
 #define MESG_ETX    0x03
 
+typedef enum
+{
+    PHN_DEV_ONLINE      = 0xFF,
+    PHN_DEV_OFFLINE     = 0xFE,
+}phnDeviceStatus_t;
+
 class phnMessage
 {
 public:

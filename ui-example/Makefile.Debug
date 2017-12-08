@@ -17,13 +17,13 @@ CXXFLAGS      = -nologo -Zc:wchar_t -FS -Zi -MDd -GR -W3 -w34100 -w34189 -w44996
 INCPATH       = -I. -IC:\Qt\Qt5.8.0\5.8\msvc2013\include -IC:\Qt\Qt5.8.0\5.8\msvc2013\include\QtWidgets -IC:\Qt\Qt5.8.0\5.8\msvc2013\include\QtGui -IC:\Qt\Qt5.8.0\5.8\msvc2013\include\QtANGLE -IC:\Qt\Qt5.8.0\5.8\msvc2013\include\QtSerialPort -IC:\Qt\Qt5.8.0\5.8\msvc2013\include\QtCore -Idebug -I. -IC:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\win32-msvc2013 
 LINKER        = link
 LFLAGS        = /NOLOGO /DYNAMICBASE /NXCOMPAT /DEBUG /SUBSYSTEM:WINDOWS "/MANIFESTDEPENDENCY:type='win32' name='Microsoft.Windows.Common-Controls' version='6.0.0.0' publicKeyToken='6595b64144ccf1df' language='*' processorArchitecture='*'"
-LIBS          = /LIBPATH:C:\Qt\Qt5.8.0\5.8\msvc2013\lib C:\Qt\Qt5.8.0\5.8\msvc2013\lib\qtmaind.lib /LIBPATH:C:\utils\my_sql\my_sql\lib /LIBPATH:C:\utils\postgresql\pgsql\lib shell32.lib C:\Qt\Qt5.8.0\5.8\msvc2013\lib\Qt5Widgetsd.lib C:\Qt\Qt5.8.0\5.8\msvc2013\lib\Qt5Guid.lib C:\Qt\Qt5.8.0\5.8\msvc2013\lib\Qt5SerialPortd.lib C:\Qt\Qt5.8.0\5.8\msvc2013\lib\Qt5Cored.lib 
+LIBS          = /LIBPATH:C:\Qt\Qt5.8.0\5.8\msvc2013\lib C:\Qt\Qt5.8.0\5.8\msvc2013\lib\qtmaind.lib /LIBPATH:C:\utils\my_sql\my_sql\lib /LIBPATH:C:\utils\postgresql\pgsql\lib shell32.lib C:\Qt\Qt5.8.0\5.8\msvc2013\lib\Qt5Widgetsd.lib C:\Qt\Qt5.8.0\5.8\msvc2013\lib\Qt5Guid.lib C:\Qt\Qt5.8.0\5.8\msvc2013\lib\Qt5SerialPortd.lib C:\Qt\Qt5.8.0\5.8\msvc2013\lib\Qt5Cored.lib debug\ui-example_resource.res 
 QMAKE         = C:\Qt\Qt5.8.0\5.8\msvc2013\bin\qmake.exe
 IDC           = idc
 IDL           = midl
 ZIP           = zip -r -9
 DEF_FILE      = 
-RES_FILE      = 
+RES_FILE      = debug\ui-example_resource.res
 COPY          = copy /y
 SED           = $(QMAKE) -install sed
 COPY_FILE     = copy /y
@@ -121,10 +121,13 @@ DESTDIR_TARGET = debug\ui-example.exe
 first: all
 all: Makefile.Debug  $(DESTDIR_TARGET)
 
-$(DESTDIR_TARGET): ui_mainwindow.h $(OBJECTS) 
+$(DESTDIR_TARGET): ui_mainwindow.h $(OBJECTS) debug\ui-example_resource.res
 	$(LINKER) $(LFLAGS) /MANIFEST:embed /OUT:$(DESTDIR_TARGET) @<<
 $(OBJECTS) $(LIBS)
 <<
+
+debug\ui-example_resource.res: ui-example_resource.rc
+	rc -D_DEBUG $(DEFINES) -fo debug\ui-example_resource.res ui-example_resource.rc
 
 qmake: FORCE
 	@$(QMAKE) -o Makefile.Debug ui-example.pro -spec win32-msvc2013 "CONFIG+=debug" "CONFIG+=qml_debug"
@@ -137,6 +140,7 @@ dist:
 clean: compiler_clean 
 	-$(DEL_FILE) debug\main.obj debug\mainwindow.obj debug\connectionbackground.obj debug\phnmessage.obj debug\phnsysconfig.obj debug\qrc_icons.obj debug\moc_mainwindow.obj debug\moc_connectionbackground.obj
 	-$(DEL_FILE) debug\ui-example.exp debug\ui-example.vc.pdb debug\ui-example.ilk debug\ui-example.idb
+	-$(DEL_FILE) debug\ui-example_resource.res
 
 distclean: clean 
 	-$(DEL_FILE) .qmake.stash debug\ui-example.lib debug\ui-example.pdb
@@ -629,6 +633,9 @@ debug\main.obj: main.cpp mainwindow.h \
 		C:\Qt\Qt5.8.0\5.8\msvc2013\include\QtWidgets\qdesktopwidget.h \
 		C:\Qt\Qt5.8.0\5.8\msvc2013\include\QtGui\qguiapplication.h \
 		C:\Qt\Qt5.8.0\5.8\msvc2013\include\QtGui\qinputmethod.h \
+		C:\Qt\Qt5.8.0\5.8\msvc2013\include\QtWidgets\QStyle \
+		C:\Qt\Qt5.8.0\5.8\msvc2013\include\QtWidgets\qstyle.h \
+		C:\Qt\Qt5.8.0\5.8\msvc2013\include\QtWidgets\QDesktopWidget \
 		connectionbackground.h \
 		C:\Qt\Qt5.8.0\5.8\msvc2013\include\QtCore\QtCore \
 		C:\Qt\Qt5.8.0\5.8\msvc2013\include\QtCore\QtCoreDepends \
@@ -1021,7 +1028,8 @@ debug\mainwindow.obj: mainwindow.cpp mainwindow.h \
 		C:\Qt\Qt5.8.0\5.8\msvc2013\include\QtSerialPort\qserialport.h \
 		C:\Qt\Qt5.8.0\5.8\msvc2013\include\QtSerialPort\qserialportglobal.h \
 		C:\Qt\Qt5.8.0\5.8\msvc2013\include\QtSerialPort\QSerialPortInfo \
-		C:\Qt\Qt5.8.0\5.8\msvc2013\include\QtSerialPort\qserialportinfo.h
+		C:\Qt\Qt5.8.0\5.8\msvc2013\include\QtSerialPort\qserialportinfo.h \
+		phnmessage.h
 
 debug\connectionbackground.obj: connectionbackground.cpp connectionbackground.h \
 		C:\Qt\Qt5.8.0\5.8\msvc2013\include\QtCore\QtCore \

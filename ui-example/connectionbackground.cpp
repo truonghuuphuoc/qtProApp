@@ -25,8 +25,8 @@ ConnectionBackground::ConnectionBackground(QObject *parent)
     mRf_IsMessageRecv   = 0;
 
 
-    mRf_StartAddress    = 0x00;
-    mRf_DestinationAddress = 0x00;
+    mRf_RecvAddress    = 0x00;
+    mRf_TransAddress = 0x00;
 
 
     memset(mRf_MessageData, 0x00, MESG_BUFFER_SIZE);
@@ -45,8 +45,8 @@ void ConnectionBackground::run()
 {
     ConnectionProcess step = STAT_SCAN_DEVICE;
 
-    emit progressChanged(EVNT_UD_START_ADDR, mRf_StartAddress);
-    emit progressChanged(EVNT_UD_DEST_ADDR, mRf_DestinationAddress);
+    emit progressChanged(EVNT_UD_START_ADDR, mRf_RecvAddress);
+    emit progressChanged(EVNT_UD_DEST_ADDR, mRf_TransAddress);
 
     while(true)
     {
@@ -104,9 +104,6 @@ void ConnectionBackground::run()
             phnRfReceive_PrepareRequest();
             mSerialError = phnRfReceive_SendMessage(mRf_RequestData, mRf_RequestLength);
 
-            QByteArray array((const char*)mRf_RequestData, mRf_RequestLength);
-            qDebug() << QString(array.toHex().toUpper());
-
             if(!mSerialError)
             {
                 step = STAT_DEVI_ERROR;
@@ -136,12 +133,29 @@ void ConnectionBackground::run()
             break;
 
         case STAT_PROC_DATA:
+        {
+            uint8_t onlinedevice = 2;
+            emit progressChanged(EVNT_UD_APP_STATUS, onlinedevice);
 
             //process data
+            emit progressChanged(EVNT_UD_TARGET_1, mRf_MessageData[3]);
+            emit progressChanged(EVNT_UD_TARGET_2, mRf_MessageData[4]);
+            emit progressChanged(EVNT_UD_TARGET_3, mRf_MessageData[5]);
+
+            if(mRf_Ack)
+            {
+                mRf_Ack = 0x00;
+            }
+            else
+            {
+                mRf_Ack = 0x01;
+            }
+
+            phnRfReceive_Reset();
 
             step = STAT_PROC_SLEEP;
             break;
-
+        }
 
         case STAT_TOUT_READ:
         {
@@ -154,7 +168,7 @@ void ConnectionBackground::run()
 
         case STAT_PROC_SLEEP:
             step = STAT_WRIT_DATA;
-            QThread::sleep(2);
+            QThread::sleep(3);
             break;
 
         case STAT_DEVI_ERROR:
@@ -279,7 +293,7 @@ bool ConnectionBackground::phnRfReceive_SendMessage(uint8_t *data, uint16_t leng
     {
         return false;
     }
-    else if (!mSerialPort->waitForBytesWritten(300)) {
+    else if (!mSerialPort->waitForBytesWritten(1000)) {
         return false;
     }
 
@@ -291,7 +305,7 @@ bool ConnectionBackground::phRfReceive_ReceiveMessage()
     int timeout;
     uint8_t recv;
 
-    timeout = 500;
+    timeout = 1000;
     while (mSerialPort->bytesAvailable() == 0 && timeout > 0)
     {
         timeout--;
@@ -334,10 +348,13 @@ bool ConnectionBackground::phRfReceive_ReceiveMessage()
         if(mRf_IsMessageRecv == 1)
         {
             //check message
-            if(mRf_DataPosition > 2 &&
-               mRf_MessageData[0] == mRf_StartAddress &&
-               mRf_MessageData[1] == mRf_DestinationAddress)
+            if(mRf_DataPosition == 6 &&
+               mRf_MessageData[0] == mRf_RecvAddress &&
+               mRf_MessageData[1] == mRf_TransAddress)
             {
+
+                QByteArray array((const char*)mRf_MessageData, mRf_DataPosition);
+                qDebug() << "rep: " << QString(array.toHex().toUpper());
 
                 //have message
                 break;
@@ -349,7 +366,7 @@ bool ConnectionBackground::phRfReceive_ReceiveMessage()
             }
         }
 
-        timeout = 50;
+        timeout = 300;
         while (mSerialPort->bytesAvailable() == 0 && timeout > 0)
         {
             timeout--;
@@ -381,9 +398,13 @@ void ConnectionBackground::phnRfReceive_PrepareRequest()
 {
     uint8_t request[MESG_BUFFER_SIZE];
 
-    request[0] = mRf_DestinationAddress;
-    request[1] = mRf_StartAddress;
+    request[0] = mRf_TransAddress;
+    request[1] = mRf_RecvAddress;
     request[2] = mRf_Ack;
+
+
+    QByteArray array((const char*)request, 3);
+    qDebug() << "req: " << QString(array.toHex().toUpper());
 
     phnMessage::phnMessage_GetMessageFormat(request, 3, mRf_RequestData, &mRf_RequestLength);
 }
@@ -391,6 +412,6 @@ void ConnectionBackground::phnRfReceive_PrepareRequest()
 
 void ConnectionBackground::setAddress(uint8_t start, uint8_t destination)
 {
-    mRf_StartAddress = start;
-    mRf_DestinationAddress = destination;
+    mRf_RecvAddress = start;
+    mRf_TransAddress = destination;
 }
