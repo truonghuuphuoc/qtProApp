@@ -47,12 +47,12 @@ void MainWindow::onProgressChanged(int event, int infor) {
     switch (event)
     {
     case EVNT_UD_APP_STATUS:
-        if(infor == 1)
+        if(infor == APP_STATUS_OFFLINE)
         {
             QPixmap errorStatus (mOfflineImagePath);
             ui->mAppStatus->setPixmap(errorStatus);
         }
-        else if(infor == 2)
+        else if(infor == APP_STATUS_ONLINE)
         {
             QPixmap errorStatus (mOnlineImagePath);
             ui->mAppStatus->setPixmap(errorStatus);
@@ -61,6 +61,7 @@ void MainWindow::onProgressChanged(int event, int infor) {
         {
             QPixmap errorStatus (mErrorImagePath);
             ui->mAppStatus->setPixmap(errorStatus);
+            ui->mAppComport->setText("");
         }
         break;
 

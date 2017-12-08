@@ -59,7 +59,6 @@ void ConnectionBackground::run()
                if(!info.isBusy())
                {
                    mSerialPort = new QSerialPort;
-                   qDebug() << info.portName();
                    mSerialPort->setPortName(info.portName());
                    mSerialPort->setBaudRate(QSerialPort::Baud9600);
                    mSerialPort->setDataBits(QSerialPort::Data8);
@@ -78,7 +77,6 @@ void ConnectionBackground::run()
 
         case STAT_OPEN_DEVICE:
         {
-            uint8_t waitdevice = 1;
 
             if (mSerialPort != NULL && !mSerialPort->open(QIODevice::ReadWrite))
             {
@@ -93,7 +91,7 @@ void ConnectionBackground::run()
 
             emit progressChanged(EVNT_UD_SERIAL_PORT, portName.mid(3, portName.length() - 3).toInt());
 
-            emit progressChanged(EVNT_UD_APP_STATUS, waitdevice);
+            emit progressChanged(EVNT_UD_APP_STATUS, APP_STATUS_OFFLINE);
 
             step = STAT_WRIT_DATA;
             break;
@@ -134,8 +132,7 @@ void ConnectionBackground::run()
 
         case STAT_PROC_DATA:
         {
-            uint8_t onlinedevice = 2;
-            emit progressChanged(EVNT_UD_APP_STATUS, onlinedevice);
+            emit progressChanged(EVNT_UD_APP_STATUS, APP_STATUS_ONLINE);
 
             //process data
             emit progressChanged(EVNT_UD_TARGET_1, mRf_MessageData[3]);
@@ -159,10 +156,9 @@ void ConnectionBackground::run()
 
         case STAT_TOUT_READ:
         {
-            uint8_t offline = 1;
-            emit progressChanged(EVNT_UD_APP_STATUS, offline);
+            emit progressChanged(EVNT_UD_APP_STATUS, APP_STATUS_OFFLINE);
 
-            step = STAT_PROC_SLEEP;
+            step = STAT_WRIT_DATA;
             break;
         }
 
@@ -173,8 +169,7 @@ void ConnectionBackground::run()
 
         case STAT_DEVI_ERROR:
         {
-            uint8_t error = 0;
-            emit progressChanged(EVNT_UD_APP_STATUS, error);
+            emit progressChanged(EVNT_UD_APP_STATUS, APP_STATUS_ERROR);
 
             //delete
             mSerialPort->close();
@@ -187,6 +182,7 @@ void ConnectionBackground::run()
         }
 
         default:
+            step = STAT_SCAN_DEVICE;
             break;
         }
     }
@@ -305,7 +301,7 @@ bool ConnectionBackground::phRfReceive_ReceiveMessage()
     int timeout;
     uint8_t recv;
 
-    timeout = 1000;
+    timeout = 3000; //3 seconds
     while (mSerialPort->bytesAvailable() == 0 && timeout > 0)
     {
         timeout--;
@@ -352,9 +348,7 @@ bool ConnectionBackground::phRfReceive_ReceiveMessage()
                mRf_MessageData[0] == mRf_RecvAddress &&
                mRf_MessageData[1] == mRf_TransAddress)
             {
-
-                QByteArray array((const char*)mRf_MessageData, mRf_DataPosition);
-                qDebug() << "rep: " << QString(array.toHex().toUpper());
+                phnRfReceive_DebugLog(QString("rep: "), mRf_MessageData, mRf_DataPosition);
 
                 //have message
                 break;
@@ -403,12 +397,26 @@ void ConnectionBackground::phnRfReceive_PrepareRequest()
     request[2] = mRf_Ack;
 
 
-    QByteArray array((const char*)request, 3);
-    qDebug() << "req: " << QString(array.toHex().toUpper());
+    phnRfReceive_DebugLog(QString("req: "), request, 3);
 
     phnMessage::phnMessage_GetMessageFormat(request, 3, mRf_RequestData, &mRf_RequestLength);
 }
 
+
+void ConnectionBackground::phnRfReceive_DebugLog(QString message, uint8_t *data, uint16_t length)
+{
+    QString resHex;
+    QString s;
+
+    for (int i = 0; i < length; i++)
+    {
+        s.sprintf("%02X", data[i]);
+        resHex.append(s);
+        resHex.append(" ");
+    }
+
+    qDebug() << (message + resHex.toUpper());
+}
 
 void ConnectionBackground::setAddress(uint8_t start, uint8_t destination)
 {

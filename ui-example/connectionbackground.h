@@ -39,6 +39,13 @@ typedef enum
     EVNT_UD_TARGET_3    = 0x06,
 }phnConnectionEvent;
 
+typedef enum
+{
+    APP_STATUS_ERROR    = 0x00,
+    APP_STATUS_ONLINE   = 0x01,
+    APP_STATUS_OFFLINE  = 0x02,
+}phnAppStatus;
+
 class ConnectionBackground: public QThread
 {
     Q_OBJECT
@@ -56,6 +63,8 @@ private:
     bool phnRfReceive_SendMessage(uint8_t *data, uint16_t length);
     void phnRfReceive_MessageHandler(uint8_t data);
     void phnRfReceive_PrepareRequest(void);
+
+    void phnRfReceive_DebugLog(QString message, uint8_t *data, uint16_t length);
 
 
 signals:
