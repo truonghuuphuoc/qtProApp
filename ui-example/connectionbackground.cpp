@@ -164,7 +164,7 @@ void ConnectionBackground::run()
 
         case STAT_PROC_SLEEP:
             step = STAT_WRIT_DATA;
-            QThread::sleep(3);
+            QThread::sleep(2);
             break;
 
         case STAT_DEVI_ERROR:
@@ -277,7 +277,7 @@ bool ConnectionBackground::phnRfReceive_SendMessage(uint8_t *data, uint16_t leng
     }
 
     //clear all data before send
-    mSerialPort->readAll();
+    mSerialPort->clear(QSerialPort::Direction::AllDirections);
 
     int16_t lenwritted = (int16_t)mSerialPort->write((const char*)data, length);
 
@@ -302,23 +302,28 @@ bool ConnectionBackground::phRfReceive_ReceiveMessage()
     uint8_t recv;
 
     timeout = 3000; //3 seconds
-    while (mSerialPort->bytesAvailable() == 0 && timeout > 0)
+    while (timeout >0)
     {
-        timeout--;
-
-        if(mSerialPort->error() == QSerialPort::ReadError ||
-           mSerialPort->error() == QSerialPort::TimeoutError)
+        if(mSerialPort->bytesAvailable() != 0)
         {
-            //error
-            return false;
+            break;
         }
 
-        QThread::msleep(1);
+        mSerialPort->waitForReadyRead(1);
+
+        timeout --;
+    }
+
+    if (mSerialPort->error() == QSerialPort::ReadError)
+    {
+        phnRfReceive_MessageLog(QString("Read error in 3 secnods process"));
+        return false;
     }
 
     if(mSerialPort->bytesAvailable() == 0)
     {
         //no error
+       phnRfReceive_MessageLog(QString("Timeout in 3 secnods process"));
         return true;
     }
 
@@ -328,13 +333,14 @@ bool ConnectionBackground::phRfReceive_ReceiveMessage()
 
         if(lenread != 1)
         {
+            phnRfReceive_MessageLog(QString("Read 1 byte error in read process"));
             //error
             return false;
         }
 
-        if(mSerialPort->error() == QSerialPort::ReadError ||
-           mSerialPort->error() == QSerialPort::TimeoutError)
+        if(mSerialPort->error() == QSerialPort::ReadError)
         {
+            phnRfReceive_MessageLog(QString("Serial error in read process"));
             //error
             return false;
         }
@@ -361,24 +367,30 @@ bool ConnectionBackground::phRfReceive_ReceiveMessage()
         }
 
         timeout = 300;
-        while (mSerialPort->bytesAvailable() == 0 && timeout > 0)
+        while (timeout >0)
         {
-            timeout--;
-
-            if(mSerialPort->error() == QSerialPort::ReadError ||
-               mSerialPort->error() == QSerialPort::TimeoutError)
+            if(mSerialPort->bytesAvailable() != 0)
             {
-                //error
-                return false;
+                break;
             }
 
-            QThread::msleep(1);
+            mSerialPort->waitForReadyRead(1);
+
+            timeout --;
+        }
+
+        if(mSerialPort->error() == QSerialPort::ReadError)
+        {
+            phnRfReceive_MessageLog(QString("Read error in 300 millisecond process"));
+            //error
+            return false;
         }
 
         if (mSerialPort->bytesAvailable() == 0)
         {
             phnRfReceive_Reset();
 
+            phnRfReceive_MessageLog(QString("Timeout in 300 millisecond process"));
             //no error
             return true;
         }
@@ -405,6 +417,7 @@ void ConnectionBackground::phnRfReceive_PrepareRequest()
 
 void ConnectionBackground::phnRfReceive_DebugLog(QString message, uint8_t *data, uint16_t length)
 {
+#if(LOG_MESSAGE)
     QString resHex;
     QString s;
 
@@ -416,6 +429,14 @@ void ConnectionBackground::phnRfReceive_DebugLog(QString message, uint8_t *data,
     }
 
     qDebug() << (message + resHex.toUpper());
+#endif
+}
+
+void ConnectionBackground::phnRfReceive_MessageLog(QString message)
+{
+#if(LOG_MESSAGE)
+    qDebug() << message;
+#endif
 }
 
 void ConnectionBackground::setAddress(uint8_t start, uint8_t destination)

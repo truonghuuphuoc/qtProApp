@@ -51,6 +51,10 @@ void MainWindow::onProgressChanged(int event, int infor) {
         {
             QPixmap errorStatus (mOfflineImagePath);
             ui->mAppStatus->setPixmap(errorStatus);
+
+            ui->mTarget_1_Status->setPixmap(errorStatus);
+            ui->mTarget_2_Status->setPixmap(errorStatus);
+            ui->mTarget_3_Status->setPixmap(errorStatus);
         }
         else if(infor == APP_STATUS_ONLINE)
         {
@@ -62,6 +66,11 @@ void MainWindow::onProgressChanged(int event, int infor) {
             QPixmap errorStatus (mErrorImagePath);
             ui->mAppStatus->setPixmap(errorStatus);
             ui->mAppComport->setText("");
+
+            QPixmap offlineStatus (mOfflineImagePath);
+            ui->mTarget_1_Status->setPixmap(offlineStatus);
+            ui->mTarget_2_Status->setPixmap(offlineStatus);
+            ui->mTarget_3_Status->setPixmap(offlineStatus);
         }
         break;
 
@@ -107,6 +116,9 @@ void MainWindow::onProgressChanged(int event, int infor) {
             {
                 ui->mTarget_1_ThirdValue->setText("0");
                 ui->mTarget_1_SecondValue->setText("0");
+
+                mTarget_1_Value[1] = 0;
+                mTarget_1_Value[2] = 0;
 
                 ui->mTarget_1_FirstValue->setText(valuenumber);
 
@@ -154,6 +166,10 @@ void MainWindow::onProgressChanged(int event, int infor) {
                 ui->mTarget_2_ThirdValue->setText("0");
                 ui->mTarget_2_SecondValue->setText("0");
 
+
+                mTarget_2_Value[1] = 0;
+                mTarget_2_Value[2] = 0;
+
                 ui->mTarget_2_FirstValue->setText(valuenumber);
 
                 mTarget_2_Index = 1;
@@ -200,6 +216,10 @@ void MainWindow::onProgressChanged(int event, int infor) {
                 ui->mTarget_3_ThirdValue->setText("0");
                 ui->mTarget_3_SecondValue->setText("0");
 
+
+                mTarget_3_Value[1] = 0;
+                mTarget_3_Value[2] = 0;
+
                 ui->mTarget_3_FirstValue->setText(valuenumber);
 
                 mTarget_3_Index = 1;
@@ -235,7 +255,7 @@ void MainWindow::on_mAppClean_clicked()
 {
     mTarget_1_Index = 0;
     mTarget_2_Index = 0;
-    mTarget_2_Index = 0;
+    mTarget_3_Index = 0;
 
     ui->mTarget_1_FirstValue->setText("0");
     ui->mTarget_2_FirstValue->setText("0");

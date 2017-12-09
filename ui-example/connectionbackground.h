@@ -11,6 +11,7 @@
 #include <QtSerialPort/QSerialPort>
 #include <QtSerialPort/QSerialPortInfo>
 
+#define LOG_MESSAGE     0
 
 #define MESG_BUFFER_SIZE    200
 
@@ -65,6 +66,7 @@ private:
     void phnRfReceive_PrepareRequest(void);
 
     void phnRfReceive_DebugLog(QString message, uint8_t *data, uint16_t length);
+    void phnRfReceive_MessageLog(QString message);
 
 
 signals:
