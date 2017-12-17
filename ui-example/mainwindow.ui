@@ -692,7 +692,7 @@ QGroupBox::title {
          <item row="0" column="1">
           <widget class="QGroupBox" name="groupBox_21">
            <property name="title">
-            <string>Comport</string>
+            <string>Cổng COM</string>
            </property>
            <layout class="QGridLayout" name="gridLayout_22">
             <item row="0" column="0">
@@ -740,7 +740,7 @@ QGroupBox::title {
          <item row="0" column="2">
           <widget class="QGroupBox" name="groupBox_22">
            <property name="title">
-            <string>IP Thu</string>
+            <string>ID Thu</string>
            </property>
            <layout class="QGridLayout" name="gridLayout_23">
             <item row="0" column="0">
@@ -797,7 +797,7 @@ QGroupBox::title {
          <item row="0" column="3">
           <widget class="QGroupBox" name="groupBox_23">
            <property name="title">
-            <string>IP Phát</string>
+            <string>ID Phát</string>
            </property>
            <layout class="QGridLayout" name="gridLayout_24">
             <item row="0" column="0">

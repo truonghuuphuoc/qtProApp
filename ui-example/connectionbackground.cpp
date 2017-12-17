@@ -429,6 +429,9 @@ void ConnectionBackground::phnRfReceive_DebugLog(QString message, uint8_t *data,
     }
 
     qDebug() << (message + resHex.toUpper());
+#else
+    Q_UNUSED (data);
+    Q_UNUSED (length);
 #endif
 }
 
