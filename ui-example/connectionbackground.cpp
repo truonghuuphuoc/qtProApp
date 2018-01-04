@@ -164,7 +164,7 @@ void ConnectionBackground::run()
 
         case STAT_PROC_SLEEP:
             step = STAT_WRIT_DATA;
-            QThread::sleep(2);
+            QThread::msleep(500);
             break;
 
         case STAT_DEVI_ERROR:

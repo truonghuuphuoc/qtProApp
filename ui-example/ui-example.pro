@@ -6,7 +6,7 @@
 
 QT       += core gui serialport
 
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets multimedia
 
 TARGET = ui-example
 TEMPLATE = app
@@ -41,7 +41,5 @@ RESOURCES += \
 
 
 win32:RC_ICONS = app_100.ico
-win32:RC_FILE = proj.rc
 
-DISTFILES += \
-    proj.rc
+DISTFILES +=

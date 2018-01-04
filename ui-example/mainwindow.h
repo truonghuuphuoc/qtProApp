@@ -3,6 +3,9 @@
 
 #include<stdint.h>
 #include <QMainWindow>
+#include <QtMultimedia/QSound>
+#include <QtMultimedia/QMediaPlayer>
+#include <QtMultimedia/QMediaPlaylist>
 
 namespace Ui {
 class MainWindow;
@@ -21,6 +24,10 @@ private:
     QString mErrorImagePath;
     QString mOfflineImagePath;
     QString mOnlineImagePath;
+
+    QString mSoundPath;
+    QMediaPlayer *mPlayer;
+    QMediaPlaylist *mPlayList;
 
     uint8_t mTarget_1_Index;
     uint8_t mTarget_2_Index;

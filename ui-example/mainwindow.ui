@@ -40,7 +40,7 @@ QGroupBox::title {
 }</string>
         </property>
         <property name="title">
-         <string>Bia số 1</string>
+         <string>Bia số 4</string>
         </property>
         <layout class="QGridLayout" name="gridLayout_3">
          <item row="3" column="0">
@@ -254,7 +254,7 @@ QGroupBox::title {
 }</string>
         </property>
         <property name="title">
-         <string>Bia số 2</string>
+         <string>Bia số 7</string>
         </property>
         <layout class="QGridLayout" name="gridLayout_9">
          <item row="2" column="0">
@@ -468,7 +468,7 @@ QGroupBox::title {
 }</string>
         </property>
         <property name="title">
-         <string>Bia số 3</string>
+         <string>Bia số 8</string>
         </property>
         <layout class="QGridLayout" name="gridLayout_15">
          <item row="2" column="1">

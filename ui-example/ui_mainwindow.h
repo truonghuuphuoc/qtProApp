@@ -706,7 +706,7 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "TARGET", Q_NULLPTR));
-        groupBox_2->setTitle(QApplication::translate("MainWindow", "Bia s\341\273\221 1", Q_NULLPTR));
+        groupBox_2->setTitle(QApplication::translate("MainWindow", "Bia s\341\273\221 4", Q_NULLPTR));
         groupBox_5->setTitle(QApplication::translate("MainWindow", "L\341\272\247n 3", Q_NULLPTR));
         mTarget_1_ThirdValue->setText(QApplication::translate("MainWindow", "0", Q_NULLPTR));
         groupBox_6->setTitle(QApplication::translate("MainWindow", "T\341\273\225ng", Q_NULLPTR));
@@ -719,7 +719,7 @@ public:
         mTarget_1_FirstValue->setText(QApplication::translate("MainWindow", "0", Q_NULLPTR));
         mTarget_1_Clean->setText(QApplication::translate("MainWindow", "X\303\263a", Q_NULLPTR));
         label_20->setText(QString());
-        groupBox_8->setTitle(QApplication::translate("MainWindow", "Bia s\341\273\221 2", Q_NULLPTR));
+        groupBox_8->setTitle(QApplication::translate("MainWindow", "Bia s\341\273\221 7", Q_NULLPTR));
         groupBox_9->setTitle(QApplication::translate("MainWindow", "L\341\272\247n 2", Q_NULLPTR));
         mTarget_2_SecondValue->setText(QApplication::translate("MainWindow", "0", Q_NULLPTR));
         groupBox_10->setTitle(QApplication::translate("MainWindow", "K\341\272\277t n\341\273\221i", Q_NULLPTR));
@@ -732,7 +732,7 @@ public:
         mTarget_2_FirstValue->setText(QApplication::translate("MainWindow", "0", Q_NULLPTR));
         mTarget_2_Clean->setText(QApplication::translate("MainWindow", "X\303\263a", Q_NULLPTR));
         label_21->setText(QString());
-        groupBox_14->setTitle(QApplication::translate("MainWindow", "Bia s\341\273\221 3", Q_NULLPTR));
+        groupBox_14->setTitle(QApplication::translate("MainWindow", "Bia s\341\273\221 8", Q_NULLPTR));
         groupBox_15->setTitle(QApplication::translate("MainWindow", "L\341\272\247n 2", Q_NULLPTR));
         mTarget_3_SecondValue->setText(QApplication::translate("MainWindow", "0", Q_NULLPTR));
         groupBox_18->setTitle(QApplication::translate("MainWindow", "L\341\272\247n 3", Q_NULLPTR));

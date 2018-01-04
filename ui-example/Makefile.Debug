@@ -11,19 +11,19 @@ MAKEFILE      = Makefile.Debug
 
 CC            = cl
 CXX           = cl
-DEFINES       = -DUNICODE -DWIN32 -DQT_DEPRECATED_WARNINGS -DQT_QML_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_SERIALPORT_LIB -DQT_CORE_LIB
+DEFINES       = -DUNICODE -DWIN32 -DQT_DEPRECATED_WARNINGS -DQT_WIDGETS_LIB -DQT_MULTIMEDIA_LIB -DQT_GUI_LIB -DQT_SERIALPORT_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB
 CFLAGS        = -nologo -Zc:wchar_t -FS -Zi -MDd -W3 /Fddebug\ui-example.vc.pdb $(DEFINES)
 CXXFLAGS      = -nologo -Zc:wchar_t -FS -Zi -MDd -GR -W3 -w34100 -w34189 -w44996 -EHsc /Fddebug\ui-example.vc.pdb $(DEFINES)
-INCPATH       = -I. -IC:\Qt\Qt5.8.0\5.8\msvc2013\include -IC:\Qt\Qt5.8.0\5.8\msvc2013\include\QtWidgets -IC:\Qt\Qt5.8.0\5.8\msvc2013\include\QtGui -IC:\Qt\Qt5.8.0\5.8\msvc2013\include\QtANGLE -IC:\Qt\Qt5.8.0\5.8\msvc2013\include\QtSerialPort -IC:\Qt\Qt5.8.0\5.8\msvc2013\include\QtCore -Idebug -I. -IC:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\win32-msvc2013 
+INCPATH       = -I. -IC:\Qt\Qt5.8.0\5.8\msvc2013\include -IC:\Qt\Qt5.8.0\5.8\msvc2013\include\QtWidgets -IC:\Qt\Qt5.8.0\5.8\msvc2013\include\QtMultimedia -IC:\Qt\Qt5.8.0\5.8\msvc2013\include\QtGui -IC:\Qt\Qt5.8.0\5.8\msvc2013\include\QtANGLE -IC:\Qt\Qt5.8.0\5.8\msvc2013\include\QtSerialPort -IC:\Qt\Qt5.8.0\5.8\msvc2013\include\QtNetwork -IC:\Qt\Qt5.8.0\5.8\msvc2013\include\QtCore -Idebug -I. -IC:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\win32-msvc2013 
 LINKER        = link
 LFLAGS        = /NOLOGO /DYNAMICBASE /NXCOMPAT /DEBUG /SUBSYSTEM:WINDOWS "/MANIFESTDEPENDENCY:type='win32' name='Microsoft.Windows.Common-Controls' version='6.0.0.0' publicKeyToken='6595b64144ccf1df' language='*' processorArchitecture='*'"
-LIBS          = /LIBPATH:C:\Qt\Qt5.8.0\5.8\msvc2013\lib C:\Qt\Qt5.8.0\5.8\msvc2013\lib\qtmaind.lib /LIBPATH:C:\utils\my_sql\my_sql\lib /LIBPATH:C:\utils\postgresql\pgsql\lib shell32.lib C:\Qt\Qt5.8.0\5.8\msvc2013\lib\Qt5Widgetsd.lib C:\Qt\Qt5.8.0\5.8\msvc2013\lib\Qt5Guid.lib C:\Qt\Qt5.8.0\5.8\msvc2013\lib\Qt5SerialPortd.lib C:\Qt\Qt5.8.0\5.8\msvc2013\lib\Qt5Cored.lib debug\proj.res 
+LIBS          = /LIBPATH:C:\Qt\Qt5.8.0\5.8\msvc2013\lib C:\Qt\Qt5.8.0\5.8\msvc2013\lib\qtmaind.lib /LIBPATH:C:\utils\my_sql\my_sql\lib /LIBPATH:C:\utils\postgresql\pgsql\lib shell32.lib C:\Qt\Qt5.8.0\5.8\msvc2013\lib\Qt5Widgetsd.lib C:\Qt\Qt5.8.0\5.8\msvc2013\lib\Qt5Multimediad.lib C:\Qt\Qt5.8.0\5.8\msvc2013\lib\Qt5Guid.lib C:\Qt\Qt5.8.0\5.8\msvc2013\lib\Qt5SerialPortd.lib C:\Qt\Qt5.8.0\5.8\msvc2013\lib\Qt5Networkd.lib C:\Qt\Qt5.8.0\5.8\msvc2013\lib\Qt5Cored.lib debug\ui-example_resource.res 
 QMAKE         = C:\Qt\Qt5.8.0\5.8\msvc2013\bin\qmake.exe
 IDC           = idc
 IDL           = midl
 ZIP           = zip -r -9
 DEF_FILE      = 
-RES_FILE      = debug\proj.res
+RES_FILE      = debug\ui-example_resource.res
 COPY          = copy /y
 SED           = $(QMAKE) -install sed
 COPY_FILE     = copy /y
@@ -59,7 +59,7 @@ OBJECTS       = debug\main.obj \
 		debug\moc_mainwindow.obj \
 		debug\moc_connectionbackground.obj
 
-DIST          = proj.rc mainwindow.h \
+DIST          =  mainwindow.h \
 		connectionbackground.h \
 		phnmessage.h \
 		phnsysconfig.h main.cpp \
@@ -121,26 +121,26 @@ DESTDIR_TARGET = debug\ui-example.exe
 first: all
 all: Makefile.Debug  $(DESTDIR_TARGET)
 
-$(DESTDIR_TARGET): ui_mainwindow.h $(OBJECTS) debug\proj.res
+$(DESTDIR_TARGET): ui_mainwindow.h $(OBJECTS) debug\ui-example_resource.res
 	$(LINKER) $(LFLAGS) /MANIFEST:embed /OUT:$(DESTDIR_TARGET) @<<
 $(OBJECTS) $(LIBS)
 <<
 
-debug\proj.res: proj.rc
-	rc -D_DEBUG $(DEFINES) -fo debug\proj.res proj.rc
+debug\ui-example_resource.res: ui-example_resource.rc
+	rc -D_DEBUG $(DEFINES) -fo debug\ui-example_resource.res ui-example_resource.rc
 
 qmake: FORCE
-	@$(QMAKE) -o Makefile.Debug ui-example.pro -spec win32-msvc2013 "CONFIG+=debug" "CONFIG+=qml_debug"
+	@$(QMAKE) -o Makefile.Debug ui-example.pro -spec win32-msvc2013
 
 qmake_all: FORCE
 
 dist:
-	$(ZIP) ui-example.zip $(SOURCES) $(DIST) ui-example.pro C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\features\spec_pre.prf C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\common\angle.conf C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\common\msvc-base.conf C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\common\msvc-desktop.conf C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\qconfig.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_3dcore.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_3dcore_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_3dextras.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_3dextras_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_3dinput.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_3dinput_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_3dlogic.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_3dlogic_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_3dquick.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_3dquick_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_3dquickextras.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_3dquickextras_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_3dquickinput.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_3dquickinput_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_3dquickrender.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_3dquickrender_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_3drender.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_3drender_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_accessibility_support_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_axbase.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_axbase_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_axcontainer.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_axcontainer_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_axserver.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_axserver_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_bluetooth.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_bluetooth_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_bootstrap_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_charts.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_charts_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_clucene_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_concurrent.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_concurrent_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_core.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_core_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_datavisualization.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_datavisualization_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_dbus.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_dbus_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_designer.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_designer_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_designercomponents_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_devicediscovery_support_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_egl_support_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_eventdispatcher_support_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_fb_support_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_fontdatabase_support_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_gamepad.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_gamepad_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_gui.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_gui_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_help.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_help_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_location.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_location_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_multimedia.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_multimedia_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_multimediawidgets.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_multimediawidgets_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_network.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_network_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_networkauth.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_networkauth_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_nfc.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_nfc_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_opengl.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_opengl_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_openglextensions.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_openglextensions_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_packetprotocol_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_platformcompositor_support_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_positioning.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_positioning_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_printsupport.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_printsupport_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_purchasing.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_purchasing_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_qml.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_qml_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_qmldebug_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_qmldevtools_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_qmltest.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_qmltest_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_qtmultimediaquicktools_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_quick.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_quick_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_quickcontrols2.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_quickcontrols2_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_quickparticles_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_quicktemplates2_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_quickwidgets.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_quickwidgets_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_script.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_script_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_scripttools.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_scripttools_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_scxml.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_scxml_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_sensors.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_sensors_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_serialbus.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_serialbus_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_serialport.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_serialport_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_sql.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_sql_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_svg.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_svg_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_testlib.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_testlib_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_texttospeech.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_texttospeech_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_theme_support_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_uiplugin.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_uitools.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_uitools_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_webchannel.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_webchannel_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_websockets.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_websockets_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_widgets.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_widgets_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_winextras.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_winextras_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_xml.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_xml_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_xmlpatterns.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_xmlpatterns_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_zlib_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\features\qt_functions.prf C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\features\qt_config.prf C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\win32-msvc2013\qmake.conf C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\features\spec_post.prf .qmake.stash C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\features\exclusive_builds.prf C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\features\toolchain.prf C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\features\default_pre.prf C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\features\win32\default_pre.prf C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\features\resolve_config.prf C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\features\exclusive_builds_post.prf C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\features\default_post.prf C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\features\build_pass.prf C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\features\qml_debug.prf C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\features\win32\rtti.prf C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\features\precompile_header.prf C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\features\warn_on.prf C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\features\qt.prf C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\features\resources.prf C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\features\moc.prf C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\features\win32\opengl.prf C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\features\uic.prf C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\features\qmake_use.prf C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\features\file_copies.prf C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\features\win32\windows.prf C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\features\testcase_targets.prf C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\features\exceptions.prf C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\features\yacc.prf C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\features\lex.prf ui-example.pro icons.qrc C:\Qt\Qt5.8.0\5.8\msvc2013\lib\qtmaind.prl C:\Qt\Qt5.8.0\5.8\msvc2013\lib\Qt5Widgetsd.prl C:\Qt\Qt5.8.0\5.8\msvc2013\lib\Qt5Guid.prl C:\Qt\Qt5.8.0\5.8\msvc2013\lib\Qt5SerialPortd.prl C:\Qt\Qt5.8.0\5.8\msvc2013\lib\Qt5Cored.prl   icons.qrc C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\features\data\dummy.cpp mainwindow.h connectionbackground.h phnmessage.h phnsysconfig.h main.cpp mainwindow.cpp connectionbackground.cpp phnmessage.cpp phnsysconfig.cpp mainwindow.ui    
+	$(ZIP) ui-example.zip $(SOURCES) $(DIST) ui-example.pro C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\features\spec_pre.prf C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\common\angle.conf C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\common\msvc-base.conf C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\common\msvc-desktop.conf C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\qconfig.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_3dcore.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_3dcore_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_3dextras.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_3dextras_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_3dinput.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_3dinput_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_3dlogic.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_3dlogic_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_3dquick.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_3dquick_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_3dquickextras.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_3dquickextras_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_3dquickinput.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_3dquickinput_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_3dquickrender.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_3dquickrender_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_3drender.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_3drender_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_accessibility_support_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_axbase.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_axbase_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_axcontainer.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_axcontainer_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_axserver.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_axserver_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_bluetooth.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_bluetooth_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_bootstrap_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_charts.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_charts_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_clucene_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_concurrent.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_concurrent_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_core.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_core_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_datavisualization.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_datavisualization_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_dbus.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_dbus_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_designer.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_designer_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_designercomponents_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_devicediscovery_support_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_egl_support_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_eventdispatcher_support_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_fb_support_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_fontdatabase_support_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_gamepad.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_gamepad_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_gui.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_gui_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_help.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_help_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_location.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_location_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_multimedia.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_multimedia_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_multimediawidgets.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_multimediawidgets_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_network.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_network_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_networkauth.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_networkauth_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_nfc.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_nfc_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_opengl.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_opengl_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_openglextensions.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_openglextensions_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_packetprotocol_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_platformcompositor_support_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_positioning.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_positioning_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_printsupport.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_printsupport_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_purchasing.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_purchasing_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_qml.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_qml_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_qmldebug_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_qmldevtools_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_qmltest.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_qmltest_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_qtmultimediaquicktools_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_quick.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_quick_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_quickcontrols2.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_quickcontrols2_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_quickparticles_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_quicktemplates2_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_quickwidgets.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_quickwidgets_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_script.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_script_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_scripttools.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_scripttools_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_scxml.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_scxml_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_sensors.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_sensors_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_serialbus.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_serialbus_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_serialport.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_serialport_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_sql.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_sql_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_svg.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_svg_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_testlib.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_testlib_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_texttospeech.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_texttospeech_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_theme_support_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_uiplugin.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_uitools.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_uitools_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_webchannel.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_webchannel_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_websockets.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_websockets_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_widgets.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_widgets_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_winextras.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_winextras_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_xml.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_xml_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_xmlpatterns.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_xmlpatterns_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\modules\qt_lib_zlib_private.pri C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\features\qt_functions.prf C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\features\qt_config.prf C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\win32-msvc2013\qmake.conf C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\features\spec_post.prf .qmake.stash C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\features\exclusive_builds.prf C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\features\toolchain.prf C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\features\default_pre.prf C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\features\win32\default_pre.prf C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\features\resolve_config.prf C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\features\exclusive_builds_post.prf C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\features\default_post.prf C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\features\build_pass.prf C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\features\win32\rtti.prf C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\features\precompile_header.prf C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\features\warn_on.prf C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\features\qt.prf C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\features\resources.prf C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\features\moc.prf C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\features\win32\opengl.prf C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\features\uic.prf C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\features\qmake_use.prf C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\features\file_copies.prf C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\features\win32\windows.prf C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\features\testcase_targets.prf C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\features\exceptions.prf C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\features\yacc.prf C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\features\lex.prf ui-example.pro icons.qrc C:\Qt\Qt5.8.0\5.8\msvc2013\lib\qtmaind.prl C:\Qt\Qt5.8.0\5.8\msvc2013\lib\Qt5Widgetsd.prl C:\Qt\Qt5.8.0\5.8\msvc2013\lib\Qt5Multimediad.prl C:\Qt\Qt5.8.0\5.8\msvc2013\lib\Qt5Guid.prl C:\Qt\Qt5.8.0\5.8\msvc2013\lib\Qt5SerialPortd.prl C:\Qt\Qt5.8.0\5.8\msvc2013\lib\Qt5Networkd.prl C:\Qt\Qt5.8.0\5.8\msvc2013\lib\Qt5Cored.prl   icons.qrc C:\Qt\Qt5.8.0\5.8\msvc2013\mkspecs\features\data\dummy.cpp mainwindow.h connectionbackground.h phnmessage.h phnsysconfig.h main.cpp mainwindow.cpp connectionbackground.cpp phnmessage.cpp phnsysconfig.cpp mainwindow.ui    
 
 clean: compiler_clean 
 	-$(DEL_FILE) debug\main.obj debug\mainwindow.obj debug\connectionbackground.obj debug\phnmessage.obj debug\phnsysconfig.obj debug\qrc_icons.obj debug\moc_mainwindow.obj debug\moc_connectionbackground.obj
 	-$(DEL_FILE) debug\ui-example.exp debug\ui-example.vc.pdb debug\ui-example.ilk debug\ui-example.idb
-	-$(DEL_FILE) debug\proj.res
+	-$(DEL_FILE) debug\ui-example_resource.res
 
 distclean: clean 
 	-$(DEL_FILE) .qmake.stash debug\ui-example.lib debug\ui-example.pdb
@@ -301,10 +301,34 @@ debug\moc_mainwindow.cpp: C:\Qt\Qt5.8.0\5.8\msvc2013\include\QtWidgets\QMainWind
 		C:\Qt\Qt5.8.0\5.8\msvc2013\include\QtGui\qtouchdevice.h \
 		C:\Qt\Qt5.8.0\5.8\msvc2013\include\QtWidgets\qtabwidget.h \
 		C:\Qt\Qt5.8.0\5.8\msvc2013\include\QtGui\qicon.h \
+		C:\Qt\Qt5.8.0\5.8\msvc2013\include\QtMultimedia\QSound \
+		C:\Qt\Qt5.8.0\5.8\msvc2013\include\QtMultimedia\qsound.h \
+		C:\Qt\Qt5.8.0\5.8\msvc2013\include\QtMultimedia\qtmultimediaglobal.h \
+		C:\Qt\Qt5.8.0\5.8\msvc2013\include\QtMultimedia\qtmultimedia-config.h \
+		C:\Qt\Qt5.8.0\5.8\msvc2013\include\QtMultimedia\QMediaPlayer \
+		C:\Qt\Qt5.8.0\5.8\msvc2013\include\QtMultimedia\qmediaplayer.h \
+		C:\Qt\Qt5.8.0\5.8\msvc2013\include\QtMultimedia\qmediaobject.h \
+		C:\Qt\Qt5.8.0\5.8\msvc2013\include\QtMultimedia\qmultimedia.h \
+		C:\Qt\Qt5.8.0\5.8\msvc2013\include\QtMultimedia\qmediacontent.h \
+		C:\Qt\Qt5.8.0\5.8\msvc2013\include\QtMultimedia\qmediaresource.h \
+		C:\Qt\Qt5.8.0\5.8\msvc2013\include\QtNetwork\qnetworkrequest.h \
+		C:\Qt\Qt5.8.0\5.8\msvc2013\include\QtNetwork\qtnetworkglobal.h \
+		C:\Qt\Qt5.8.0\5.8\msvc2013\include\QtNetwork\qtnetwork-config.h \
+		C:\Qt\Qt5.8.0\5.8\msvc2013\include\QtCore\QSharedDataPointer \
+		C:\Qt\Qt5.8.0\5.8\msvc2013\include\QtCore\QString \
+		C:\Qt\Qt5.8.0\5.8\msvc2013\include\QtCore\QUrl \
+		C:\Qt\Qt5.8.0\5.8\msvc2013\include\QtCore\QVariant \
+		C:\Qt\Qt5.8.0\5.8\msvc2013\include\QtMultimedia\qmediaenumdebug.h \
+		C:\Qt\Qt5.8.0\5.8\msvc2013\include\QtCore\qmetaobject.h \
+		C:\Qt\Qt5.8.0\5.8\msvc2013\include\QtMultimedia\qaudio.h \
+		C:\Qt\Qt5.8.0\5.8\msvc2013\include\QtNetwork\qnetworkconfiguration.h \
+		C:\Qt\Qt5.8.0\5.8\msvc2013\include\QtMultimedia\QMediaPlaylist \
+		C:\Qt\Qt5.8.0\5.8\msvc2013\include\QtMultimedia\qmediaplaylist.h \
+		C:\Qt\Qt5.8.0\5.8\msvc2013\include\QtMultimedia\qmediabindableinterface.h \
 		mainwindow.h \
 		debug\moc_predefs.h \
 		C:\Qt\Qt5.8.0\5.8\msvc2013\bin\moc.exe
-	C:\Qt\Qt5.8.0\5.8\msvc2013\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include debug/moc_predefs.h -IC:/Qt/Qt5.8.0/5.8/msvc2013/mkspecs/win32-msvc2013 -IF:/TOOL/ArmyShoot/qtAppTARGET/ui-example -IC:/Qt/Qt5.8.0/5.8/msvc2013/include -IC:/Qt/Qt5.8.0/5.8/msvc2013/include/QtWidgets -IC:/Qt/Qt5.8.0/5.8/msvc2013/include/QtGui -IC:/Qt/Qt5.8.0/5.8/msvc2013/include/QtANGLE -IC:/Qt/Qt5.8.0/5.8/msvc2013/include/QtSerialPort -IC:/Qt/Qt5.8.0/5.8/msvc2013/include/QtCore -I"C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\INCLUDE" -I"C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\ATLMFC\INCLUDE" -I"C:\Program Files (x86)\Windows Kits\8.1\include\shared" -I"C:\Program Files (x86)\Windows Kits\8.1\include\um" -I"C:\Program Files (x86)\Windows Kits\8.1\include\winrt" mainwindow.h -o debug\moc_mainwindow.cpp
+	C:\Qt\Qt5.8.0\5.8\msvc2013\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include debug/moc_predefs.h -IC:/Qt/Qt5.8.0/5.8/msvc2013/mkspecs/win32-msvc2013 -IF:/TOOL/ArmyShoot/qtAppTARGET/ui-example -IC:/Qt/Qt5.8.0/5.8/msvc2013/include -IC:/Qt/Qt5.8.0/5.8/msvc2013/include/QtWidgets -IC:/Qt/Qt5.8.0/5.8/msvc2013/include/QtMultimedia -IC:/Qt/Qt5.8.0/5.8/msvc2013/include/QtGui -IC:/Qt/Qt5.8.0/5.8/msvc2013/include/QtANGLE -IC:/Qt/Qt5.8.0/5.8/msvc2013/include/QtSerialPort -IC:/Qt/Qt5.8.0/5.8/msvc2013/include/QtNetwork -IC:/Qt/Qt5.8.0/5.8/msvc2013/include/QtCore -I"C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\INCLUDE" -I"C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\ATLMFC\INCLUDE" -I"C:\Program Files (x86)\Windows Kits\8.1\include\shared" -I"C:\Program Files (x86)\Windows Kits\8.1\include\um" -I"C:\Program Files (x86)\Windows Kits\8.1\include\winrt" mainwindow.h -o debug\moc_mainwindow.cpp
 
 debug\moc_connectionbackground.cpp: C:\Qt\Qt5.8.0\5.8\msvc2013\include\QtCore\QtCore \
 		C:\Qt\Qt5.8.0\5.8\msvc2013\include\QtCore\QtCoreDepends \
@@ -498,7 +522,7 @@ debug\moc_connectionbackground.cpp: C:\Qt\Qt5.8.0\5.8\msvc2013\include\QtCore\Qt
 		connectionbackground.h \
 		debug\moc_predefs.h \
 		C:\Qt\Qt5.8.0\5.8\msvc2013\bin\moc.exe
-	C:\Qt\Qt5.8.0\5.8\msvc2013\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include debug/moc_predefs.h -IC:/Qt/Qt5.8.0/5.8/msvc2013/mkspecs/win32-msvc2013 -IF:/TOOL/ArmyShoot/qtAppTARGET/ui-example -IC:/Qt/Qt5.8.0/5.8/msvc2013/include -IC:/Qt/Qt5.8.0/5.8/msvc2013/include/QtWidgets -IC:/Qt/Qt5.8.0/5.8/msvc2013/include/QtGui -IC:/Qt/Qt5.8.0/5.8/msvc2013/include/QtANGLE -IC:/Qt/Qt5.8.0/5.8/msvc2013/include/QtSerialPort -IC:/Qt/Qt5.8.0/5.8/msvc2013/include/QtCore -I"C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\INCLUDE" -I"C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\ATLMFC\INCLUDE" -I"C:\Program Files (x86)\Windows Kits\8.1\include\shared" -I"C:\Program Files (x86)\Windows Kits\8.1\include\um" -I"C:\Program Files (x86)\Windows Kits\8.1\include\winrt" connectionbackground.h -o debug\moc_connectionbackground.cpp
+	C:\Qt\Qt5.8.0\5.8\msvc2013\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include debug/moc_predefs.h -IC:/Qt/Qt5.8.0/5.8/msvc2013/mkspecs/win32-msvc2013 -IF:/TOOL/ArmyShoot/qtAppTARGET/ui-example -IC:/Qt/Qt5.8.0/5.8/msvc2013/include -IC:/Qt/Qt5.8.0/5.8/msvc2013/include/QtWidgets -IC:/Qt/Qt5.8.0/5.8/msvc2013/include/QtMultimedia -IC:/Qt/Qt5.8.0/5.8/msvc2013/include/QtGui -IC:/Qt/Qt5.8.0/5.8/msvc2013/include/QtANGLE -IC:/Qt/Qt5.8.0/5.8/msvc2013/include/QtSerialPort -IC:/Qt/Qt5.8.0/5.8/msvc2013/include/QtNetwork -IC:/Qt/Qt5.8.0/5.8/msvc2013/include/QtCore -I"C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\INCLUDE" -I"C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\ATLMFC\INCLUDE" -I"C:\Program Files (x86)\Windows Kits\8.1\include\shared" -I"C:\Program Files (x86)\Windows Kits\8.1\include\um" -I"C:\Program Files (x86)\Windows Kits\8.1\include\winrt" connectionbackground.h -o debug\moc_connectionbackground.cpp
 
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
@@ -626,6 +650,30 @@ debug\main.obj: main.cpp mainwindow.h \
 		C:\Qt\Qt5.8.0\5.8\msvc2013\include\QtGui\qtouchdevice.h \
 		C:\Qt\Qt5.8.0\5.8\msvc2013\include\QtWidgets\qtabwidget.h \
 		C:\Qt\Qt5.8.0\5.8\msvc2013\include\QtGui\qicon.h \
+		C:\Qt\Qt5.8.0\5.8\msvc2013\include\QtMultimedia\QSound \
+		C:\Qt\Qt5.8.0\5.8\msvc2013\include\QtMultimedia\qsound.h \
+		C:\Qt\Qt5.8.0\5.8\msvc2013\include\QtMultimedia\qtmultimediaglobal.h \
+		C:\Qt\Qt5.8.0\5.8\msvc2013\include\QtMultimedia\qtmultimedia-config.h \
+		C:\Qt\Qt5.8.0\5.8\msvc2013\include\QtMultimedia\QMediaPlayer \
+		C:\Qt\Qt5.8.0\5.8\msvc2013\include\QtMultimedia\qmediaplayer.h \
+		C:\Qt\Qt5.8.0\5.8\msvc2013\include\QtMultimedia\qmediaobject.h \
+		C:\Qt\Qt5.8.0\5.8\msvc2013\include\QtMultimedia\qmultimedia.h \
+		C:\Qt\Qt5.8.0\5.8\msvc2013\include\QtMultimedia\qmediacontent.h \
+		C:\Qt\Qt5.8.0\5.8\msvc2013\include\QtMultimedia\qmediaresource.h \
+		C:\Qt\Qt5.8.0\5.8\msvc2013\include\QtNetwork\qnetworkrequest.h \
+		C:\Qt\Qt5.8.0\5.8\msvc2013\include\QtNetwork\qtnetworkglobal.h \
+		C:\Qt\Qt5.8.0\5.8\msvc2013\include\QtNetwork\qtnetwork-config.h \
+		C:\Qt\Qt5.8.0\5.8\msvc2013\include\QtCore\QSharedDataPointer \
+		C:\Qt\Qt5.8.0\5.8\msvc2013\include\QtCore\QString \
+		C:\Qt\Qt5.8.0\5.8\msvc2013\include\QtCore\QUrl \
+		C:\Qt\Qt5.8.0\5.8\msvc2013\include\QtCore\QVariant \
+		C:\Qt\Qt5.8.0\5.8\msvc2013\include\QtMultimedia\qmediaenumdebug.h \
+		C:\Qt\Qt5.8.0\5.8\msvc2013\include\QtCore\qmetaobject.h \
+		C:\Qt\Qt5.8.0\5.8\msvc2013\include\QtMultimedia\qaudio.h \
+		C:\Qt\Qt5.8.0\5.8\msvc2013\include\QtNetwork\qnetworkconfiguration.h \
+		C:\Qt\Qt5.8.0\5.8\msvc2013\include\QtMultimedia\QMediaPlaylist \
+		C:\Qt\Qt5.8.0\5.8\msvc2013\include\QtMultimedia\qmediaplaylist.h \
+		C:\Qt\Qt5.8.0\5.8\msvc2013\include\QtMultimedia\qmediabindableinterface.h \
 		C:\Qt\Qt5.8.0\5.8\msvc2013\include\QtWidgets\QApplication \
 		C:\Qt\Qt5.8.0\5.8\msvc2013\include\QtWidgets\qapplication.h \
 		C:\Qt\Qt5.8.0\5.8\msvc2013\include\QtCore\qcoreapplication.h \
@@ -696,7 +744,6 @@ debug\main.obj: main.cpp mainwindow.h \
 		C:\Qt\Qt5.8.0\5.8\msvc2013\include\QtCore\qloggingcategory.h \
 		C:\Qt\Qt5.8.0\5.8\msvc2013\include\QtCore\qmath.h \
 		C:\Qt\Qt5.8.0\5.8\msvc2013\include\QtCore\qmessageauthenticationcode.h \
-		C:\Qt\Qt5.8.0\5.8\msvc2013\include\QtCore\qmetaobject.h \
 		C:\Qt\Qt5.8.0\5.8\msvc2013\include\QtCore\qmimedata.h \
 		C:\Qt\Qt5.8.0\5.8\msvc2013\include\QtCore\qmimedatabase.h \
 		C:\Qt\Qt5.8.0\5.8\msvc2013\include\QtCore\qmimetype.h \
@@ -748,7 +795,6 @@ debug\main.obj: main.cpp mainwindow.h \
 		C:\Qt\Qt5.8.0\5.8\msvc2013\include\QtCore\qxmlstream.h \
 		C:\Qt\Qt5.8.0\5.8\msvc2013\include\QtCore\qtcoreversion.h \
 		C:\Qt\Qt5.8.0\5.8\msvc2013\include\QtCore\QThread \
-		C:\Qt\Qt5.8.0\5.8\msvc2013\include\QtCore\QString \
 		C:\Qt\Qt5.8.0\5.8\msvc2013\include\QtSerialPort\QSerialPort \
 		C:\Qt\Qt5.8.0\5.8\msvc2013\include\QtSerialPort\qserialport.h \
 		C:\Qt\Qt5.8.0\5.8\msvc2013\include\QtSerialPort\qserialportglobal.h \
@@ -861,8 +907,31 @@ debug\mainwindow.obj: mainwindow.cpp mainwindow.h \
 		C:\Qt\Qt5.8.0\5.8\msvc2013\include\QtGui\qtouchdevice.h \
 		C:\Qt\Qt5.8.0\5.8\msvc2013\include\QtWidgets\qtabwidget.h \
 		C:\Qt\Qt5.8.0\5.8\msvc2013\include\QtGui\qicon.h \
-		ui_mainwindow.h \
+		C:\Qt\Qt5.8.0\5.8\msvc2013\include\QtMultimedia\QSound \
+		C:\Qt\Qt5.8.0\5.8\msvc2013\include\QtMultimedia\qsound.h \
+		C:\Qt\Qt5.8.0\5.8\msvc2013\include\QtMultimedia\qtmultimediaglobal.h \
+		C:\Qt\Qt5.8.0\5.8\msvc2013\include\QtMultimedia\qtmultimedia-config.h \
+		C:\Qt\Qt5.8.0\5.8\msvc2013\include\QtMultimedia\QMediaPlayer \
+		C:\Qt\Qt5.8.0\5.8\msvc2013\include\QtMultimedia\qmediaplayer.h \
+		C:\Qt\Qt5.8.0\5.8\msvc2013\include\QtMultimedia\qmediaobject.h \
+		C:\Qt\Qt5.8.0\5.8\msvc2013\include\QtMultimedia\qmultimedia.h \
+		C:\Qt\Qt5.8.0\5.8\msvc2013\include\QtMultimedia\qmediacontent.h \
+		C:\Qt\Qt5.8.0\5.8\msvc2013\include\QtMultimedia\qmediaresource.h \
+		C:\Qt\Qt5.8.0\5.8\msvc2013\include\QtNetwork\qnetworkrequest.h \
+		C:\Qt\Qt5.8.0\5.8\msvc2013\include\QtNetwork\qtnetworkglobal.h \
+		C:\Qt\Qt5.8.0\5.8\msvc2013\include\QtNetwork\qtnetwork-config.h \
+		C:\Qt\Qt5.8.0\5.8\msvc2013\include\QtCore\QSharedDataPointer \
+		C:\Qt\Qt5.8.0\5.8\msvc2013\include\QtCore\QString \
+		C:\Qt\Qt5.8.0\5.8\msvc2013\include\QtCore\QUrl \
 		C:\Qt\Qt5.8.0\5.8\msvc2013\include\QtCore\QVariant \
+		C:\Qt\Qt5.8.0\5.8\msvc2013\include\QtMultimedia\qmediaenumdebug.h \
+		C:\Qt\Qt5.8.0\5.8\msvc2013\include\QtCore\qmetaobject.h \
+		C:\Qt\Qt5.8.0\5.8\msvc2013\include\QtMultimedia\qaudio.h \
+		C:\Qt\Qt5.8.0\5.8\msvc2013\include\QtNetwork\qnetworkconfiguration.h \
+		C:\Qt\Qt5.8.0\5.8\msvc2013\include\QtMultimedia\QMediaPlaylist \
+		C:\Qt\Qt5.8.0\5.8\msvc2013\include\QtMultimedia\qmediaplaylist.h \
+		C:\Qt\Qt5.8.0\5.8\msvc2013\include\QtMultimedia\qmediabindableinterface.h \
+		ui_mainwindow.h \
 		C:\Qt\Qt5.8.0\5.8\msvc2013\include\QtWidgets\QAction \
 		C:\Qt\Qt5.8.0\5.8\msvc2013\include\QtWidgets\qaction.h \
 		C:\Qt\Qt5.8.0\5.8\msvc2013\include\QtWidgets\qactiongroup.h \
@@ -972,7 +1041,6 @@ debug\mainwindow.obj: mainwindow.cpp mainwindow.h \
 		C:\Qt\Qt5.8.0\5.8\msvc2013\include\QtCore\qloggingcategory.h \
 		C:\Qt\Qt5.8.0\5.8\msvc2013\include\QtCore\qmath.h \
 		C:\Qt\Qt5.8.0\5.8\msvc2013\include\QtCore\qmessageauthenticationcode.h \
-		C:\Qt\Qt5.8.0\5.8\msvc2013\include\QtCore\qmetaobject.h \
 		C:\Qt\Qt5.8.0\5.8\msvc2013\include\QtCore\qmimedata.h \
 		C:\Qt\Qt5.8.0\5.8\msvc2013\include\QtCore\qmimedatabase.h \
 		C:\Qt\Qt5.8.0\5.8\msvc2013\include\QtCore\qmimetype.h \
@@ -1023,7 +1091,6 @@ debug\mainwindow.obj: mainwindow.cpp mainwindow.h \
 		C:\Qt\Qt5.8.0\5.8\msvc2013\include\QtCore\qxmlstream.h \
 		C:\Qt\Qt5.8.0\5.8\msvc2013\include\QtCore\qtcoreversion.h \
 		C:\Qt\Qt5.8.0\5.8\msvc2013\include\QtCore\QThread \
-		C:\Qt\Qt5.8.0\5.8\msvc2013\include\QtCore\QString \
 		C:\Qt\Qt5.8.0\5.8\msvc2013\include\QtSerialPort\QSerialPort \
 		C:\Qt\Qt5.8.0\5.8\msvc2013\include\QtSerialPort\qserialport.h \
 		C:\Qt\Qt5.8.0\5.8\msvc2013\include\QtSerialPort\qserialportglobal.h \
