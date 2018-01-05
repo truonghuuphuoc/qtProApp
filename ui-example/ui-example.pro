@@ -39,6 +39,12 @@ FORMS    += mainwindow.ui
 RESOURCES += \
     icons.qrc
 
+win32 {
+
+    INCLUDEPATH = ./libxlx/include
+    LIBS += ./libxlx/lib/libxl.lib
+}
+
 
 win32:RC_ICONS = app_100.ico
 

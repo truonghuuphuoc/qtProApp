@@ -3,6 +3,16 @@
 #include "connectionbackground.h"
 #include "phnmessage.h"
 
+#include <QFileDialog>
+
+#include <QProcess>
+
+#ifdef _WIN32
+  #include <windows.h>
+#endif
+
+#include "libxl.h"
+
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -378,4 +388,53 @@ void MainWindow::on_mTarget_3_Clean_clicked()
     ui->mTarget_3_SecondValue->setText("0");
     ui->mTarget_3_ThirdValue->setText("0");
     ui->mTarget_3_TotalValue->setText("0");
+}
+
+void MainWindow::on_pushButton_clicked()
+{
+    QFileDialog dialog(this);
+
+    dialog.setFileMode(QFileDialog::Directory);
+
+
+    QString dir = QFileDialog::getExistingDirectory(this, tr("Open Directory"),
+                                                "/home",
+                                                QFileDialog::ShowDirsOnly
+                                                | QFileDialog::DontResolveSymlinks);
+
+    dir += "/report.xls";
+
+    QByteArray ba = dir.toLatin1();
+    const char *filepath = ba.data();
+
+    using namespace libxl;
+
+    Book* book = xlCreateBook(); // use xlCreateXMLBook() for working with xlsx files
+
+    Sheet* sheet = book->addSheet("Sheet1");
+
+    sheet->writeStr(2, 1, "Hello, World !");
+    sheet->writeNum(4, 1, 1000);
+    sheet->writeNum(5, 1, 2000);
+
+    Font* font = book->addFont();
+    font->setColor(COLOR_RED);
+    font->setBold(true);
+    Format* boldFormat = book->addFormat();
+    boldFormat->setFont(font);
+    sheet->writeFormula(6, 1, "SUM(B5:B6)", boldFormat);
+
+    Format* dateFormat = book->addFormat();
+    dateFormat->setNumFormat(NUMFORMAT_DATE);
+    sheet->writeNum(8, 1, book->datePack(2011, 7, 20), dateFormat);
+
+    sheet->setCol(1, 1, 12);
+
+    book->save(filepath);
+
+    book->release();
+
+    ::ShellExecuteA(NULL, "open", filepath, NULL, NULL, SW_SHOW);
+
+    qDebug()<< dir;
 }

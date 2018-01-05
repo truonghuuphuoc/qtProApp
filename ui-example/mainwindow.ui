@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>977</width>
-    <height>647</height>
+    <width>976</width>
+    <height>692</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -19,658 +19,22 @@
   </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QGridLayout" name="gridLayout">
-    <item row="1" column="0">
-     <layout class="QHBoxLayout" name="horizontalLayout_2">
-      <item>
-       <widget class="QGroupBox" name="groupBox_2">
-        <property name="styleSheet">
-         <string notr="true">QGroupBox {
-    border: 1px solid gray;
-    border-radius: 7px;
-    margin-top: 0.7em;
-	font-size: 12pt ;
-    font-weight: bold;
-	border-color: rgb(0, 0, 0);
-}
-
-QGroupBox::title {
-    subcontrol-origin: margin;
-    left: 10px;
-    padding: 0 3px 0 3px;
-}</string>
-        </property>
-        <property name="title">
-         <string>Bia số 4</string>
-        </property>
-        <layout class="QGridLayout" name="gridLayout_3">
-         <item row="3" column="0">
-          <widget class="QGroupBox" name="groupBox_5">
-           <property name="styleSheet">
-            <string notr="true">QGroupBox {
-    font-size: 12pt ;
-	border-color: rgb(135, 135, 135);
-}
-</string>
-           </property>
-           <property name="title">
-            <string>Lần 3</string>
-           </property>
-           <layout class="QGridLayout" name="gridLayout_6">
-            <item row="0" column="0">
-             <widget class="QLabel" name="mTarget_1_ThirdValue">
-              <property name="font">
-               <font>
-                <pointsize>24</pointsize>
-               </font>
-              </property>
-              <property name="text">
-               <string>0</string>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignCenter</set>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </widget>
-         </item>
-         <item row="4" column="0">
-          <widget class="QGroupBox" name="groupBox_6">
-           <property name="styleSheet">
-            <string notr="true">QGroupBox {
-    font-size: 12pt ;
-	border-color: rgb(135, 135, 135);
-}
-</string>
-           </property>
-           <property name="title">
-            <string>Tổng</string>
-           </property>
-           <layout class="QGridLayout" name="gridLayout_7">
-            <item row="0" column="0">
-             <widget class="QLabel" name="mTarget_1_TotalValue">
-              <property name="font">
-               <font>
-                <pointsize>24</pointsize>
-               </font>
-              </property>
-              <property name="text">
-               <string>0</string>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignCenter</set>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </widget>
-         </item>
-         <item row="2" column="0">
-          <widget class="QGroupBox" name="groupBox_4">
-           <property name="styleSheet">
-            <string notr="true">QGroupBox {
-    font-size: 12pt ;
-	border-color: rgb(135, 135, 135);
-}
-</string>
-           </property>
-           <property name="title">
-            <string>Lần 2</string>
-           </property>
-           <layout class="QGridLayout" name="gridLayout_5">
-            <item row="0" column="0">
-             <widget class="QLabel" name="mTarget_1_SecondValue">
-              <property name="font">
-               <font>
-                <pointsize>24</pointsize>
-               </font>
-              </property>
-              <property name="text">
-               <string>0</string>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignCenter</set>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </widget>
-         </item>
-         <item row="0" column="0">
-          <widget class="QGroupBox" name="groupBox_3">
-           <property name="styleSheet">
-            <string notr="true">QGroupBox {
-	border-color: rgb(135, 135, 135);
-}
-</string>
-           </property>
-           <property name="title">
-            <string>Kết nối</string>
-           </property>
-           <layout class="QGridLayout" name="gridLayout_4">
-            <item row="0" column="0">
-             <widget class="QLabel" name="mTarget_1_Status">
-              <property name="text">
-               <string/>
-              </property>
-              <property name="pixmap">
-               <pixmap resource="icons.qrc">:/icons/24/Close.png</pixmap>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignCenter</set>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </widget>
-         </item>
-         <item row="1" column="0">
-          <widget class="QGroupBox" name="groupBox_7">
-           <property name="styleSheet">
-            <string notr="true">QGroupBox {
-    font-size: 12pt ;
-	border-color: rgb(135, 135, 135);
-}
-</string>
-           </property>
-           <property name="title">
-            <string>Lần 1</string>
-           </property>
-           <layout class="QGridLayout" name="gridLayout_8">
-            <item row="0" column="0">
-             <widget class="QLabel" name="mTarget_1_FirstValue">
-              <property name="font">
-               <font>
-                <pointsize>24</pointsize>
-               </font>
-              </property>
-              <property name="text">
-               <string>0</string>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignCenter</set>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </widget>
-         </item>
-         <item row="6" column="0">
-          <widget class="QPushButton" name="mTarget_1_Clean">
-           <property name="font">
-            <font>
-             <pointsize>11</pointsize>
-            </font>
-           </property>
-           <property name="text">
-            <string>Xóa</string>
-           </property>
-           <property name="icon">
-            <iconset resource="icons.qrc">
-             <normaloff>:/icons/24/Delete.png</normaloff>:/icons/24/Delete.png</iconset>
-           </property>
-           <property name="iconSize">
-            <size>
-             <width>27</width>
-             <height>27</height>
-            </size>
-           </property>
-          </widget>
-         </item>
-         <item row="5" column="0">
-          <widget class="QLabel" name="label_20">
-           <property name="font">
-            <font>
-             <pointsize>14</pointsize>
-            </font>
-           </property>
-           <property name="text">
-            <string/>
-           </property>
-           <property name="alignment">
-            <set>Qt::AlignCenter</set>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </widget>
-      </item>
-      <item>
-       <widget class="QGroupBox" name="groupBox_8">
-        <property name="styleSheet">
-         <string notr="true">QGroupBox {
-    border: 1px solid gray;
-    border-radius: 7px;
-    margin-top: 0.7em;
-	font-size: 12pt ;
-    font-weight: bold;
-	border-color: rgb(0, 0, 0);
-}
-
-QGroupBox::title {
-    subcontrol-origin: margin;
-    left: 10px;
-    padding: 0 3px 0 3px;
-}</string>
-        </property>
-        <property name="title">
-         <string>Bia số 7</string>
-        </property>
-        <layout class="QGridLayout" name="gridLayout_9">
-         <item row="2" column="0">
-          <widget class="QGroupBox" name="groupBox_9">
-           <property name="styleSheet">
-            <string notr="true">QGroupBox {
-    font-size: 12pt ;
-	border-color: rgb(135, 135, 135);
-}
-</string>
-           </property>
-           <property name="title">
-            <string>Lần 2</string>
-           </property>
-           <layout class="QGridLayout" name="gridLayout_10">
-            <item row="0" column="0">
-             <widget class="QLabel" name="mTarget_2_SecondValue">
-              <property name="font">
-               <font>
-                <pointsize>24</pointsize>
-               </font>
-              </property>
-              <property name="text">
-               <string>0</string>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignCenter</set>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </widget>
-         </item>
-         <item row="0" column="0">
-          <widget class="QGroupBox" name="groupBox_10">
-           <property name="styleSheet">
-            <string notr="true">QGroupBox {
-	border-color: rgb(135, 135, 135);
-}
-</string>
-           </property>
-           <property name="title">
-            <string>Kết nối</string>
-           </property>
-           <layout class="QGridLayout" name="gridLayout_11">
-            <item row="0" column="0">
-             <widget class="QLabel" name="mTarget_2_Status">
-              <property name="text">
-               <string/>
-              </property>
-              <property name="pixmap">
-               <pixmap resource="icons.qrc">:/icons/24/Close.png</pixmap>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignCenter</set>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </widget>
-         </item>
-         <item row="3" column="0">
-          <widget class="QGroupBox" name="groupBox_12">
-           <property name="styleSheet">
-            <string notr="true">QGroupBox {
-    font-size: 12pt ;
-	border-color: rgb(135, 135, 135);
-}
-</string>
-           </property>
-           <property name="title">
-            <string>Lần 3</string>
-           </property>
-           <layout class="QGridLayout" name="gridLayout_13">
-            <item row="0" column="0">
-             <widget class="QLabel" name="mTarget_2_ThirdValue">
-              <property name="font">
-               <font>
-                <pointsize>24</pointsize>
-               </font>
-              </property>
-              <property name="text">
-               <string>0</string>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignCenter</set>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </widget>
-         </item>
-         <item row="4" column="0">
-          <widget class="QGroupBox" name="groupBox_11">
-           <property name="styleSheet">
-            <string notr="true">QGroupBox {
-    font-size: 12pt ;
-	border-color: rgb(135, 135, 135);
-}
-</string>
-           </property>
-           <property name="title">
-            <string>Tổng</string>
-           </property>
-           <layout class="QGridLayout" name="gridLayout_12">
-            <item row="0" column="0">
-             <widget class="QLabel" name="mTarget_2_TotalValue">
-              <property name="font">
-               <font>
-                <pointsize>24</pointsize>
-               </font>
-              </property>
-              <property name="text">
-               <string>0</string>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignCenter</set>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </widget>
-         </item>
-         <item row="1" column="0">
-          <widget class="QGroupBox" name="groupBox_13">
-           <property name="styleSheet">
-            <string notr="true">QGroupBox {
-    font-size: 12pt ;
-	border-color: rgb(135, 135, 135);
-}
-</string>
-           </property>
-           <property name="title">
-            <string>Lần 1</string>
-           </property>
-           <layout class="QGridLayout" name="gridLayout_14">
-            <item row="0" column="0">
-             <widget class="QLabel" name="mTarget_2_FirstValue">
-              <property name="font">
-               <font>
-                <pointsize>24</pointsize>
-               </font>
-              </property>
-              <property name="text">
-               <string>0</string>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignCenter</set>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </widget>
-         </item>
-         <item row="6" column="0">
-          <widget class="QPushButton" name="mTarget_2_Clean">
-           <property name="font">
-            <font>
-             <pointsize>11</pointsize>
-            </font>
-           </property>
-           <property name="text">
-            <string>Xóa</string>
-           </property>
-           <property name="icon">
-            <iconset resource="icons.qrc">
-             <normaloff>:/icons/24/Delete.png</normaloff>:/icons/24/Delete.png</iconset>
-           </property>
-           <property name="iconSize">
-            <size>
-             <width>27</width>
-             <height>27</height>
-            </size>
-           </property>
-          </widget>
-         </item>
-         <item row="5" column="0">
-          <widget class="QLabel" name="label_21">
-           <property name="font">
-            <font>
-             <pointsize>14</pointsize>
-            </font>
-           </property>
-           <property name="text">
-            <string/>
-           </property>
-           <property name="alignment">
-            <set>Qt::AlignCenter</set>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </widget>
-      </item>
-      <item>
-       <widget class="QGroupBox" name="groupBox_14">
-        <property name="styleSheet">
-         <string notr="true">QGroupBox {
-    border: 1px solid gray;
-    border-radius: 7px;
-    margin-top: 0.7em;
-	font-size: 12pt ;
-    font-weight: bold;
-	border-color: rgb(0, 0, 0);
-}
-
-QGroupBox::title {
-    subcontrol-origin: margin;
-    left: 10px;
-    padding: 0 3px 0 3px;
-}</string>
-        </property>
-        <property name="title">
-         <string>Bia số 8</string>
-        </property>
-        <layout class="QGridLayout" name="gridLayout_15">
-         <item row="2" column="1">
-          <widget class="QGroupBox" name="groupBox_15">
-           <property name="styleSheet">
-            <string notr="true">QGroupBox {
-    font-size: 12pt ;
-	border-color: rgb(135, 135, 135);
-}
-</string>
-           </property>
-           <property name="title">
-            <string>Lần 2</string>
-           </property>
-           <layout class="QGridLayout" name="gridLayout_16">
-            <item row="0" column="0">
-             <widget class="QLabel" name="mTarget_3_SecondValue">
-              <property name="font">
-               <font>
-                <pointsize>24</pointsize>
-               </font>
-              </property>
-              <property name="text">
-               <string>0</string>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignCenter</set>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </widget>
-         </item>
-         <item row="3" column="1">
-          <widget class="QGroupBox" name="groupBox_18">
-           <property name="styleSheet">
-            <string notr="true">QGroupBox {
-    font-size: 12pt ;
-	border-color: rgb(135, 135, 135);
-}
-</string>
-           </property>
-           <property name="title">
-            <string>Lần 3</string>
-           </property>
-           <layout class="QGridLayout" name="gridLayout_19">
-            <item row="0" column="0">
-             <widget class="QLabel" name="mTarget_3_ThirdValue">
-              <property name="font">
-               <font>
-                <pointsize>24</pointsize>
-               </font>
-              </property>
-              <property name="text">
-               <string>0</string>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignCenter</set>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </widget>
-         </item>
-         <item row="0" column="1">
-          <widget class="QGroupBox" name="groupBox_16">
-           <property name="styleSheet">
-            <string notr="true">QGroupBox {
-	border-color: rgb(135, 135, 135);
-}
-</string>
-           </property>
-           <property name="title">
-            <string>Kết nối</string>
-           </property>
-           <layout class="QGridLayout" name="gridLayout_17">
-            <item row="0" column="0">
-             <widget class="QLabel" name="mTarget_3_Status">
-              <property name="text">
-               <string/>
-              </property>
-              <property name="pixmap">
-               <pixmap resource="icons.qrc">:/icons/24/Close.png</pixmap>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignCenter</set>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </widget>
-         </item>
-         <item row="4" column="1">
-          <widget class="QGroupBox" name="groupBox_17">
-           <property name="styleSheet">
-            <string notr="true">QGroupBox {
-    font-size: 12pt ;
-	border-color: rgb(135, 135, 135);
-}
-</string>
-           </property>
-           <property name="title">
-            <string>Tổng</string>
-           </property>
-           <layout class="QGridLayout" name="gridLayout_18">
-            <item row="0" column="0">
-             <widget class="QLabel" name="mTarget_3_TotalValue">
-              <property name="font">
-               <font>
-                <pointsize>24</pointsize>
-               </font>
-              </property>
-              <property name="text">
-               <string>0</string>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignCenter</set>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </widget>
-         </item>
-         <item row="1" column="1">
-          <widget class="QGroupBox" name="groupBox_19">
-           <property name="styleSheet">
-            <string notr="true">QGroupBox {
-    font-size: 12pt ;
-	border-color: rgb(135, 135, 135);
-}
-</string>
-           </property>
-           <property name="title">
-            <string>Lần 1</string>
-           </property>
-           <layout class="QGridLayout" name="gridLayout_20">
-            <item row="0" column="0">
-             <widget class="QLabel" name="mTarget_3_FirstValue">
-              <property name="font">
-               <font>
-                <pointsize>24</pointsize>
-               </font>
-              </property>
-              <property name="text">
-               <string>0</string>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignCenter</set>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </widget>
-         </item>
-         <item row="6" column="1">
-          <widget class="QPushButton" name="mTarget_3_Clean">
-           <property name="font">
-            <font>
-             <pointsize>11</pointsize>
-            </font>
-           </property>
-           <property name="text">
-            <string>Xóa</string>
-           </property>
-           <property name="icon">
-            <iconset resource="icons.qrc">
-             <normaloff>:/icons/24/Delete.png</normaloff>:/icons/24/Delete.png</iconset>
-           </property>
-           <property name="iconSize">
-            <size>
-             <width>27</width>
-             <height>27</height>
-            </size>
-           </property>
-          </widget>
-         </item>
-         <item row="5" column="1">
-          <widget class="QLabel" name="label_22">
-           <property name="font">
-            <font>
-             <pointsize>14</pointsize>
-            </font>
-           </property>
-           <property name="text">
-            <string/>
-           </property>
-           <property name="alignment">
-            <set>Qt::AlignCenter</set>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </widget>
-      </item>
-     </layout>
-    </item>
     <item row="0" column="0">
-     <layout class="QHBoxLayout" name="horizontalLayout">
-      <item>
-       <widget class="QGroupBox" name="groupBox">
-        <property name="styleSheet">
-         <string notr="true">QGroupBox {
+     <widget class="QTabWidget" name="tabWidget">
+      <property name="currentIndex">
+       <number>1</number>
+      </property>
+      <widget class="QWidget" name="tab">
+       <attribute name="title">
+        <string>Điểm bia</string>
+       </attribute>
+       <layout class="QGridLayout" name="gridLayout_27">
+        <item row="0" column="0">
+         <layout class="QGridLayout" name="gridLayout_26">
+          <item row="0" column="0">
+           <widget class="QGroupBox" name="groupBox">
+            <property name="styleSheet">
+             <string notr="true">QGroupBox {
     border: 1px solid gray;
     border-radius: 7px;
     margin-top: 0.7em;
@@ -684,146 +48,906 @@ QGroupBox::title {
     left: 10px;
     padding: 0 3px 0 3px;
 }</string>
-        </property>
-        <property name="title">
-         <string>Trạng Thái</string>
-        </property>
-        <layout class="QGridLayout" name="gridLayout_2">
-         <item row="0" column="1">
-          <widget class="QGroupBox" name="groupBox_21">
-           <property name="title">
-            <string>Cổng COM</string>
+            </property>
+            <property name="title">
+             <string>Trạng Thái</string>
+            </property>
+            <layout class="QGridLayout" name="gridLayout_2">
+             <item row="0" column="1">
+              <widget class="QGroupBox" name="groupBox_21">
+               <property name="title">
+                <string>Cổng COM</string>
+               </property>
+               <layout class="QGridLayout" name="gridLayout_22">
+                <item row="0" column="0">
+                 <widget class="QLabel" name="mAppComport">
+                  <property name="font">
+                   <font>
+                    <pointsize>11</pointsize>
+                    <weight>75</weight>
+                    <bold>true</bold>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string/>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item row="0" column="2">
+              <widget class="QGroupBox" name="groupBox_22">
+               <property name="title">
+                <string>ID Thu</string>
+               </property>
+               <layout class="QGridLayout" name="gridLayout_23">
+                <item row="0" column="0">
+                 <widget class="QLabel" name="mAddressStart">
+                  <property name="font">
+                   <font>
+                    <pointsize>11</pointsize>
+                    <weight>75</weight>
+                    <bold>true</bold>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string/>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item row="0" column="3">
+              <widget class="QGroupBox" name="groupBox_23">
+               <property name="title">
+                <string>ID Phát</string>
+               </property>
+               <layout class="QGridLayout" name="gridLayout_24">
+                <item row="0" column="0">
+                 <widget class="QLabel" name="mAddressDest">
+                  <property name="font">
+                   <font>
+                    <pointsize>11</pointsize>
+                    <weight>75</weight>
+                    <bold>true</bold>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string/>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item row="0" column="4">
+              <widget class="QGroupBox" name="groupBox_24">
+               <property name="title">
+                <string>Xóa dữ liệu</string>
+               </property>
+               <layout class="QGridLayout" name="gridLayout_25">
+                <item row="0" column="0">
+                 <widget class="QPushButton" name="mAppClean">
+                  <property name="font">
+                   <font>
+                    <pointsize>11</pointsize>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>Xóa</string>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="icons.qrc">
+                    <normaloff>:/icons/24/Delete.png</normaloff>:/icons/24/Delete.png</iconset>
+                  </property>
+                  <property name="iconSize">
+                   <size>
+                    <width>27</width>
+                    <height>27</height>
+                   </size>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item row="0" column="0">
+              <widget class="QGroupBox" name="groupBox_20">
+               <property name="title">
+                <string>Kết nối</string>
+               </property>
+               <layout class="QGridLayout" name="gridLayout_21">
+                <item row="0" column="0">
+                 <widget class="QLabel" name="mAppStatus">
+                  <property name="text">
+                   <string/>
+                  </property>
+                  <property name="pixmap">
+                   <pixmap resource="icons.qrc">:/icons/24/Close.png</pixmap>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item row="1" column="0">
+         <layout class="QHBoxLayout" name="horizontalLayout_2">
+          <item>
+           <widget class="QGroupBox" name="groupBox_2">
+            <property name="styleSheet">
+             <string notr="true">QGroupBox {
+    border: 1px solid gray;
+    border-radius: 7px;
+    margin-top: 0.7em;
+	font-size: 12pt ;
+    font-weight: bold;
+	border-color: rgb(0, 0, 0);
+}
+
+QGroupBox::title {
+    subcontrol-origin: margin;
+    left: 10px;
+    padding: 0 3px 0 3px;
+}</string>
+            </property>
+            <property name="title">
+             <string>Bia số 4</string>
+            </property>
+            <layout class="QGridLayout" name="gridLayout_3">
+             <item row="3" column="0">
+              <widget class="QGroupBox" name="groupBox_5">
+               <property name="styleSheet">
+                <string notr="true">QGroupBox {
+    font-size: 12pt ;
+	border-color: rgb(135, 135, 135);
+}
+</string>
+               </property>
+               <property name="title">
+                <string>Lần 3</string>
+               </property>
+               <layout class="QGridLayout" name="gridLayout_6">
+                <item row="0" column="0">
+                 <widget class="QLabel" name="mTarget_1_ThirdValue">
+                  <property name="font">
+                   <font>
+                    <pointsize>24</pointsize>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>0</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item row="4" column="0">
+              <widget class="QGroupBox" name="groupBox_6">
+               <property name="styleSheet">
+                <string notr="true">QGroupBox {
+    font-size: 12pt ;
+	border-color: rgb(135, 135, 135);
+}
+</string>
+               </property>
+               <property name="title">
+                <string>Tổng</string>
+               </property>
+               <layout class="QGridLayout" name="gridLayout_7">
+                <item row="0" column="0">
+                 <widget class="QLabel" name="mTarget_1_TotalValue">
+                  <property name="font">
+                   <font>
+                    <pointsize>24</pointsize>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>0</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item row="2" column="0">
+              <widget class="QGroupBox" name="groupBox_4">
+               <property name="styleSheet">
+                <string notr="true">QGroupBox {
+    font-size: 12pt ;
+	border-color: rgb(135, 135, 135);
+}
+</string>
+               </property>
+               <property name="title">
+                <string>Lần 2</string>
+               </property>
+               <layout class="QGridLayout" name="gridLayout_5">
+                <item row="0" column="0">
+                 <widget class="QLabel" name="mTarget_1_SecondValue">
+                  <property name="font">
+                   <font>
+                    <pointsize>24</pointsize>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>0</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item row="0" column="0">
+              <widget class="QGroupBox" name="groupBox_3">
+               <property name="styleSheet">
+                <string notr="true">QGroupBox {
+	border-color: rgb(135, 135, 135);
+}
+</string>
+               </property>
+               <property name="title">
+                <string>Kết nối</string>
+               </property>
+               <layout class="QGridLayout" name="gridLayout_4">
+                <item row="0" column="0">
+                 <widget class="QLabel" name="mTarget_1_Status">
+                  <property name="text">
+                   <string/>
+                  </property>
+                  <property name="pixmap">
+                   <pixmap resource="icons.qrc">:/icons/24/Close.png</pixmap>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item row="1" column="0">
+              <widget class="QGroupBox" name="groupBox_7">
+               <property name="styleSheet">
+                <string notr="true">QGroupBox {
+    font-size: 12pt ;
+	border-color: rgb(135, 135, 135);
+}
+</string>
+               </property>
+               <property name="title">
+                <string>Lần 1</string>
+               </property>
+               <layout class="QGridLayout" name="gridLayout_8">
+                <item row="0" column="0">
+                 <widget class="QLabel" name="mTarget_1_FirstValue">
+                  <property name="font">
+                   <font>
+                    <pointsize>24</pointsize>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>0</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item row="6" column="0">
+              <widget class="QPushButton" name="mTarget_1_Clean">
+               <property name="font">
+                <font>
+                 <pointsize>11</pointsize>
+                </font>
+               </property>
+               <property name="text">
+                <string>Xóa</string>
+               </property>
+               <property name="icon">
+                <iconset resource="icons.qrc">
+                 <normaloff>:/icons/24/Delete.png</normaloff>:/icons/24/Delete.png</iconset>
+               </property>
+               <property name="iconSize">
+                <size>
+                 <width>27</width>
+                 <height>27</height>
+                </size>
+               </property>
+              </widget>
+             </item>
+             <item row="5" column="0">
+              <widget class="QLabel" name="label_20">
+               <property name="font">
+                <font>
+                 <pointsize>14</pointsize>
+                </font>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignCenter</set>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <widget class="QGroupBox" name="groupBox_8">
+            <property name="styleSheet">
+             <string notr="true">QGroupBox {
+    border: 1px solid gray;
+    border-radius: 7px;
+    margin-top: 0.7em;
+	font-size: 12pt ;
+    font-weight: bold;
+	border-color: rgb(0, 0, 0);
+}
+
+QGroupBox::title {
+    subcontrol-origin: margin;
+    left: 10px;
+    padding: 0 3px 0 3px;
+}</string>
+            </property>
+            <property name="title">
+             <string>Bia số 7</string>
+            </property>
+            <layout class="QGridLayout" name="gridLayout_9">
+             <item row="2" column="0">
+              <widget class="QGroupBox" name="groupBox_9">
+               <property name="styleSheet">
+                <string notr="true">QGroupBox {
+    font-size: 12pt ;
+	border-color: rgb(135, 135, 135);
+}
+</string>
+               </property>
+               <property name="title">
+                <string>Lần 2</string>
+               </property>
+               <layout class="QGridLayout" name="gridLayout_10">
+                <item row="0" column="0">
+                 <widget class="QLabel" name="mTarget_2_SecondValue">
+                  <property name="font">
+                   <font>
+                    <pointsize>24</pointsize>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>0</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item row="0" column="0">
+              <widget class="QGroupBox" name="groupBox_10">
+               <property name="styleSheet">
+                <string notr="true">QGroupBox {
+	border-color: rgb(135, 135, 135);
+}
+</string>
+               </property>
+               <property name="title">
+                <string>Kết nối</string>
+               </property>
+               <layout class="QGridLayout" name="gridLayout_11">
+                <item row="0" column="0">
+                 <widget class="QLabel" name="mTarget_2_Status">
+                  <property name="text">
+                   <string/>
+                  </property>
+                  <property name="pixmap">
+                   <pixmap resource="icons.qrc">:/icons/24/Close.png</pixmap>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item row="3" column="0">
+              <widget class="QGroupBox" name="groupBox_12">
+               <property name="styleSheet">
+                <string notr="true">QGroupBox {
+    font-size: 12pt ;
+	border-color: rgb(135, 135, 135);
+}
+</string>
+               </property>
+               <property name="title">
+                <string>Lần 3</string>
+               </property>
+               <layout class="QGridLayout" name="gridLayout_13">
+                <item row="0" column="0">
+                 <widget class="QLabel" name="mTarget_2_ThirdValue">
+                  <property name="font">
+                   <font>
+                    <pointsize>24</pointsize>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>0</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item row="4" column="0">
+              <widget class="QGroupBox" name="groupBox_11">
+               <property name="styleSheet">
+                <string notr="true">QGroupBox {
+    font-size: 12pt ;
+	border-color: rgb(135, 135, 135);
+}
+</string>
+               </property>
+               <property name="title">
+                <string>Tổng</string>
+               </property>
+               <layout class="QGridLayout" name="gridLayout_12">
+                <item row="0" column="0">
+                 <widget class="QLabel" name="mTarget_2_TotalValue">
+                  <property name="font">
+                   <font>
+                    <pointsize>24</pointsize>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>0</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item row="1" column="0">
+              <widget class="QGroupBox" name="groupBox_13">
+               <property name="styleSheet">
+                <string notr="true">QGroupBox {
+    font-size: 12pt ;
+	border-color: rgb(135, 135, 135);
+}
+</string>
+               </property>
+               <property name="title">
+                <string>Lần 1</string>
+               </property>
+               <layout class="QGridLayout" name="gridLayout_14">
+                <item row="0" column="0">
+                 <widget class="QLabel" name="mTarget_2_FirstValue">
+                  <property name="font">
+                   <font>
+                    <pointsize>24</pointsize>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>0</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item row="6" column="0">
+              <widget class="QPushButton" name="mTarget_2_Clean">
+               <property name="font">
+                <font>
+                 <pointsize>11</pointsize>
+                </font>
+               </property>
+               <property name="text">
+                <string>Xóa</string>
+               </property>
+               <property name="icon">
+                <iconset resource="icons.qrc">
+                 <normaloff>:/icons/24/Delete.png</normaloff>:/icons/24/Delete.png</iconset>
+               </property>
+               <property name="iconSize">
+                <size>
+                 <width>27</width>
+                 <height>27</height>
+                </size>
+               </property>
+              </widget>
+             </item>
+             <item row="5" column="0">
+              <widget class="QLabel" name="label_21">
+               <property name="font">
+                <font>
+                 <pointsize>14</pointsize>
+                </font>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignCenter</set>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <widget class="QGroupBox" name="groupBox_14">
+            <property name="styleSheet">
+             <string notr="true">QGroupBox {
+    border: 1px solid gray;
+    border-radius: 7px;
+    margin-top: 0.7em;
+	font-size: 12pt ;
+    font-weight: bold;
+	border-color: rgb(0, 0, 0);
+}
+
+QGroupBox::title {
+    subcontrol-origin: margin;
+    left: 10px;
+    padding: 0 3px 0 3px;
+}</string>
+            </property>
+            <property name="title">
+             <string>Bia số 8</string>
+            </property>
+            <layout class="QGridLayout" name="gridLayout_15">
+             <item row="2" column="1">
+              <widget class="QGroupBox" name="groupBox_15">
+               <property name="styleSheet">
+                <string notr="true">QGroupBox {
+    font-size: 12pt ;
+	border-color: rgb(135, 135, 135);
+}
+</string>
+               </property>
+               <property name="title">
+                <string>Lần 2</string>
+               </property>
+               <layout class="QGridLayout" name="gridLayout_16">
+                <item row="0" column="0">
+                 <widget class="QLabel" name="mTarget_3_SecondValue">
+                  <property name="font">
+                   <font>
+                    <pointsize>24</pointsize>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>0</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item row="3" column="1">
+              <widget class="QGroupBox" name="groupBox_18">
+               <property name="styleSheet">
+                <string notr="true">QGroupBox {
+    font-size: 12pt ;
+	border-color: rgb(135, 135, 135);
+}
+</string>
+               </property>
+               <property name="title">
+                <string>Lần 3</string>
+               </property>
+               <layout class="QGridLayout" name="gridLayout_19">
+                <item row="0" column="0">
+                 <widget class="QLabel" name="mTarget_3_ThirdValue">
+                  <property name="font">
+                   <font>
+                    <pointsize>24</pointsize>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>0</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item row="0" column="1">
+              <widget class="QGroupBox" name="groupBox_16">
+               <property name="styleSheet">
+                <string notr="true">QGroupBox {
+	border-color: rgb(135, 135, 135);
+}
+</string>
+               </property>
+               <property name="title">
+                <string>Kết nối</string>
+               </property>
+               <layout class="QGridLayout" name="gridLayout_17">
+                <item row="0" column="0">
+                 <widget class="QLabel" name="mTarget_3_Status">
+                  <property name="text">
+                   <string/>
+                  </property>
+                  <property name="pixmap">
+                   <pixmap resource="icons.qrc">:/icons/24/Close.png</pixmap>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item row="4" column="1">
+              <widget class="QGroupBox" name="groupBox_17">
+               <property name="styleSheet">
+                <string notr="true">QGroupBox {
+    font-size: 12pt ;
+	border-color: rgb(135, 135, 135);
+}
+</string>
+               </property>
+               <property name="title">
+                <string>Tổng</string>
+               </property>
+               <layout class="QGridLayout" name="gridLayout_18">
+                <item row="0" column="0">
+                 <widget class="QLabel" name="mTarget_3_TotalValue">
+                  <property name="font">
+                   <font>
+                    <pointsize>24</pointsize>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>0</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item row="1" column="1">
+              <widget class="QGroupBox" name="groupBox_19">
+               <property name="styleSheet">
+                <string notr="true">QGroupBox {
+    font-size: 12pt ;
+	border-color: rgb(135, 135, 135);
+}
+</string>
+               </property>
+               <property name="title">
+                <string>Lần 1</string>
+               </property>
+               <layout class="QGridLayout" name="gridLayout_20">
+                <item row="0" column="0">
+                 <widget class="QLabel" name="mTarget_3_FirstValue">
+                  <property name="font">
+                   <font>
+                    <pointsize>24</pointsize>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>0</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item row="6" column="1">
+              <widget class="QPushButton" name="mTarget_3_Clean">
+               <property name="font">
+                <font>
+                 <pointsize>11</pointsize>
+                </font>
+               </property>
+               <property name="text">
+                <string>Xóa</string>
+               </property>
+               <property name="icon">
+                <iconset resource="icons.qrc">
+                 <normaloff>:/icons/24/Delete.png</normaloff>:/icons/24/Delete.png</iconset>
+               </property>
+               <property name="iconSize">
+                <size>
+                 <width>27</width>
+                 <height>27</height>
+                </size>
+               </property>
+              </widget>
+             </item>
+             <item row="5" column="1">
+              <widget class="QLabel" name="label_22">
+               <property name="font">
+                <font>
+                 <pointsize>14</pointsize>
+                </font>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignCenter</set>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+       <zorder></zorder>
+       <zorder></zorder>
+      </widget>
+      <widget class="QWidget" name="tab_2">
+       <attribute name="title">
+        <string>Kết quả</string>
+       </attribute>
+       <layout class="QGridLayout" name="gridLayout_28">
+        <item row="2" column="0">
+         <widget class="QTableWidget" name="tableWidget">
+          <property name="rowCount">
+           <number>0</number>
+          </property>
+          <property name="columnCount">
+           <number>14</number>
+          </property>
+          <column>
+           <property name="text">
+            <string>STT</string>
            </property>
-           <layout class="QGridLayout" name="gridLayout_22">
-            <item row="0" column="0">
-             <widget class="QLabel" name="mAppComport">
-              <property name="font">
-               <font>
-                <pointsize>11</pointsize>
-                <weight>75</weight>
-                <bold>true</bold>
-               </font>
-              </property>
-              <property name="text">
-               <string/>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignCenter</set>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </widget>
-         </item>
-         <item row="0" column="0">
-          <widget class="QGroupBox" name="groupBox_20">
-           <property name="title">
-            <string>Kết nối</string>
+          </column>
+          <column>
+           <property name="text">
+            <string>Tên</string>
            </property>
-           <layout class="QGridLayout" name="gridLayout_21">
-            <item row="0" column="0">
-             <widget class="QLabel" name="mAppStatus">
-              <property name="text">
-               <string/>
-              </property>
-              <property name="pixmap">
-               <pixmap resource="icons.qrc">:/icons/24/Close.png</pixmap>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignCenter</set>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </widget>
-         </item>
-         <item row="0" column="2">
-          <widget class="QGroupBox" name="groupBox_22">
-           <property name="title">
-            <string>ID Thu</string>
+          </column>
+          <column>
+           <property name="text">
+            <string>Bệ</string>
            </property>
-           <layout class="QGridLayout" name="gridLayout_23">
-            <item row="0" column="0">
-             <widget class="QLabel" name="mAddressStart">
-              <property name="font">
-               <font>
-                <pointsize>11</pointsize>
-                <weight>75</weight>
-                <bold>true</bold>
-               </font>
-              </property>
-              <property name="text">
-               <string/>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignCenter</set>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </widget>
-         </item>
-         <item row="0" column="4">
-          <widget class="QGroupBox" name="groupBox_24">
-           <property name="title">
-            <string>Xóa dữ liệu</string>
+          </column>
+          <column>
+           <property name="text">
+            <string>B4 - Lần 1</string>
            </property>
-           <layout class="QGridLayout" name="gridLayout_25">
-            <item row="0" column="0">
-             <widget class="QPushButton" name="mAppClean">
-              <property name="font">
-               <font>
-                <pointsize>11</pointsize>
-               </font>
-              </property>
-              <property name="text">
-               <string>Xóa</string>
-              </property>
-              <property name="icon">
-               <iconset resource="icons.qrc">
-                <normaloff>:/icons/24/Delete.png</normaloff>:/icons/24/Delete.png</iconset>
-              </property>
-              <property name="iconSize">
-               <size>
-                <width>27</width>
-                <height>27</height>
-               </size>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </widget>
-         </item>
-         <item row="0" column="3">
-          <widget class="QGroupBox" name="groupBox_23">
-           <property name="title">
-            <string>ID Phát</string>
+          </column>
+          <column>
+           <property name="text">
+            <string>B4 - Lần 2</string>
            </property>
-           <layout class="QGridLayout" name="gridLayout_24">
-            <item row="0" column="0">
-             <widget class="QLabel" name="mAddressDest">
-              <property name="font">
-               <font>
-                <pointsize>11</pointsize>
-                <weight>75</weight>
-                <bold>true</bold>
-               </font>
-              </property>
-              <property name="text">
-               <string/>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignCenter</set>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </widget>
-         </item>
-        </layout>
-       </widget>
-      </item>
-     </layout>
+          </column>
+          <column>
+           <property name="text">
+            <string>B4 - Lần 3</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>B7 - Lần 1</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>B7 - Lần 2</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>B7 - Lần 3</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>B8 - Lần 1</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>B8 - Lần 2</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>B8 - Lần 3</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Tổng</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Xếp Loại</string>
+           </property>
+          </column>
+         </widget>
+        </item>
+        <item row="0" column="0">
+         <widget class="QPushButton" name="pushButton">
+          <property name="font">
+           <font>
+            <pointsize>11</pointsize>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="text">
+           <string>Lưu</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <widget class="QLabel" name="label">
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </widget>
     </item>
     <item row="2" column="0">
      <spacer name="verticalSpacer">
@@ -845,7 +969,7 @@ QGroupBox::title {
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>977</width>
+     <width>976</width>
      <height>21</height>
     </rect>
    </property>

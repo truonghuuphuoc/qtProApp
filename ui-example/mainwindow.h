@@ -44,6 +44,7 @@ private slots:
    void on_mTarget_1_Clean_clicked();
    void on_mTarget_2_Clean_clicked();
    void on_mTarget_3_Clean_clicked();
+   void on_pushButton_clicked();
 };
 
 #endif // MAINWINDOW_H
