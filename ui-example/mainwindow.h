@@ -37,6 +37,8 @@ private:
     uint8_t mTarget_2_Value[3];
     uint8_t mTarget_3_Value[3];
 
+    void randomnNumber(void);
+
 public slots:
    void onProgressChanged(int event, int infor);
 private slots:
@@ -45,6 +47,7 @@ private slots:
    void on_mTarget_2_Clean_clicked();
    void on_mTarget_3_Clean_clicked();
    void on_pushButton_clicked();
+   void on_mInofor1_Add_clicked();
 };
 
 #endif // MAINWINDOW_H

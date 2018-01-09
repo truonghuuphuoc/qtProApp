@@ -27,12 +27,14 @@ SOURCES += main.cpp\
         mainwindow.cpp \
     connectionbackground.cpp \
     phnmessage.cpp \
-    phnsysconfig.cpp
+    phnsysconfig.cpp \
+    phnexcel.cpp
 
 HEADERS  += mainwindow.h \
     connectionbackground.h \
     phnmessage.h \
-    phnsysconfig.h
+    phnsysconfig.h \
+    phnexcel.h
 
 FORMS    += mainwindow.ui
 

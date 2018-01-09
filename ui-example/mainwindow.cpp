@@ -4,7 +4,7 @@
 #include "phnmessage.h"
 
 #include <QFileDialog>
-
+#include <QMessageBox>
 #include <QProcess>
 
 #ifdef _WIN32
@@ -12,6 +12,7 @@
 #endif
 
 #include "libxl.h"
+#include "phnexcel.h"
 
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -398,43 +399,199 @@ void MainWindow::on_pushButton_clicked()
 
 
     QString dir = QFileDialog::getExistingDirectory(this, tr("Open Directory"),
-                                                "/home",
-                                                QFileDialog::ShowDirsOnly
-                                                | QFileDialog::DontResolveSymlinks);
+                                            "/home",
+                                            QFileDialog::ShowDirsOnly
+                                            | QFileDialog::DontResolveSymlinks);
 
-    dir += "/report.xls";
+    dir += "/report.xlsx";
 
-    QByteArray ba = dir.toLatin1();
-    const char *filepath = ba.data();
 
     using namespace libxl;
 
-    Book* book = xlCreateBook(); // use xlCreateXMLBook() for working with xlsx files
+    Book* book =  xlCreateXMLBook();//xlCreateBook() use for working with xls files
 
-    Sheet* sheet = book->addSheet("Sheet1");
+    Sheet* sheet = book->addSheet(QString("Kết quả").toStdWString().c_str());
 
-    sheet->writeStr(2, 1, "Hello, World !");
-    sheet->writeNum(4, 1, 1000);
-    sheet->writeNum(5, 1, 2000);
+    phnExcel::phnAddHeaderFile(book, sheet);
+    phnExcel::phnAddDetailFile(ui->tableWidget, book, sheet);
 
-    Font* font = book->addFont();
-    font->setColor(COLOR_RED);
-    font->setBold(true);
-    Format* boldFormat = book->addFormat();
-    boldFormat->setFont(font);
-    sheet->writeFormula(6, 1, "SUM(B5:B6)", boldFormat);
 
-    Format* dateFormat = book->addFormat();
-    dateFormat->setNumFormat(NUMFORMAT_DATE);
-    sheet->writeNum(8, 1, book->datePack(2011, 7, 20), dateFormat);
-
-    sheet->setCol(1, 1, 12);
-
-    book->save(filepath);
+    book->save(dir.toStdWString().c_str());
 
     book->release();
 
-    ::ShellExecuteA(NULL, "open", filepath, NULL, NULL, SW_SHOW);
+    ::ShellExecuteA(NULL, "open", dir.toStdString().c_str(), NULL, NULL, SW_SHOW);
 
     qDebug()<< dir;
 }
+
+void MainWindow::on_mInofor1_Add_clicked()
+{
+    if(ui->mInfor1_Name->text().isEmpty())
+    {
+        QMessageBox msgBox;
+        msgBox.setWindowTitle("Thông Tin");
+        msgBox.setText("Hãy nhập Họ & Tên vào ô Thông Tin");
+        msgBox.exec();
+    }
+    else
+    {
+        randomnNumber();
+
+        int row = ui->tableWidget->rowCount();
+        ui->tableWidget->insertRow(row);
+
+        //Ten
+        QTableWidgetItem *stt = new QTableWidgetItem(ui->mInfor1_Name->text());
+        stt->setTextAlignment(Qt::AlignVCenter);
+        ui->tableWidget->setItem(row, 0, stt);
+
+        //Be
+        stt = new QTableWidgetItem("1");
+        stt->setTextAlignment(Qt::AlignCenter);
+        ui->tableWidget->setItem(row, 1, stt);
+
+        //BS4 - Lan 1
+        stt = new QTableWidgetItem( QString("%1").arg(mTarget_1_Value[0], 0, 10, QChar('0')));
+        stt->setTextAlignment(Qt::AlignCenter);
+        ui->tableWidget->setItem(row, 2, stt);
+
+        //BS4 - Lan 2
+        stt = new QTableWidgetItem( QString("%1").arg(mTarget_1_Value[1], 0, 10, QChar('0')));
+        stt->setTextAlignment(Qt::AlignCenter);
+        ui->tableWidget->setItem(row, 3, stt);
+
+
+        //BS4 - Lan 3
+        stt = new QTableWidgetItem( QString("%1").arg(mTarget_1_Value[2], 0, 10, QChar('0')));
+        stt->setTextAlignment(Qt::AlignCenter);
+        ui->tableWidget->setItem(row, 4, stt);
+
+        //BS7 - Lan 1
+        stt = new QTableWidgetItem( QString("%1").arg(mTarget_2_Value[0], 0, 10, QChar('0')));
+        stt->setTextAlignment(Qt::AlignCenter);
+        ui->tableWidget->setItem(row, 5, stt);
+
+        //BS7 - Lan 2
+        stt = new QTableWidgetItem( QString("%1").arg(mTarget_2_Value[1], 0, 10, QChar('0')));
+        stt->setTextAlignment(Qt::AlignCenter);
+        ui->tableWidget->setItem(row, 6, stt);
+
+
+        //BS7 - Lan 3
+        stt = new QTableWidgetItem( QString("%1").arg(mTarget_2_Value[2], 0, 10, QChar('0')));
+        stt->setTextAlignment(Qt::AlignCenter);
+        ui->tableWidget->setItem(row, 7, stt);
+
+        //BS8 - Lan 1
+        stt = new QTableWidgetItem( QString("%1").arg(mTarget_3_Value[0], 0, 10, QChar('0')));
+        stt->setTextAlignment(Qt::AlignCenter);
+        ui->tableWidget->setItem(row, 8, stt);
+
+        //BS8 - Lan 2
+        stt = new QTableWidgetItem( QString("%1").arg(mTarget_3_Value[1], 0, 10, QChar('0')));
+        stt->setTextAlignment(Qt::AlignCenter);
+        ui->tableWidget->setItem(row, 9, stt);
+
+
+        //BS8 - Lan 3
+        stt = new QTableWidgetItem( QString("%1").arg(mTarget_3_Value[2], 0, 10, QChar('0')));
+        stt->setTextAlignment(Qt::AlignCenter);
+        ui->tableWidget->setItem(row, 10, stt);
+
+        int total = 0;
+        for(int index =0; index < 3; index ++)
+        {
+            total += mTarget_1_Value[index];
+            total += mTarget_2_Value[index];
+            total += mTarget_3_Value[index];
+        }
+
+        //Tong
+        stt = new QTableWidgetItem( QString("%1").arg(total, 0, 10, QChar('0')));
+        stt->setTextAlignment(Qt::AlignCenter);
+        ui->tableWidget->setItem(row, 11, stt);
+
+        if(total > 50)
+        {
+            stt = new QTableWidgetItem("Giỏi");
+        }
+        else if(total > 40)
+        {
+            stt = new QTableWidgetItem("Khá");
+        }
+        else if(total > 30)
+        {
+            stt = new QTableWidgetItem("Trung bình");
+        }
+        else
+        {
+            stt = new QTableWidgetItem("Không đạt");
+        }
+
+        stt->setTextAlignment(Qt::AlignVCenter);
+        ui->tableWidget->setItem(row, 12, stt);
+    }
+}
+
+void MainWindow::randomnNumber()
+{
+
+    QString valuenumber; // = QString("%1").arg(infor, 0, 10, QChar('0'));
+    uint8_t total[3];
+
+    memset(total, 0x00, sizeof(total));
+
+    for(int index =0; index < 3; index ++)
+    {
+        mTarget_1_Value[index] = rand() % 10 + 1;
+        mTarget_2_Value[index] = rand() % 10 + 1;
+        mTarget_3_Value[index] = rand() % 10 + 1;
+
+        total[0] +=  mTarget_1_Value[index];
+        total[1] +=  mTarget_2_Value[index];
+        total[2] +=  mTarget_3_Value[index];
+    }
+
+
+    //1
+    valuenumber = QString("%1").arg(mTarget_1_Value[0], 0, 10, QChar('0'));
+    ui->mTarget_1_FirstValue->setText(valuenumber);
+
+    valuenumber = QString("%1").arg(mTarget_1_Value[1], 0, 10, QChar('0'));
+    ui->mTarget_1_SecondValue->setText(valuenumber);
+
+    valuenumber = QString("%1").arg(mTarget_1_Value[2], 0, 10, QChar('0'));
+    ui->mTarget_1_ThirdValue->setText(valuenumber);
+
+    valuenumber = QString("%1").arg(total[0], 0, 10, QChar('0'));
+    ui->mTarget_1_TotalValue->setText(valuenumber);
+
+    //2
+    valuenumber = QString("%1").arg(mTarget_2_Value[0], 0, 10, QChar('0'));
+    ui->mTarget_2_FirstValue->setText(valuenumber);
+
+    valuenumber = QString("%1").arg(mTarget_2_Value[1], 0, 10, QChar('0'));
+    ui->mTarget_2_SecondValue->setText(valuenumber);
+
+    valuenumber = QString("%1").arg(mTarget_2_Value[2], 0, 10, QChar('0'));
+    ui->mTarget_2_ThirdValue->setText(valuenumber);
+
+    valuenumber = QString("%1").arg(total[1], 0, 10, QChar('0'));
+    ui->mTarget_2_TotalValue->setText(valuenumber);
+
+    //3
+    valuenumber = QString("%1").arg(mTarget_3_Value[0], 0, 10, QChar('0'));
+    ui->mTarget_3_FirstValue->setText(valuenumber);
+
+    valuenumber = QString("%1").arg(mTarget_3_Value[1], 0, 10, QChar('0'));
+    ui->mTarget_3_SecondValue->setText(valuenumber);
+
+    valuenumber = QString("%1").arg(mTarget_3_Value[2], 0, 10, QChar('0'));
+    ui->mTarget_3_ThirdValue->setText(valuenumber);
+
+    valuenumber = QString("%1").arg(total[2], 0, 10, QChar('0'));
+    ui->mTarget_3_TotalValue->setText(valuenumber);
+
+}
+

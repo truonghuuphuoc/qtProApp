@@ -10,6 +10,8 @@
 #include "IAutoFilterT.h"
 #include "IFilterColumnT.h"
 
+#define _UNICODE
+
 namespace libxl {
 
     #ifdef _UNICODE
