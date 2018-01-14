@@ -18,6 +18,7 @@ typedef enum
 class phnMessage
 {
 public:
+    static uint8_t phnCalculateCrc(uint8_t * ptr, uint16_t length, uint8_t crc);
     static uint8_t phnMessage_CrcCalculate(uint8_t* data, uint16_t length);
     static void phnMessage_GetMessageFormat(uint8_t* data, uint16_t inLength, uint8_t* message, uint16_t *outLength);
 };
