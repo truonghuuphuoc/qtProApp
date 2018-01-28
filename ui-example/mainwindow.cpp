@@ -414,7 +414,7 @@ void MainWindow::on_mInofor1_Add_clicked()
     }
     else
     {
-        randomnNumber();
+        //randomnNumber();
 
         int row = ui->tableWidget->rowCount();
         ui->tableWidget->insertRow(row);
@@ -520,6 +520,11 @@ void MainWindow::on_mInofor1_Add_clicked()
         ui->mKqKha->setText(QString().sprintf("%.2f %", mKqKha*100/mKqTotal));
         ui->mKqDat->setText(QString().sprintf("%.2f %", mKqDat*100/mKqTotal));
         ui->mKqKhongDat->setText(QString().sprintf("%.2f %", mKqKhongDat*100/mKqTotal));
+
+
+        //clear data
+        ui->mInfor1_Name->setText("");
+        on_mAppClean_clicked();
     }
 }
 
