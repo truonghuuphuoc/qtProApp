@@ -36,7 +36,7 @@ void phnSoundPlayer::run()
         {
             phnEvent event = mEvent->dequeue();
 
-            _zone   = mSoundPath + "zone_" + QString("%1").arg(event.Target, 0, 10, QChar('0')) + ".mp3";
+            _zone   = mSoundPath + "zone_" + QString("%1").arg(event.Zone, 0, 10, QChar('0')) + ".mp3";
             _target = mSoundPath + "bia_" + QString("%1").arg(event.Target, 0, 10, QChar('0')) + ".mp3";
             _index  = mSoundPath + "lan_" + QString("%1").arg(event.Sequence + 1, 0, 10, QChar('0')) + ".mp3";
             _score  = mSoundPath + QString("%1").arg(event.Value, 0, 10, QChar('0')) + ".mp3";
