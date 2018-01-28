@@ -30,10 +30,19 @@ void phnSoundPlayer::run()
     QString _score;
     QString _index;
 
+    bool isPlay = false;
+
     while(true)
     {
-        if(mEvent != NULL && !mEvent->isEmpty() && mPlayer->state() == QMediaPlayer::StoppedState)
+        if(mPlayer->state() == QMediaPlayer::StoppedState && isPlay == true)
         {
+            isPlay = false;
+            QThread::msleep(300);
+        }
+
+        if(mEvent != NULL && !mEvent->isEmpty() && isPlay == false)
+        {
+
             phnEvent event = mEvent->dequeue();
 
             _zone   = mSoundPath + "zone_" + QString("%1").arg(event.Zone, 0, 10, QChar('0')) + ".mp3";
@@ -54,7 +63,10 @@ void phnSoundPlayer::run()
             mPlayList->setCurrentIndex(0);
 
             mPlayer->setVolume(60);
+
             mPlayer->play();
+
+            isPlay = true;
         }
         else
         {
