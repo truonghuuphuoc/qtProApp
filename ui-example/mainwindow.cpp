@@ -30,9 +30,7 @@ MainWindow::MainWindow(QWidget *parent) :
     mOfflineImagePath   = currentPath + "/system/image/yellow.png";
     mOnlineImagePath    = currentPath + "/system/image/green.png";
 
-    mSoundPath          = currentPath + "/system/sound/";
-    mPlayer = NULL;
-    mPlayList = NULL;
+    QString soundPath   = currentPath + "/system/sound/";
 
     QPixmap errorStatus (mErrorImagePath);
     ui->mAppStatus->setPixmap(errorStatus);
@@ -51,6 +49,9 @@ MainWindow::MainWindow(QWidget *parent) :
     memset(mTarget_2_Value, 0x00, sizeof(mTarget_2_Value));
     memset(mTarget_3_Value, 0x00, sizeof(mTarget_3_Value));
 
+	mSoundThread = new phnSoundPlayer;
+    mSoundThread->setInformation(soundPath, &mEvent);
+    mSoundThread->start();
 
     mKqTotal        = 0;
     mKqGoi          = 0;
@@ -67,10 +68,10 @@ MainWindow::~MainWindow()
 
 void MainWindow::onProgressChanged(int event, int infor) {
 
-    QString _zone;
-    QString _target;
-    QString _index;
-    QString _score;
+    int _zone;
+    int _target;
+    int _index;
+    int _score;
     bool    isSoundPlay = false;
 
     switch (event)
@@ -139,14 +140,14 @@ void MainWindow::onProgressChanged(int event, int infor) {
         }
         else
         {
-            _target = mSoundPath + "bia_1.mp3";
+            _target = 1;
 
             QString valuenumber = QString("%1").arg(infor, 0, 10, QChar('0'));
 
             mTarget_1_Value[mTarget_1_Index] = infor;
 
-            _index = mSoundPath + "lan_" + QString("%1").arg(mTarget_1_Index + 1, 0, 10, QChar('0')) + ".mp3";
-            _score = mSoundPath + valuenumber + ".mp3";
+            _index = mTarget_1_Index;
+            _score = infor;
 
             isSoundPlay = true;
 
@@ -170,7 +171,7 @@ void MainWindow::onProgressChanged(int event, int infor) {
             }
             else
             {
-               ui->mTarget_1_ThirdValue->setText(valuenumber);
+                ui->mTarget_1_ThirdValue->setText(valuenumber);
                 mTarget_1_Index = 0;
             }
 
@@ -195,14 +196,14 @@ void MainWindow::onProgressChanged(int event, int infor) {
         }
         else
         {
-            _target = mSoundPath + "bia_2.mp3";
+            _target = 2;
 
             QString valuenumber = QString("%1").arg(infor, 0, 10, QChar('0'));
 
             mTarget_2_Value[mTarget_2_Index] = infor;
 
-            _index = mSoundPath + "lan_" + QString("%1").arg(mTarget_2_Index + 1, 0, 10, QChar('0')) + ".mp3";
-            _score = mSoundPath + valuenumber + ".mp3";
+            _index = mTarget_2_Index;
+            _score = infor;
 
             isSoundPlay = true;
 
@@ -252,14 +253,14 @@ void MainWindow::onProgressChanged(int event, int infor) {
         }
         else
         {
-            _target = mSoundPath + "bia_3.mp3";
+            _target = 3;
 
             QString valuenumber = QString("%1").arg(infor, 0, 10, QChar('0'));
 
             mTarget_3_Value[mTarget_3_Index] = infor;
 
-            _index = mSoundPath + "lan_" + QString("%1").arg(mTarget_3_Index + 1, 0, 10, QChar('0')) + ".mp3";
-            _score = mSoundPath + valuenumber + ".mp3";
+            _index = mTarget_3_Index;
+            _score = infor;
 
             isSoundPlay = true;
 
@@ -302,38 +303,8 @@ void MainWindow::onProgressChanged(int event, int infor) {
 
     if(isSoundPlay)
     {
-        if(mPlayList != NULL)
-        {
-            mPlayList->clear();
-            delete mPlayList;
-            mPlayList = NULL;
-        }
-
-       if(mPlayer != NULL)
-       {
-          mPlayer->stop();
-
-          delete  mPlayer;
-       }
-
-
-       mPlayer = new QMediaPlayer(this);
-       mPlayList = new QMediaPlaylist(mPlayer);
-
-       mPlayer->setPlaylist(mPlayList);
-
-       _zone = mSoundPath + "zone_1.mp3";
-
-       mPlayList->addMedia(QUrl::fromLocalFile(_zone));
-       mPlayList->addMedia(QUrl::fromLocalFile(_target));
-       mPlayList->addMedia(QUrl::fromLocalFile(_index));
-       mPlayList->addMedia(QUrl::fromLocalFile(_score));
-       // ...
-       mPlayList->setCurrentIndex(0);
-      //mPlayer->setMedia(QUrl::fromLocalFile(_target));
-       qDebug() << _target;
-       mPlayer->setVolume(60);
-       mPlayer->play();
+        _zone = 1;
+        mEvent.enqueue(phnEvent (_zone, _target, _score, _index));
     }
 
 }

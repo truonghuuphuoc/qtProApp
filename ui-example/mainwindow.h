@@ -1,11 +1,16 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-#include<stdint.h>
+#include <stdint.h>
+#include "phnevent.h"
+#include <QQueue>
+#include <QtCore>
+#include <QThread>
 #include <QMainWindow>
 #include <QtMultimedia/QSound>
 #include <QtMultimedia/QMediaPlayer>
 #include <QtMultimedia/QMediaPlaylist>
+#include "phnsoundplayer.h"
 
 namespace Ui {
 class MainWindow;
@@ -25,10 +30,6 @@ private:
     QString mOfflineImagePath;
     QString mOnlineImagePath;
 
-    QString mSoundPath;
-    QMediaPlayer *mPlayer;
-    QMediaPlaylist *mPlayList;
-
     uint8_t mTarget_1_Index;
     uint8_t mTarget_2_Index;
     uint8_t mTarget_3_Index;
@@ -36,6 +37,9 @@ private:
     uint8_t mTarget_1_Value[3];
     uint8_t mTarget_2_Value[3];
     uint8_t mTarget_3_Value[3];
+
+	QQueue<phnEvent> mEvent;
+	phnSoundPlayer *mSoundThread;
 
     float   mKqTotal;
     float   mKqGoi;
