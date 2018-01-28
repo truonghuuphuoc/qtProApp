@@ -50,6 +50,13 @@ MainWindow::MainWindow(QWidget *parent) :
     memset(mTarget_1_Value, 0x00, sizeof(mTarget_1_Value));
     memset(mTarget_2_Value, 0x00, sizeof(mTarget_2_Value));
     memset(mTarget_3_Value, 0x00, sizeof(mTarget_3_Value));
+
+
+    mKqTotal        = 0;
+    mKqGoi          = 0;
+    mKqKha          = 0;
+    mKqDat          = 0;
+    mKqKhongDat     = 0;
 }
 
 MainWindow::~MainWindow()
@@ -507,30 +514,41 @@ void MainWindow::on_mInofor1_Add_clicked()
             total += mTarget_3_Value[index];
         }
 
+        mKqTotal += 1;
+
         //Tong
         stt = new QTableWidgetItem( QString("%1").arg(total, 0, 10, QChar('0')));
         stt->setTextAlignment(Qt::AlignCenter);
         ui->tableWidget->setItem(row, 11, stt);
 
-        if(total > 50)
+        if(total >= 72)
         {
+            mKqGoi += 1;
             stt = new QTableWidgetItem("Giỏi");
         }
-        else if(total > 40)
+        else if(total >= 59)
         {
+            mKqKha += 1;
             stt = new QTableWidgetItem("Khá");
         }
-        else if(total > 30)
+        else if(total >= 45)
         {
-            stt = new QTableWidgetItem("Trung bình");
+            mKqDat += 1;
+            stt = new QTableWidgetItem("Đạt");
         }
         else
         {
+            mKqKhongDat += 1;
             stt = new QTableWidgetItem("Không đạt");
         }
 
         stt->setTextAlignment(Qt::AlignVCenter);
         ui->tableWidget->setItem(row, 12, stt);
+
+        ui->mKqGoi->setText(QString().sprintf("%.2f %", mKqGoi*100/mKqTotal));
+        ui->mKqKha->setText(QString().sprintf("%.2f %", mKqKha*100/mKqTotal));
+        ui->mKqDat->setText(QString().sprintf("%.2f %", mKqDat*100/mKqTotal));
+        ui->mKqKhongDat->setText(QString().sprintf("%.2f %", mKqKhongDat*100/mKqTotal));
     }
 }
 

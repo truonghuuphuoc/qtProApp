@@ -37,6 +37,12 @@ private:
     uint8_t mTarget_2_Value[3];
     uint8_t mTarget_3_Value[3];
 
+    float   mKqTotal;
+    float   mKqGoi;
+    float   mKqKha;
+    float   mKqDat;
+    float   mKqKhongDat;
+
     void randomnNumber(void);
 
 public slots:

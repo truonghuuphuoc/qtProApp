@@ -36,27 +36,10 @@ class Ui_MainWindow
 public:
     QWidget *centralWidget;
     QGridLayout *gridLayout;
+    QSpacerItem *verticalSpacer;
     QTabWidget *tabWidget;
     QWidget *tab;
     QGridLayout *gridLayout_27;
-    QGridLayout *gridLayout_26;
-    QGroupBox *groupBox;
-    QGridLayout *gridLayout_2;
-    QGroupBox *groupBox_21;
-    QGridLayout *gridLayout_22;
-    QLabel *mAppComport;
-    QGroupBox *groupBox_22;
-    QGridLayout *gridLayout_23;
-    QLabel *mAddressStart;
-    QGroupBox *groupBox_23;
-    QGridLayout *gridLayout_24;
-    QLabel *mAddressDest;
-    QGroupBox *groupBox_24;
-    QGridLayout *gridLayout_25;
-    QPushButton *mAppClean;
-    QGroupBox *groupBox_20;
-    QGridLayout *gridLayout_21;
-    QLabel *mAppStatus;
     QHBoxLayout *horizontalLayout_2;
     QGroupBox *groupBox_2;
     QGridLayout *gridLayout_3;
@@ -112,20 +95,52 @@ public:
     QGridLayout *gridLayout_20;
     QLabel *mTarget_3_FirstValue;
     QPushButton *mTarget_3_Clean;
+    QGridLayout *gridLayout_26;
+    QGroupBox *groupBox;
+    QGridLayout *gridLayout_2;
+    QGroupBox *groupBox_21;
+    QGridLayout *gridLayout_22;
+    QLabel *mAppComport;
+    QGroupBox *groupBox_22;
+    QGridLayout *gridLayout_23;
+    QLabel *mAddressStart;
+    QGroupBox *groupBox_23;
+    QGridLayout *gridLayout_24;
+    QLabel *mAddressDest;
+    QGroupBox *groupBox_24;
+    QGridLayout *gridLayout_25;
+    QPushButton *mAppClean;
+    QGroupBox *groupBox_20;
+    QGridLayout *gridLayout_21;
+    QLabel *mAppStatus;
     QGroupBox *groupBox_49;
-    QGridLayout *gridLayout_30;
+    QHBoxLayout *horizontalLayout_8;
     QGroupBox *groupBox_50;
     QHBoxLayout *horizontalLayout;
     QLineEdit *mInfor1_Name;
     QGroupBox *groupBox_53;
-    QGridLayout *gridLayout_29;
+    QHBoxLayout *horizontalLayout_9;
     QPushButton *mInofor1_Add;
     QWidget *tab_2;
     QGridLayout *gridLayout_28;
-    QTableWidget *tableWidget;
+    QGroupBox *groupBox_25;
+    QGridLayout *gridLayout_31;
+    QGroupBox *groupBox_30;
+    QGridLayout *gridLayout_36;
+    QLabel *mKqGoi;
+    QGroupBox *groupBox_26;
+    QGridLayout *gridLayout_32;
+    QLabel *mKqKha;
+    QGroupBox *groupBox_28;
+    QGridLayout *gridLayout_34;
+    QLabel *mKqKhongDat;
+    QGroupBox *groupBox_27;
+    QGridLayout *gridLayout_33;
+    QLabel *mKqDat;
+    QGroupBox *groupBox_29;
+    QGridLayout *gridLayout_43;
     QPushButton *pushButton;
-    QLabel *label;
-    QSpacerItem *verticalSpacer;
+    QTableWidget *tableWidget;
     QMenuBar *menuBar;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
@@ -134,7 +149,7 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
-        MainWindow->resize(975, 717);
+        MainWindow->resize(970, 708);
         QIcon icon;
         icon.addFile(QStringLiteral("system/image/app_100.ico"), QSize(), QIcon::Normal, QIcon::Off);
         MainWindow->setWindowIcon(icon);
@@ -144,6 +159,10 @@ public:
         gridLayout->setSpacing(6);
         gridLayout->setContentsMargins(11, 11, 11, 11);
         gridLayout->setObjectName(QStringLiteral("gridLayout"));
+        verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        gridLayout->addItem(verticalSpacer, 3, 0, 1, 1);
+
         tabWidget = new QTabWidget(centralWidget);
         tabWidget->setObjectName(QStringLiteral("tabWidget"));
         tab = new QWidget();
@@ -152,125 +171,6 @@ public:
         gridLayout_27->setSpacing(6);
         gridLayout_27->setContentsMargins(11, 11, 11, 11);
         gridLayout_27->setObjectName(QStringLiteral("gridLayout_27"));
-        gridLayout_26 = new QGridLayout();
-        gridLayout_26->setSpacing(6);
-        gridLayout_26->setObjectName(QStringLiteral("gridLayout_26"));
-        groupBox = new QGroupBox(tab);
-        groupBox->setObjectName(QStringLiteral("groupBox"));
-        QFont font;
-        font.setPointSize(10);
-        font.setBold(true);
-        font.setWeight(75);
-        groupBox->setFont(font);
-        groupBox->setStyleSheet(QLatin1String("QGroupBox {\n"
-"    border: 1px solid gray;\n"
-"    border-radius: 7px;\n"
-"    margin-top: 0.5em;\n"
-"	font-size: 10pt ;\n"
-"    font-weight: bold;\n"
-"	border-color: rgb(0, 0, 0);\n"
-"}\n"
-"\n"
-"QGroupBox::title {\n"
-"    subcontrol-origin: margin;\n"
-"    left: 10px;\n"
-"    padding: 0 2px 0 2px;\n"
-"}"));
-        gridLayout_2 = new QGridLayout(groupBox);
-        gridLayout_2->setSpacing(6);
-        gridLayout_2->setContentsMargins(11, 11, 11, 11);
-        gridLayout_2->setObjectName(QStringLiteral("gridLayout_2"));
-        groupBox_21 = new QGroupBox(groupBox);
-        groupBox_21->setObjectName(QStringLiteral("groupBox_21"));
-        gridLayout_22 = new QGridLayout(groupBox_21);
-        gridLayout_22->setSpacing(6);
-        gridLayout_22->setContentsMargins(11, 11, 11, 11);
-        gridLayout_22->setObjectName(QStringLiteral("gridLayout_22"));
-        mAppComport = new QLabel(groupBox_21);
-        mAppComport->setObjectName(QStringLiteral("mAppComport"));
-        mAppComport->setFont(font);
-        mAppComport->setAlignment(Qt::AlignCenter);
-
-        gridLayout_22->addWidget(mAppComport, 0, 0, 1, 1);
-
-
-        gridLayout_2->addWidget(groupBox_21, 0, 1, 1, 1);
-
-        groupBox_22 = new QGroupBox(groupBox);
-        groupBox_22->setObjectName(QStringLiteral("groupBox_22"));
-        gridLayout_23 = new QGridLayout(groupBox_22);
-        gridLayout_23->setSpacing(6);
-        gridLayout_23->setContentsMargins(11, 11, 11, 11);
-        gridLayout_23->setObjectName(QStringLiteral("gridLayout_23"));
-        mAddressStart = new QLabel(groupBox_22);
-        mAddressStart->setObjectName(QStringLiteral("mAddressStart"));
-        mAddressStart->setFont(font);
-        mAddressStart->setAlignment(Qt::AlignCenter);
-
-        gridLayout_23->addWidget(mAddressStart, 0, 0, 1, 1);
-
-
-        gridLayout_2->addWidget(groupBox_22, 0, 2, 1, 1);
-
-        groupBox_23 = new QGroupBox(groupBox);
-        groupBox_23->setObjectName(QStringLiteral("groupBox_23"));
-        gridLayout_24 = new QGridLayout(groupBox_23);
-        gridLayout_24->setSpacing(6);
-        gridLayout_24->setContentsMargins(11, 11, 11, 11);
-        gridLayout_24->setObjectName(QStringLiteral("gridLayout_24"));
-        mAddressDest = new QLabel(groupBox_23);
-        mAddressDest->setObjectName(QStringLiteral("mAddressDest"));
-        mAddressDest->setFont(font);
-        mAddressDest->setAlignment(Qt::AlignCenter);
-
-        gridLayout_24->addWidget(mAddressDest, 0, 0, 1, 1);
-
-
-        gridLayout_2->addWidget(groupBox_23, 0, 3, 1, 1);
-
-        groupBox_24 = new QGroupBox(groupBox);
-        groupBox_24->setObjectName(QStringLiteral("groupBox_24"));
-        gridLayout_25 = new QGridLayout(groupBox_24);
-        gridLayout_25->setSpacing(6);
-        gridLayout_25->setContentsMargins(11, 11, 11, 11);
-        gridLayout_25->setObjectName(QStringLiteral("gridLayout_25"));
-        mAppClean = new QPushButton(groupBox_24);
-        mAppClean->setObjectName(QStringLiteral("mAppClean"));
-        QFont font1;
-        font1.setPointSize(10);
-        mAppClean->setFont(font1);
-        QIcon icon1;
-        icon1.addFile(QStringLiteral(":/icons/24/Delete.png"), QSize(), QIcon::Normal, QIcon::Off);
-        mAppClean->setIcon(icon1);
-        mAppClean->setIconSize(QSize(27, 27));
-
-        gridLayout_25->addWidget(mAppClean, 0, 0, 1, 1);
-
-
-        gridLayout_2->addWidget(groupBox_24, 0, 4, 1, 1);
-
-        groupBox_20 = new QGroupBox(groupBox);
-        groupBox_20->setObjectName(QStringLiteral("groupBox_20"));
-        gridLayout_21 = new QGridLayout(groupBox_20);
-        gridLayout_21->setSpacing(6);
-        gridLayout_21->setContentsMargins(11, 11, 11, 11);
-        gridLayout_21->setObjectName(QStringLiteral("gridLayout_21"));
-        mAppStatus = new QLabel(groupBox_20);
-        mAppStatus->setObjectName(QStringLiteral("mAppStatus"));
-        mAppStatus->setPixmap(QPixmap(QString::fromUtf8(":/icons/24/Close.png")));
-        mAppStatus->setAlignment(Qt::AlignCenter);
-
-        gridLayout_21->addWidget(mAppStatus, 0, 0, 1, 1);
-
-
-        gridLayout_2->addWidget(groupBox_20, 0, 0, 1, 1);
-
-
-        gridLayout_26->addWidget(groupBox, 0, 0, 1, 1);
-
-
-        gridLayout_27->addLayout(gridLayout_26, 0, 0, 1, 1);
-
         horizontalLayout_2 = new QHBoxLayout();
         horizontalLayout_2->setSpacing(6);
         horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
@@ -307,9 +207,9 @@ public:
         gridLayout_6->setObjectName(QStringLiteral("gridLayout_6"));
         mTarget_1_ThirdValue = new QLabel(groupBox_5);
         mTarget_1_ThirdValue->setObjectName(QStringLiteral("mTarget_1_ThirdValue"));
-        QFont font2;
-        font2.setPointSize(18);
-        mTarget_1_ThirdValue->setFont(font2);
+        QFont font;
+        font.setPointSize(18);
+        mTarget_1_ThirdValue->setFont(font);
         mTarget_1_ThirdValue->setAlignment(Qt::AlignCenter);
 
         gridLayout_6->addWidget(mTarget_1_ThirdValue, 0, 0, 1, 1);
@@ -330,7 +230,7 @@ public:
         gridLayout_7->setObjectName(QStringLiteral("gridLayout_7"));
         mTarget_1_TotalValue = new QLabel(groupBox_6);
         mTarget_1_TotalValue->setObjectName(QStringLiteral("mTarget_1_TotalValue"));
-        mTarget_1_TotalValue->setFont(font2);
+        mTarget_1_TotalValue->setFont(font);
         mTarget_1_TotalValue->setAlignment(Qt::AlignCenter);
 
         gridLayout_7->addWidget(mTarget_1_TotalValue, 0, 0, 1, 1);
@@ -371,7 +271,7 @@ public:
         gridLayout_5->setObjectName(QStringLiteral("gridLayout_5"));
         mTarget_1_SecondValue = new QLabel(groupBox_4);
         mTarget_1_SecondValue->setObjectName(QStringLiteral("mTarget_1_SecondValue"));
-        mTarget_1_SecondValue->setFont(font2);
+        mTarget_1_SecondValue->setFont(font);
         mTarget_1_SecondValue->setAlignment(Qt::AlignCenter);
 
         gridLayout_5->addWidget(mTarget_1_SecondValue, 0, 0, 1, 1);
@@ -392,7 +292,7 @@ public:
         gridLayout_8->setObjectName(QStringLiteral("gridLayout_8"));
         mTarget_1_FirstValue = new QLabel(groupBox_7);
         mTarget_1_FirstValue->setObjectName(QStringLiteral("mTarget_1_FirstValue"));
-        mTarget_1_FirstValue->setFont(font2);
+        mTarget_1_FirstValue->setFont(font);
         mTarget_1_FirstValue->setAlignment(Qt::AlignCenter);
 
         gridLayout_8->addWidget(mTarget_1_FirstValue, 0, 0, 1, 1);
@@ -402,9 +302,13 @@ public:
 
         mTarget_1_Clean = new QPushButton(groupBox_2);
         mTarget_1_Clean->setObjectName(QStringLiteral("mTarget_1_Clean"));
+        QFont font1;
+        font1.setPointSize(10);
         mTarget_1_Clean->setFont(font1);
+        QIcon icon1;
+        icon1.addFile(QStringLiteral(":/icons/24/Delete.png"), QSize(), QIcon::Normal, QIcon::Off);
         mTarget_1_Clean->setIcon(icon1);
-        mTarget_1_Clean->setIconSize(QSize(27, 27));
+        mTarget_1_Clean->setIconSize(QSize(24, 24));
 
         gridLayout_3->addWidget(mTarget_1_Clean, 5, 0, 1, 1);
 
@@ -433,7 +337,11 @@ public:
         gridLayout_9->setObjectName(QStringLiteral("gridLayout_9"));
         groupBox_9 = new QGroupBox(groupBox_8);
         groupBox_9->setObjectName(QStringLiteral("groupBox_9"));
-        groupBox_9->setFont(font);
+        QFont font2;
+        font2.setPointSize(10);
+        font2.setBold(true);
+        font2.setWeight(75);
+        groupBox_9->setFont(font2);
         groupBox_9->setStyleSheet(QLatin1String("QGroupBox {\n"
 "    font-size: 10pt ;\n"
 "	border-color: rgb(135, 135, 135);\n"
@@ -445,7 +353,7 @@ public:
         gridLayout_10->setObjectName(QStringLiteral("gridLayout_10"));
         mTarget_2_SecondValue = new QLabel(groupBox_9);
         mTarget_2_SecondValue->setObjectName(QStringLiteral("mTarget_2_SecondValue"));
-        mTarget_2_SecondValue->setFont(font2);
+        mTarget_2_SecondValue->setFont(font);
         mTarget_2_SecondValue->setAlignment(Qt::AlignCenter);
 
         gridLayout_10->addWidget(mTarget_2_SecondValue, 0, 0, 1, 1);
@@ -486,7 +394,7 @@ public:
         gridLayout_13->setObjectName(QStringLiteral("gridLayout_13"));
         mTarget_2_ThirdValue = new QLabel(groupBox_12);
         mTarget_2_ThirdValue->setObjectName(QStringLiteral("mTarget_2_ThirdValue"));
-        mTarget_2_ThirdValue->setFont(font2);
+        mTarget_2_ThirdValue->setFont(font);
         mTarget_2_ThirdValue->setAlignment(Qt::AlignCenter);
 
         gridLayout_13->addWidget(mTarget_2_ThirdValue, 0, 0, 1, 1);
@@ -507,7 +415,7 @@ public:
         gridLayout_12->setObjectName(QStringLiteral("gridLayout_12"));
         mTarget_2_TotalValue = new QLabel(groupBox_11);
         mTarget_2_TotalValue->setObjectName(QStringLiteral("mTarget_2_TotalValue"));
-        mTarget_2_TotalValue->setFont(font2);
+        mTarget_2_TotalValue->setFont(font);
         mTarget_2_TotalValue->setAlignment(Qt::AlignCenter);
 
         gridLayout_12->addWidget(mTarget_2_TotalValue, 0, 0, 1, 1);
@@ -517,7 +425,7 @@ public:
 
         groupBox_13 = new QGroupBox(groupBox_8);
         groupBox_13->setObjectName(QStringLiteral("groupBox_13"));
-        groupBox_13->setFont(font);
+        groupBox_13->setFont(font2);
         groupBox_13->setStyleSheet(QLatin1String("QGroupBox {\n"
 "    font-size: 10pt ;\n"
 "	border-color: rgb(135, 135, 135);\n"
@@ -529,7 +437,7 @@ public:
         gridLayout_14->setObjectName(QStringLiteral("gridLayout_14"));
         mTarget_2_FirstValue = new QLabel(groupBox_13);
         mTarget_2_FirstValue->setObjectName(QStringLiteral("mTarget_2_FirstValue"));
-        mTarget_2_FirstValue->setFont(font2);
+        mTarget_2_FirstValue->setFont(font);
         mTarget_2_FirstValue->setAlignment(Qt::AlignCenter);
 
         gridLayout_14->addWidget(mTarget_2_FirstValue, 0, 0, 1, 1);
@@ -541,7 +449,7 @@ public:
         mTarget_2_Clean->setObjectName(QStringLiteral("mTarget_2_Clean"));
         mTarget_2_Clean->setFont(font1);
         mTarget_2_Clean->setIcon(icon1);
-        mTarget_2_Clean->setIconSize(QSize(27, 27));
+        mTarget_2_Clean->setIconSize(QSize(24, 24));
 
         gridLayout_9->addWidget(mTarget_2_Clean, 5, 0, 1, 1);
 
@@ -581,7 +489,7 @@ public:
         gridLayout_16->setObjectName(QStringLiteral("gridLayout_16"));
         mTarget_3_SecondValue = new QLabel(groupBox_15);
         mTarget_3_SecondValue->setObjectName(QStringLiteral("mTarget_3_SecondValue"));
-        mTarget_3_SecondValue->setFont(font2);
+        mTarget_3_SecondValue->setFont(font);
         mTarget_3_SecondValue->setAlignment(Qt::AlignCenter);
 
         gridLayout_16->addWidget(mTarget_3_SecondValue, 0, 0, 1, 1);
@@ -602,7 +510,7 @@ public:
         gridLayout_19->setObjectName(QStringLiteral("gridLayout_19"));
         mTarget_3_ThirdValue = new QLabel(groupBox_18);
         mTarget_3_ThirdValue->setObjectName(QStringLiteral("mTarget_3_ThirdValue"));
-        mTarget_3_ThirdValue->setFont(font2);
+        mTarget_3_ThirdValue->setFont(font);
         mTarget_3_ThirdValue->setAlignment(Qt::AlignCenter);
 
         gridLayout_19->addWidget(mTarget_3_ThirdValue, 0, 0, 1, 1);
@@ -643,7 +551,7 @@ public:
         gridLayout_18->setObjectName(QStringLiteral("gridLayout_18"));
         mTarget_3_TotalValue = new QLabel(groupBox_17);
         mTarget_3_TotalValue->setObjectName(QStringLiteral("mTarget_3_TotalValue"));
-        mTarget_3_TotalValue->setFont(font2);
+        mTarget_3_TotalValue->setFont(font);
         mTarget_3_TotalValue->setAlignment(Qt::AlignCenter);
 
         gridLayout_18->addWidget(mTarget_3_TotalValue, 0, 0, 1, 1);
@@ -664,7 +572,7 @@ public:
         gridLayout_20->setObjectName(QStringLiteral("gridLayout_20"));
         mTarget_3_FirstValue = new QLabel(groupBox_19);
         mTarget_3_FirstValue->setObjectName(QStringLiteral("mTarget_3_FirstValue"));
-        mTarget_3_FirstValue->setFont(font2);
+        mTarget_3_FirstValue->setFont(font);
         mTarget_3_FirstValue->setAlignment(Qt::AlignCenter);
 
         gridLayout_20->addWidget(mTarget_3_FirstValue, 0, 0, 1, 1);
@@ -676,7 +584,7 @@ public:
         mTarget_3_Clean->setObjectName(QStringLiteral("mTarget_3_Clean"));
         mTarget_3_Clean->setFont(font1);
         mTarget_3_Clean->setIcon(icon1);
-        mTarget_3_Clean->setIconSize(QSize(27, 27));
+        mTarget_3_Clean->setIconSize(QSize(24, 24));
 
         gridLayout_15->addWidget(mTarget_3_Clean, 5, 1, 1, 1);
 
@@ -684,7 +592,118 @@ public:
         horizontalLayout_2->addWidget(groupBox_14);
 
 
-        gridLayout_27->addLayout(horizontalLayout_2, 2, 0, 1, 1);
+        gridLayout_27->addLayout(horizontalLayout_2, 3, 0, 1, 1);
+
+        gridLayout_26 = new QGridLayout();
+        gridLayout_26->setSpacing(6);
+        gridLayout_26->setObjectName(QStringLiteral("gridLayout_26"));
+        groupBox = new QGroupBox(tab);
+        groupBox->setObjectName(QStringLiteral("groupBox"));
+        groupBox->setFont(font2);
+        groupBox->setStyleSheet(QLatin1String("QGroupBox {\n"
+"    border: 1px solid gray;\n"
+"    border-radius: 7px;\n"
+"    margin-top: 0.5em;\n"
+"	font-size: 10pt ;\n"
+"    font-weight: bold;\n"
+"	border-color: rgb(0, 0, 0);\n"
+"}\n"
+"\n"
+"QGroupBox::title {\n"
+"    subcontrol-origin: margin;\n"
+"    left: 10px;\n"
+"    padding: 0 2px 0 2px;\n"
+"}"));
+        gridLayout_2 = new QGridLayout(groupBox);
+        gridLayout_2->setSpacing(6);
+        gridLayout_2->setContentsMargins(11, 11, 11, 11);
+        gridLayout_2->setObjectName(QStringLiteral("gridLayout_2"));
+        groupBox_21 = new QGroupBox(groupBox);
+        groupBox_21->setObjectName(QStringLiteral("groupBox_21"));
+        gridLayout_22 = new QGridLayout(groupBox_21);
+        gridLayout_22->setSpacing(6);
+        gridLayout_22->setContentsMargins(11, 11, 11, 11);
+        gridLayout_22->setObjectName(QStringLiteral("gridLayout_22"));
+        mAppComport = new QLabel(groupBox_21);
+        mAppComport->setObjectName(QStringLiteral("mAppComport"));
+        mAppComport->setFont(font2);
+        mAppComport->setAlignment(Qt::AlignCenter);
+
+        gridLayout_22->addWidget(mAppComport, 0, 0, 1, 1);
+
+
+        gridLayout_2->addWidget(groupBox_21, 0, 1, 1, 1);
+
+        groupBox_22 = new QGroupBox(groupBox);
+        groupBox_22->setObjectName(QStringLiteral("groupBox_22"));
+        gridLayout_23 = new QGridLayout(groupBox_22);
+        gridLayout_23->setSpacing(6);
+        gridLayout_23->setContentsMargins(11, 11, 11, 11);
+        gridLayout_23->setObjectName(QStringLiteral("gridLayout_23"));
+        mAddressStart = new QLabel(groupBox_22);
+        mAddressStart->setObjectName(QStringLiteral("mAddressStart"));
+        mAddressStart->setFont(font2);
+        mAddressStart->setAlignment(Qt::AlignCenter);
+
+        gridLayout_23->addWidget(mAddressStart, 0, 0, 1, 1);
+
+
+        gridLayout_2->addWidget(groupBox_22, 0, 2, 1, 1);
+
+        groupBox_23 = new QGroupBox(groupBox);
+        groupBox_23->setObjectName(QStringLiteral("groupBox_23"));
+        gridLayout_24 = new QGridLayout(groupBox_23);
+        gridLayout_24->setSpacing(6);
+        gridLayout_24->setContentsMargins(11, 11, 11, 11);
+        gridLayout_24->setObjectName(QStringLiteral("gridLayout_24"));
+        mAddressDest = new QLabel(groupBox_23);
+        mAddressDest->setObjectName(QStringLiteral("mAddressDest"));
+        mAddressDest->setFont(font2);
+        mAddressDest->setAlignment(Qt::AlignCenter);
+
+        gridLayout_24->addWidget(mAddressDest, 0, 0, 1, 1);
+
+
+        gridLayout_2->addWidget(groupBox_23, 0, 3, 1, 1);
+
+        groupBox_24 = new QGroupBox(groupBox);
+        groupBox_24->setObjectName(QStringLiteral("groupBox_24"));
+        gridLayout_25 = new QGridLayout(groupBox_24);
+        gridLayout_25->setSpacing(6);
+        gridLayout_25->setContentsMargins(11, 11, 11, 11);
+        gridLayout_25->setObjectName(QStringLiteral("gridLayout_25"));
+        mAppClean = new QPushButton(groupBox_24);
+        mAppClean->setObjectName(QStringLiteral("mAppClean"));
+        mAppClean->setFont(font1);
+        mAppClean->setIcon(icon1);
+        mAppClean->setIconSize(QSize(24, 24));
+
+        gridLayout_25->addWidget(mAppClean, 0, 0, 1, 1);
+
+
+        gridLayout_2->addWidget(groupBox_24, 0, 4, 1, 1);
+
+        groupBox_20 = new QGroupBox(groupBox);
+        groupBox_20->setObjectName(QStringLiteral("groupBox_20"));
+        gridLayout_21 = new QGridLayout(groupBox_20);
+        gridLayout_21->setSpacing(6);
+        gridLayout_21->setContentsMargins(11, 11, 11, 11);
+        gridLayout_21->setObjectName(QStringLiteral("gridLayout_21"));
+        mAppStatus = new QLabel(groupBox_20);
+        mAppStatus->setObjectName(QStringLiteral("mAppStatus"));
+        mAppStatus->setPixmap(QPixmap(QString::fromUtf8(":/icons/24/Close.png")));
+        mAppStatus->setAlignment(Qt::AlignCenter);
+
+        gridLayout_21->addWidget(mAppStatus, 0, 0, 1, 1);
+
+
+        gridLayout_2->addWidget(groupBox_20, 0, 0, 1, 1);
+
+
+        gridLayout_26->addWidget(groupBox, 0, 0, 1, 1);
+
+
+        gridLayout_27->addLayout(gridLayout_26, 0, 0, 1, 1);
 
         groupBox_49 = new QGroupBox(tab);
         groupBox_49->setObjectName(QStringLiteral("groupBox_49"));
@@ -702,10 +721,10 @@ public:
 "    left: 10px;\n"
 "    padding: 0 2px 0 2px;\n"
 "}"));
-        gridLayout_30 = new QGridLayout(groupBox_49);
-        gridLayout_30->setSpacing(6);
-        gridLayout_30->setContentsMargins(11, 11, 11, 11);
-        gridLayout_30->setObjectName(QStringLiteral("gridLayout_30"));
+        horizontalLayout_8 = new QHBoxLayout(groupBox_49);
+        horizontalLayout_8->setSpacing(6);
+        horizontalLayout_8->setContentsMargins(11, 11, 11, 11);
+        horizontalLayout_8->setObjectName(QStringLiteral("horizontalLayout_8"));
         groupBox_50 = new QGroupBox(groupBox_49);
         groupBox_50->setObjectName(QStringLiteral("groupBox_50"));
         horizontalLayout = new QHBoxLayout(groupBox_50);
@@ -719,26 +738,26 @@ public:
         horizontalLayout->addWidget(mInfor1_Name);
 
 
-        gridLayout_30->addWidget(groupBox_50, 0, 0, 1, 1);
+        horizontalLayout_8->addWidget(groupBox_50);
 
         groupBox_53 = new QGroupBox(groupBox_49);
         groupBox_53->setObjectName(QStringLiteral("groupBox_53"));
-        gridLayout_29 = new QGridLayout(groupBox_53);
-        gridLayout_29->setSpacing(6);
-        gridLayout_29->setContentsMargins(11, 11, 11, 11);
-        gridLayout_29->setObjectName(QStringLiteral("gridLayout_29"));
+        horizontalLayout_9 = new QHBoxLayout(groupBox_53);
+        horizontalLayout_9->setSpacing(6);
+        horizontalLayout_9->setContentsMargins(11, 11, 11, 11);
+        horizontalLayout_9->setObjectName(QStringLiteral("horizontalLayout_9"));
         mInofor1_Add = new QPushButton(groupBox_53);
         mInofor1_Add->setObjectName(QStringLiteral("mInofor1_Add"));
         mInofor1_Add->setFont(font1);
         QIcon icon2;
         icon2.addFile(QStringLiteral(":/icons/24/Add.png"), QSize(), QIcon::Normal, QIcon::Off);
         mInofor1_Add->setIcon(icon2);
-        mInofor1_Add->setIconSize(QSize(27, 27));
+        mInofor1_Add->setIconSize(QSize(24, 24));
 
-        gridLayout_29->addWidget(mInofor1_Add, 0, 0, 1, 1);
+        horizontalLayout_9->addWidget(mInofor1_Add);
 
 
-        gridLayout_30->addWidget(groupBox_53, 0, 1, 1, 1);
+        horizontalLayout_8->addWidget(groupBox_53);
 
 
         gridLayout_27->addWidget(groupBox_49, 1, 0, 1, 1);
@@ -751,6 +770,117 @@ public:
         gridLayout_28->setSpacing(6);
         gridLayout_28->setContentsMargins(11, 11, 11, 11);
         gridLayout_28->setObjectName(QStringLiteral("gridLayout_28"));
+        groupBox_25 = new QGroupBox(tab_2);
+        groupBox_25->setObjectName(QStringLiteral("groupBox_25"));
+        groupBox_25->setFont(font2);
+        groupBox_25->setStyleSheet(QLatin1String("QGroupBox {\n"
+"    border: 1px solid gray;\n"
+"    border-radius: 7px;\n"
+"    margin-top: 0.5em;\n"
+"	font-size: 10pt ;\n"
+"    font-weight: bold;\n"
+"	border-color: rgb(0, 0, 0);\n"
+"}\n"
+"\n"
+"QGroupBox::title {\n"
+"    subcontrol-origin: margin;\n"
+"    left: 10px;\n"
+"    padding: 0 2px 0 2px;\n"
+"}"));
+        gridLayout_31 = new QGridLayout(groupBox_25);
+        gridLayout_31->setSpacing(6);
+        gridLayout_31->setContentsMargins(11, 11, 11, 11);
+        gridLayout_31->setObjectName(QStringLiteral("gridLayout_31"));
+        groupBox_30 = new QGroupBox(groupBox_25);
+        groupBox_30->setObjectName(QStringLiteral("groupBox_30"));
+        gridLayout_36 = new QGridLayout(groupBox_30);
+        gridLayout_36->setSpacing(6);
+        gridLayout_36->setContentsMargins(11, 11, 11, 11);
+        gridLayout_36->setObjectName(QStringLiteral("gridLayout_36"));
+        mKqGoi = new QLabel(groupBox_30);
+        mKqGoi->setObjectName(QStringLiteral("mKqGoi"));
+        mKqGoi->setFont(font2);
+        mKqGoi->setAlignment(Qt::AlignCenter);
+
+        gridLayout_36->addWidget(mKqGoi, 0, 0, 1, 1);
+
+
+        gridLayout_31->addWidget(groupBox_30, 0, 0, 1, 1);
+
+        groupBox_26 = new QGroupBox(groupBox_25);
+        groupBox_26->setObjectName(QStringLiteral("groupBox_26"));
+        gridLayout_32 = new QGridLayout(groupBox_26);
+        gridLayout_32->setSpacing(6);
+        gridLayout_32->setContentsMargins(11, 11, 11, 11);
+        gridLayout_32->setObjectName(QStringLiteral("gridLayout_32"));
+        mKqKha = new QLabel(groupBox_26);
+        mKqKha->setObjectName(QStringLiteral("mKqKha"));
+        mKqKha->setFont(font2);
+        mKqKha->setAlignment(Qt::AlignCenter);
+
+        gridLayout_32->addWidget(mKqKha, 0, 0, 1, 1);
+
+
+        gridLayout_31->addWidget(groupBox_26, 0, 1, 1, 1);
+
+        groupBox_28 = new QGroupBox(groupBox_25);
+        groupBox_28->setObjectName(QStringLiteral("groupBox_28"));
+        gridLayout_34 = new QGridLayout(groupBox_28);
+        gridLayout_34->setSpacing(6);
+        gridLayout_34->setContentsMargins(11, 11, 11, 11);
+        gridLayout_34->setObjectName(QStringLiteral("gridLayout_34"));
+        mKqKhongDat = new QLabel(groupBox_28);
+        mKqKhongDat->setObjectName(QStringLiteral("mKqKhongDat"));
+        mKqKhongDat->setFont(font2);
+        mKqKhongDat->setAlignment(Qt::AlignCenter);
+
+        gridLayout_34->addWidget(mKqKhongDat, 0, 0, 1, 1);
+
+
+        gridLayout_31->addWidget(groupBox_28, 0, 3, 1, 1);
+
+        groupBox_27 = new QGroupBox(groupBox_25);
+        groupBox_27->setObjectName(QStringLiteral("groupBox_27"));
+        gridLayout_33 = new QGridLayout(groupBox_27);
+        gridLayout_33->setSpacing(6);
+        gridLayout_33->setContentsMargins(11, 11, 11, 11);
+        gridLayout_33->setObjectName(QStringLiteral("gridLayout_33"));
+        mKqDat = new QLabel(groupBox_27);
+        mKqDat->setObjectName(QStringLiteral("mKqDat"));
+        mKqDat->setFont(font2);
+        mKqDat->setAlignment(Qt::AlignCenter);
+
+        gridLayout_33->addWidget(mKqDat, 0, 0, 1, 1);
+
+
+        gridLayout_31->addWidget(groupBox_27, 0, 2, 1, 1);
+
+        groupBox_29 = new QGroupBox(groupBox_25);
+        groupBox_29->setObjectName(QStringLiteral("groupBox_29"));
+        gridLayout_43 = new QGridLayout(groupBox_29);
+        gridLayout_43->setSpacing(6);
+        gridLayout_43->setContentsMargins(11, 11, 11, 11);
+        gridLayout_43->setObjectName(QStringLiteral("gridLayout_43"));
+        pushButton = new QPushButton(groupBox_29);
+        pushButton->setObjectName(QStringLiteral("pushButton"));
+        QFont font3;
+        font3.setPointSize(11);
+        font3.setBold(true);
+        font3.setWeight(75);
+        pushButton->setFont(font3);
+        QIcon icon3;
+        icon3.addFile(QStringLiteral(":/icons/24/save.png"), QSize(), QIcon::Normal, QIcon::Off);
+        pushButton->setIcon(icon3);
+        pushButton->setIconSize(QSize(24, 24));
+
+        gridLayout_43->addWidget(pushButton, 0, 0, 1, 1);
+
+
+        gridLayout_31->addWidget(groupBox_29, 0, 4, 1, 1);
+
+
+        gridLayout_28->addWidget(groupBox_25, 2, 0, 1, 1);
+
         tableWidget = new QTableWidget(tab_2);
         if (tableWidget->columnCount() < 13)
             tableWidget->setColumnCount(13);
@@ -781,38 +911,29 @@ public:
         QTableWidgetItem *__qtablewidgetitem12 = new QTableWidgetItem();
         tableWidget->setHorizontalHeaderItem(12, __qtablewidgetitem12);
         tableWidget->setObjectName(QStringLiteral("tableWidget"));
+        tableWidget->setStyleSheet(QLatin1String("QTableWidget\n"
+"{\n"
+"    border: 1px solid gray;\n"
+"    border-radius: 1px;\n"
+"    margin-top: 0.5em;\n"
+"	font-size: 10pt ;\n"
+"    font-weight: bold;\n"
+"	border-color: rgb(0, 0, 0);\n"
+"}\n"
+""));
         tableWidget->setRowCount(0);
         tableWidget->setColumnCount(13);
 
-        gridLayout_28->addWidget(tableWidget, 2, 0, 1, 1);
-
-        pushButton = new QPushButton(tab_2);
-        pushButton->setObjectName(QStringLiteral("pushButton"));
-        QFont font3;
-        font3.setPointSize(11);
-        font3.setBold(true);
-        font3.setWeight(75);
-        pushButton->setFont(font3);
-
-        gridLayout_28->addWidget(pushButton, 0, 0, 1, 1);
-
-        label = new QLabel(tab_2);
-        label->setObjectName(QStringLiteral("label"));
-
-        gridLayout_28->addWidget(label, 1, 0, 1, 1);
+        gridLayout_28->addWidget(tableWidget, 3, 0, 1, 1);
 
         tabWidget->addTab(tab_2, QString());
 
-        gridLayout->addWidget(tabWidget, 0, 0, 1, 1);
-
-        verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
-
-        gridLayout->addItem(verticalSpacer, 2, 0, 1, 1);
+        gridLayout->addWidget(tabWidget, 1, 0, 2, 1);
 
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 975, 21));
+        menuBar->setGeometry(QRect(0, 0, 970, 21));
         MainWindow->setMenuBar(menuBar);
         mainToolBar = new QToolBar(MainWindow);
         mainToolBar->setObjectName(QStringLiteral("mainToolBar"));
@@ -823,7 +944,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        tabWidget->setCurrentIndex(1);
+        tabWidget->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -832,17 +953,6 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "TARGET", Q_NULLPTR));
-        groupBox->setTitle(QApplication::translate("MainWindow", "Tr\341\272\241ng Th\303\241i", Q_NULLPTR));
-        groupBox_21->setTitle(QApplication::translate("MainWindow", "C\341\273\225ng COM", Q_NULLPTR));
-        mAppComport->setText(QString());
-        groupBox_22->setTitle(QApplication::translate("MainWindow", "ID Thu", Q_NULLPTR));
-        mAddressStart->setText(QString());
-        groupBox_23->setTitle(QApplication::translate("MainWindow", "ID Ph\303\241t", Q_NULLPTR));
-        mAddressDest->setText(QString());
-        groupBox_24->setTitle(QApplication::translate("MainWindow", "X\303\263a d\341\273\257 li\341\273\207u", Q_NULLPTR));
-        mAppClean->setText(QApplication::translate("MainWindow", "X\303\263a", Q_NULLPTR));
-        groupBox_20->setTitle(QApplication::translate("MainWindow", "K\341\272\277t n\341\273\221i", Q_NULLPTR));
-        mAppStatus->setText(QString());
         groupBox_2->setTitle(QApplication::translate("MainWindow", "Bia s\341\273\221 4", Q_NULLPTR));
         groupBox_5->setTitle(QApplication::translate("MainWindow", "L\341\272\247n 3", Q_NULLPTR));
         mTarget_1_ThirdValue->setText(QApplication::translate("MainWindow", "0", Q_NULLPTR));
@@ -879,11 +989,33 @@ public:
         groupBox_19->setTitle(QApplication::translate("MainWindow", "L\341\272\247n 1", Q_NULLPTR));
         mTarget_3_FirstValue->setText(QApplication::translate("MainWindow", "0", Q_NULLPTR));
         mTarget_3_Clean->setText(QApplication::translate("MainWindow", "X\303\263a", Q_NULLPTR));
+        groupBox->setTitle(QApplication::translate("MainWindow", "Tr\341\272\241ng Th\303\241i", Q_NULLPTR));
+        groupBox_21->setTitle(QApplication::translate("MainWindow", "C\341\273\225ng COM", Q_NULLPTR));
+        mAppComport->setText(QString());
+        groupBox_22->setTitle(QApplication::translate("MainWindow", "ID Thu", Q_NULLPTR));
+        mAddressStart->setText(QString());
+        groupBox_23->setTitle(QApplication::translate("MainWindow", "ID Ph\303\241t", Q_NULLPTR));
+        mAddressDest->setText(QString());
+        groupBox_24->setTitle(QApplication::translate("MainWindow", "X\303\263a d\341\273\257 li\341\273\207u", Q_NULLPTR));
+        mAppClean->setText(QApplication::translate("MainWindow", "X\303\263a", Q_NULLPTR));
+        groupBox_20->setTitle(QApplication::translate("MainWindow", "K\341\272\277t n\341\273\221i", Q_NULLPTR));
+        mAppStatus->setText(QString());
         groupBox_49->setTitle(QApplication::translate("MainWindow", "Th\303\264ng Tin", Q_NULLPTR));
         groupBox_50->setTitle(QApplication::translate("MainWindow", "\304\220\341\273\223ng Ch\303\255", Q_NULLPTR));
         groupBox_53->setTitle(QApplication::translate("MainWindow", "Ho\303\240n Th\303\240nh", Q_NULLPTR));
         mInofor1_Add->setText(QApplication::translate("MainWindow", "L\306\260u", Q_NULLPTR));
         tabWidget->setTabText(tabWidget->indexOf(tab), QApplication::translate("MainWindow", "\304\220i\341\273\203m bia", Q_NULLPTR));
+        groupBox_25->setTitle(QApplication::translate("MainWindow", "Th\303\240nh t\303\255ch", Q_NULLPTR));
+        groupBox_30->setTitle(QApplication::translate("MainWindow", "Gi\341\273\217i", Q_NULLPTR));
+        mKqGoi->setText(QApplication::translate("MainWindow", "0.00 %", Q_NULLPTR));
+        groupBox_26->setTitle(QApplication::translate("MainWindow", "Kh\303\241", Q_NULLPTR));
+        mKqKha->setText(QApplication::translate("MainWindow", "0.00 %", Q_NULLPTR));
+        groupBox_28->setTitle(QApplication::translate("MainWindow", "Kh\303\264ng \304\221\341\272\241t", Q_NULLPTR));
+        mKqKhongDat->setText(QApplication::translate("MainWindow", "0.00 %", Q_NULLPTR));
+        groupBox_27->setTitle(QApplication::translate("MainWindow", "\304\220\341\272\241t", Q_NULLPTR));
+        mKqDat->setText(QApplication::translate("MainWindow", "0.00 %", Q_NULLPTR));
+        groupBox_29->setTitle(QApplication::translate("MainWindow", "L\306\260u file", Q_NULLPTR));
+        pushButton->setText(QApplication::translate("MainWindow", "L\306\260u", Q_NULLPTR));
         QTableWidgetItem *___qtablewidgetitem = tableWidget->horizontalHeaderItem(0);
         ___qtablewidgetitem->setText(QApplication::translate("MainWindow", "T\303\252n", Q_NULLPTR));
         QTableWidgetItem *___qtablewidgetitem1 = tableWidget->horizontalHeaderItem(1);
@@ -910,8 +1042,6 @@ public:
         ___qtablewidgetitem11->setText(QApplication::translate("MainWindow", "T\341\273\225ng", Q_NULLPTR));
         QTableWidgetItem *___qtablewidgetitem12 = tableWidget->horizontalHeaderItem(12);
         ___qtablewidgetitem12->setText(QApplication::translate("MainWindow", "X\341\272\277p Lo\341\272\241i", Q_NULLPTR));
-        pushButton->setText(QApplication::translate("MainWindow", "L\306\260u", Q_NULLPTR));
-        label->setText(QString());
         tabWidget->setTabText(tabWidget->indexOf(tab_2), QApplication::translate("MainWindow", "K\341\272\277t qu\341\272\243", Q_NULLPTR));
     } // retranslateUi
 
