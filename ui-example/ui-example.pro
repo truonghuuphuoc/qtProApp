@@ -27,12 +27,16 @@ SOURCES += main.cpp\
         mainwindow.cpp \
     connectionbackground.cpp \
     phnmessage.cpp \
-    phnsysconfig.cpp
+    phnsysconfig.cpp \
+    phnevent.cpp \
+    phnsoundplayer.cpp
 
 HEADERS  += mainwindow.h \
     connectionbackground.h \
     phnmessage.h \
-    phnsysconfig.h
+    phnsysconfig.h \
+    phnevent.h \
+    phnsoundplayer.h
 
 FORMS    += mainwindow.ui
 
