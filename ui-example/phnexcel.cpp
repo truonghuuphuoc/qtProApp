@@ -165,51 +165,54 @@ void phnExcel::phnAddDetailFile(QTableWidget *tableWidget, Book* book, Sheet *sh
         startIndex += 1;
     }
 
-    Font* fontResult = book->addFont();
-    fontResult->setColor(COLOR_BLACK);
-    fontResult->setSize(11);
-    fontResult->setBold(true);
+    if(startIndex > 5)
+    {
+        Font* fontResult = book->addFont();
+        fontResult->setColor(COLOR_BLACK);
+        fontResult->setSize(11);
+        fontResult->setBold(true);
 
-    Format* boldResult = book->addFormat();
-    boldResult->setAlignH(ALIGNH_LEFT);
-    boldResult->setAlignV(ALIGNV_CENTER);
-    boldResult->setFont(fontResult);
-    boldResult->setBorder(BORDERSTYLE_THIN);
+        Format* boldResult = book->addFormat();
+        boldResult->setAlignH(ALIGNH_LEFT);
+        boldResult->setAlignV(ALIGNV_CENTER);
+        boldResult->setFont(fontResult);
+        boldResult->setBorder(BORDERSTYLE_THIN);
 
-    Format* boldValue = book->addFormat();
-    boldValue->setAlignH(ALIGNH_CENTER);
-    boldValue->setAlignV(ALIGNV_CENTER);
-    boldValue->setFont(fontResult);
-    boldValue->setBorder(BORDERSTYLE_THIN);
-    boldValue->setNumFormat(NUMFORMAT_PERCENT_D2);;
+        Format* boldValue = book->addFormat();
+        boldValue->setAlignH(ALIGNH_CENTER);
+        boldValue->setAlignV(ALIGNV_CENTER);
+        boldValue->setFont(fontResult);
+        boldValue->setBorder(BORDERSTYLE_THIN);
+        boldValue->setNumFormat(NUMFORMAT_PERCENT_D2);;
 
-    str_index = QString("%1").arg(startIndex, 0, 10, QChar('0'));;
+        str_index = QString("%1").arg(startIndex, 0, 10, QChar('0'));;
 
-    sum= "Giỏi";
-    sheet->writeStr(startIndex + 1, 1, sum.toStdWString().c_str(), boldResult);
-    sum = "COUNTIFS(P6:P" + str_index + ", \">= 72\",P6:P" + str_index +", \"<= 90\") / COUNTIF(P6:P" +str_index+", \">= 0\")";
-    sheet->writeFormula(startIndex + 1, 2, sum.toStdWString().c_str(), boldValue);
-    startIndex += 1;
-
-
-    sum= "Khá";
-    sheet->writeStr(startIndex + 1, 1, sum.toStdWString().c_str(), boldResult);
-    sum = "COUNTIFS(P6:P" + str_index + ", \">= 59\",P6:P" + str_index +", \"<= 71\") / COUNTIF(P6:P" +str_index+", \">= 0\")";
-    sheet->writeFormula(startIndex + 1, 2, sum.toStdWString().c_str(), boldValue);
-    startIndex += 1;
-
-    sum= "Đạt";
-    sheet->writeStr(startIndex + 1, 1, sum.toStdWString().c_str(), boldResult);
-    sum = "COUNTIFS(P6:P" + str_index + ", \">= 45\",P6:P" + str_index +", \"<= 58\") / COUNTIF(P6:P" +str_index+", \">= 0\")";
-    sheet->writeFormula(startIndex + 1, 2, sum.toStdWString().c_str(), boldValue);
-    startIndex += 1;
+        sum= "Giỏi";
+        sheet->writeStr(startIndex + 1, 1, sum.toStdWString().c_str(), boldResult);
+        sum = "COUNTIFS(P6:P" + str_index + ", \">= 72\",P6:P" + str_index +", \"<= 90\") / COUNTIF(P6:P" +str_index+", \">= 0\")";
+        sheet->writeFormula(startIndex + 1, 2, sum.toStdWString().c_str(), boldValue);
+        startIndex += 1;
 
 
-    sum= "Không đạt";
-    sheet->writeStr(startIndex + 1, 1, sum.toStdWString().c_str(), boldResult);
-    sum = "COUNTIFS(P6:P" + str_index + ", \">= 0\",P6:P" + str_index +", \"<= 44\") / COUNTIF(P6:P" +str_index+", \">= 0\")";
-    sheet->writeFormula(startIndex + 1, 2, sum.toStdWString().c_str(), boldValue);
-    startIndex += 1;
+        sum= "Khá";
+        sheet->writeStr(startIndex + 1, 1, sum.toStdWString().c_str(), boldResult);
+        sum = "COUNTIFS(P6:P" + str_index + ", \">= 59\",P6:P" + str_index +", \"<= 71\") / COUNTIF(P6:P" +str_index+", \">= 0\")";
+        sheet->writeFormula(startIndex + 1, 2, sum.toStdWString().c_str(), boldValue);
+        startIndex += 1;
+
+        sum= "Đạt";
+        sheet->writeStr(startIndex + 1, 1, sum.toStdWString().c_str(), boldResult);
+        sum = "COUNTIFS(P6:P" + str_index + ", \">= 45\",P6:P" + str_index +", \"<= 58\") / COUNTIF(P6:P" +str_index+", \">= 0\")";
+        sheet->writeFormula(startIndex + 1, 2, sum.toStdWString().c_str(), boldValue);
+        startIndex += 1;
+
+
+        sum= "Không đạt";
+        sheet->writeStr(startIndex + 1, 1, sum.toStdWString().c_str(), boldResult);
+        sum = "COUNTIFS(P6:P" + str_index + ", \">= 0\",P6:P" + str_index +", \"<= 44\") / COUNTIF(P6:P" +str_index+", \">= 0\")";
+        sheet->writeFormula(startIndex + 1, 2, sum.toStdWString().c_str(), boldValue);
+        startIndex += 1;
+    }
 
     sheet->setCol(1, 1, nameMaxLength + 5);
     sheet->setCol(16, 16, 20);

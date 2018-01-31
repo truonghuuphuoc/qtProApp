@@ -67,10 +67,19 @@ void phnSoundPlayer::run()
             mPlayer->play();
 
             isPlay = true;
+
+            QThread::msleep(mPlayer->duration());
         }
         else
         {
-            QThread::msleep(300);
+            if(mPlayer->duration() != 0)
+            {
+                QThread::msleep(mPlayer->duration());
+            }
+            else
+            {
+                QThread::msleep(300);
+            }
         }
     }
 }

@@ -35,9 +35,18 @@ typedef enum
     EVNT_UD_DEST_ADDR   = 0x01,
     EVNT_UD_SERIAL_PORT = 0x02,
     EVNT_UD_APP_STATUS  = 0x03,
-    EVNT_UD_TARGET_1    = 0x04,
-    EVNT_UD_TARGET_2    = 0x05,
-    EVNT_UD_TARGET_3    = 0x06,
+
+    EVNT_UD_Z1_TARGET_1 = 0x04,
+    EVNT_UD_Z1_TARGET_2 = 0x05,
+    EVNT_UD_Z1_TARGET_3 = 0x06,
+
+    EVNT_UD_Z2_TARGET_1 = 0x07,
+    EVNT_UD_Z2_TARGET_2 = 0x08,
+    EVNT_UD_Z2_TARGET_3 = 0x09,
+
+    EVNT_UD_Z3_TARGET_1 = 0x0A,
+    EVNT_UD_Z3_TARGET_2 = 0x0B,
+    EVNT_UD_Z3_TARGET_3 = 0x0C,
 }phnConnectionEvent;
 
 typedef enum
