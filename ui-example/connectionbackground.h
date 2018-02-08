@@ -11,7 +11,7 @@
 #include <QtSerialPort/QSerialPort>
 #include <QtSerialPort/QSerialPortInfo>
 
-#define LOG_MESSAGE     1
+#define LOG_MESSAGE     0
 
 #define MESG_BUFFER_SIZE    200
 

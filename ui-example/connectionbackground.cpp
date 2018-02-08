@@ -277,7 +277,7 @@ void ConnectionBackground::run()
 
         case STAT_PROC_SLEEP:
             step = STAT_WRIT_DATA;
-            QThread::msleep(300);
+            QThread::msleep(500);
             break;
 
         case STAT_DEVI_ERROR:
@@ -418,7 +418,7 @@ bool ConnectionBackground::phRfReceive_ReceiveMessage()
     int timeout;
     uint8_t recv;
 
-    timeout = 3000; //3 seconds
+    timeout = 1000; //1 seconds
     while (timeout >0)
     {
         if(mSerialPort->bytesAvailable() != 0)
