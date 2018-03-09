@@ -45,7 +45,7 @@ void ConnectionBackground::run()
 {
     ConnectionProcess step = STAT_SCAN_DEVICE;
 
-    uint8_t status[10];
+    uint8_t status[EVNT_UD_MAX];
 
     emit progressChanged(EVNT_UD_START_ADDR, mRf_RecvAddress);
     emit progressChanged(EVNT_UD_DEST_ADDR, mRf_TransAddress);
@@ -147,107 +147,20 @@ void ConnectionBackground::run()
                 status[0] = APP_STATUS_ONLINE;
             }
 
-            if(mRf_DataPosition >= 6)
+            for(int target = 3; target < mRf_DataPosition; target ++)
             {
-                //Be 1 - Bia so 4
-                if(status[1] != mRf_MessageData[3])
+                //Be n - Bia so 4
+                if(status[target] != mRf_MessageData[target])
                 {
-                    emit progressChanged(EVNT_UD_Z1_TARGET_1, mRf_MessageData[3]);
+                    emit progressChanged(EVNT_UD_Z1_TARGET_1 + (target -3), mRf_MessageData[target]);
                 }
-                else if(mRf_MessageData[3] != PHN_DEV_OFFLINE && mRf_MessageData[3] !=PHN_DEV_ONLINE)
+                else if(mRf_MessageData[target] != PHN_DEV_OFFLINE && mRf_MessageData[target] !=PHN_DEV_ONLINE)
                 {
-                    emit progressChanged(EVNT_UD_Z1_TARGET_1, mRf_MessageData[3]);
-                }
-
-                //Be 1 - Bia so 7
-                if(status[2] != mRf_MessageData[4])
-                {
-                    emit progressChanged(EVNT_UD_Z1_TARGET_2, mRf_MessageData[4]);
-                }
-                else if(mRf_MessageData[4] != PHN_DEV_OFFLINE && mRf_MessageData[4] !=PHN_DEV_ONLINE)
-                {
-                    emit progressChanged(EVNT_UD_Z1_TARGET_2, mRf_MessageData[4]);
-                }
-
-                //Be 1 - Bia so 8
-                if(status[3] != mRf_MessageData[5])
-                {
-                    emit progressChanged(EVNT_UD_Z1_TARGET_3, mRf_MessageData[5]);
-                }
-                else if(mRf_MessageData[5] != PHN_DEV_OFFLINE && mRf_MessageData[5] !=PHN_DEV_ONLINE)
-                {
-                    emit progressChanged(EVNT_UD_Z1_TARGET_3, mRf_MessageData[5]);
+                    emit progressChanged(EVNT_UD_Z1_TARGET_1 + (target -3), mRf_MessageData[target]);
                 }
             }
 
-            if(mRf_DataPosition >= 9)
-            {
-                //Be 2 - Bia so 4
-                if(status[4] != mRf_MessageData[6])
-                {
-                    emit progressChanged(EVNT_UD_Z2_TARGET_1, mRf_MessageData[6]);
-                }
-                else if(mRf_MessageData[6] != PHN_DEV_OFFLINE && mRf_MessageData[6] !=PHN_DEV_ONLINE)
-                {
-                    emit progressChanged(EVNT_UD_Z2_TARGET_1, mRf_MessageData[6]);
-                }
-
-                //Be 2 - Bia so 7
-                if(status[5] != mRf_MessageData[7])
-                {
-                    emit progressChanged(EVNT_UD_Z2_TARGET_2, mRf_MessageData[7]);
-                }
-                else if(mRf_MessageData[7] != PHN_DEV_OFFLINE && mRf_MessageData[7] !=PHN_DEV_ONLINE)
-                {
-                    emit progressChanged(EVNT_UD_Z2_TARGET_2, mRf_MessageData[7]);
-                }
-
-                //Be 2 - Bia so 8
-                if(status[6] != mRf_MessageData[8])
-                {
-                    emit progressChanged(EVNT_UD_Z2_TARGET_3, mRf_MessageData[8]);
-                }
-                else if(mRf_MessageData[8] != PHN_DEV_OFFLINE && mRf_MessageData[8] !=PHN_DEV_ONLINE)
-                {
-                    emit progressChanged(EVNT_UD_Z2_TARGET_3, mRf_MessageData[8]);
-                }
-            }
-
-            if(mRf_DataPosition >= 12)
-            {
-                //Be 3 - Bia so 4
-                if(status[7] != mRf_MessageData[9])
-                {
-                    emit progressChanged(EVNT_UD_Z3_TARGET_1, mRf_MessageData[9]);
-                }
-                else if(mRf_MessageData[9] != PHN_DEV_OFFLINE && mRf_MessageData[9] !=PHN_DEV_ONLINE)
-                {
-                    emit progressChanged(EVNT_UD_Z3_TARGET_1, mRf_MessageData[9]);
-                }
-
-                //Be 3 - Bia so 7
-                if(status[8] != mRf_MessageData[10])
-                {
-                    emit progressChanged(EVNT_UD_Z3_TARGET_2, mRf_MessageData[10]);
-                }
-                else if(mRf_MessageData[10] != PHN_DEV_OFFLINE && mRf_MessageData[10] !=PHN_DEV_ONLINE)
-                {
-                    emit progressChanged(EVNT_UD_Z3_TARGET_2, mRf_MessageData[10]);
-                }
-
-
-                //Be 3 - Bia so 8
-                if(status[8] != mRf_MessageData[11])
-                {
-                    emit progressChanged(EVNT_UD_Z3_TARGET_3, mRf_MessageData[11]);
-                }
-                else if(mRf_MessageData[11] != PHN_DEV_OFFLINE && mRf_MessageData[11] !=PHN_DEV_ONLINE)
-                {
-                    emit progressChanged(EVNT_UD_Z3_TARGET_3, mRf_MessageData[11]);
-                }
-            }
-
-            memcpy(&status[1], &mRf_MessageData[3], mRf_DataPosition - 3);
+            memcpy(&status[3], &mRf_MessageData[3], mRf_DataPosition - 3);
 
             if(mRf_Ack)
             {

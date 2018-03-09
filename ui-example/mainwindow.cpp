@@ -37,46 +37,138 @@ MainWindow::MainWindow(QWidget *parent) :
 
     QPixmap offlineStatus(mOfflineImagePath);
 
-    //Zone 1
-    mZone1_Target_1_Index = 0;
-    mZone1_Target_2_Index = 0;
-    mZone1_Target_3_Index = 0;
+    //UI Zone 1
+    mZone_Status_Label[PHN_ZONE_1][0]   = ui->m_Zone_1_T1_Status;
+    mZone_Status_Label[PHN_ZONE_1][1]   = ui->m_Zone_1_T2_Status;
+    mZone_Status_Label[PHN_ZONE_1][2]   = ui->m_Zone_1_T3_Status;
 
-    memset(mZone1_Target_1_Value, 0x00, sizeof(mZone1_Target_1_Value));
-    memset(mZone1_Target_2_Value, 0x00, sizeof(mZone1_Target_2_Value));
-    memset(mZone1_Target_3_Value, 0x00, sizeof(mZone1_Target_3_Value));
+    mZone_Value_Label[PHN_ZONE_1][0][0] = ui->m_Zone_1_T1_Value_1;
+    mZone_Value_Label[PHN_ZONE_1][0][1] = ui->m_Zone_1_T1_Value_2;
+    mZone_Value_Label[PHN_ZONE_1][0][2] = ui->m_Zone_1_T1_Value_2;
+    mZone_Value_Label[PHN_ZONE_1][0][3] = ui->m_Zone_1_T1_Value_Total;
 
-    ui->mZone1_Target_1_Status->setPixmap(offlineStatus);
-    ui->mZone1_Target_2_Status->setPixmap(offlineStatus);
-    ui->mZone1_Target_3_Status->setPixmap(offlineStatus);
+    mZone_Value_Label[PHN_ZONE_1][1][0] = ui->m_Zone_1_T2_Value_1;
+    mZone_Value_Label[PHN_ZONE_1][1][1] = ui->m_Zone_1_T2_Value_2;
+    mZone_Value_Label[PHN_ZONE_1][1][2] = ui->m_Zone_1_T2_Value_2;
+    mZone_Value_Label[PHN_ZONE_1][1][3] = ui->m_Zone_1_T2_Value_Total;
 
-    //Zone 2
-    mZone2_Target_1_Index = 0;
-    mZone2_Target_2_Index = 0;
-    mZone2_Target_3_Index = 0;
+    mZone_Value_Label[PHN_ZONE_1][2][0] = ui->m_Zone_1_T3_Value_1;
+    mZone_Value_Label[PHN_ZONE_1][2][1] = ui->m_Zone_1_T3_Value_2;
+    mZone_Value_Label[PHN_ZONE_1][2][2] = ui->m_Zone_1_T3_Value_2;
+    mZone_Value_Label[PHN_ZONE_1][2][3] = ui->m_Zone_1_T3_Value_Total;
 
-    memset(mZone2_Target_1_Value, 0x00, sizeof(mZone2_Target_1_Value));
-    memset(mZone2_Target_2_Value, 0x00, sizeof(mZone2_Target_2_Value));
-    memset(mZone2_Target_3_Value, 0x00, sizeof(mZone2_Target_3_Value));
+    //UI Zone 2
+    mZone_Status_Label[PHN_ZONE_2][0]   = ui->m_Zone_2_T1_Status;
+    mZone_Status_Label[PHN_ZONE_2][1]   = ui->m_Zone_2_T2_Status;
+    mZone_Status_Label[PHN_ZONE_2][2]   = ui->m_Zone_2_T3_Status;
 
-    ui->mZone2_Target_1_Status->setPixmap(offlineStatus);
-    ui->mZone2_Target_2_Status->setPixmap(offlineStatus);
-    ui->mZone2_Target_3_Status->setPixmap(offlineStatus);
+    mZone_Value_Label[PHN_ZONE_2][0][0] = ui->m_Zone_2_T1_Value_1;
+    mZone_Value_Label[PHN_ZONE_2][0][1] = ui->m_Zone_2_T1_Value_2;
+    mZone_Value_Label[PHN_ZONE_2][0][2] = ui->m_Zone_2_T1_Value_2;
+    mZone_Value_Label[PHN_ZONE_2][0][3] = ui->m_Zone_2_T1_Value_Total;
+
+    mZone_Value_Label[PHN_ZONE_2][1][0] = ui->m_Zone_2_T2_Value_1;
+    mZone_Value_Label[PHN_ZONE_2][1][1] = ui->m_Zone_2_T2_Value_2;
+    mZone_Value_Label[PHN_ZONE_2][1][2] = ui->m_Zone_2_T2_Value_2;
+    mZone_Value_Label[PHN_ZONE_2][1][3] = ui->m_Zone_2_T2_Value_Total;
+
+    mZone_Value_Label[PHN_ZONE_2][2][0] = ui->m_Zone_2_T3_Value_1;
+    mZone_Value_Label[PHN_ZONE_2][2][1] = ui->m_Zone_2_T3_Value_2;
+    mZone_Value_Label[PHN_ZONE_2][2][2] = ui->m_Zone_2_T3_Value_2;
+    mZone_Value_Label[PHN_ZONE_2][2][3] = ui->m_Zone_2_T3_Value_Total;
 
 
-    //Zone 3
-    mZone3_Target_1_Index = 0;
-    mZone3_Target_2_Index = 0;
-    mZone3_Target_3_Index = 0;
+    //UI Zone 3
+    mZone_Status_Label[PHN_ZONE_3][0]   = ui->m_Zone_3_T1_Status;
+    mZone_Status_Label[PHN_ZONE_3][1]   = ui->m_Zone_3_T2_Status;
+    mZone_Status_Label[PHN_ZONE_3][2]   = ui->m_Zone_3_T3_Status;
 
-    memset(mZone3_Target_1_Value, 0x00, sizeof(mZone3_Target_1_Value));
-    memset(mZone3_Target_2_Value, 0x00, sizeof(mZone3_Target_2_Value));
-    memset(mZone3_Target_3_Value, 0x00, sizeof(mZone3_Target_3_Value));
+    mZone_Value_Label[PHN_ZONE_3][0][0] = ui->m_Zone_3_T1_Value_1;
+    mZone_Value_Label[PHN_ZONE_3][0][1] = ui->m_Zone_3_T1_Value_2;
+    mZone_Value_Label[PHN_ZONE_3][0][2] = ui->m_Zone_3_T1_Value_2;
+    mZone_Value_Label[PHN_ZONE_3][0][3] = ui->m_Zone_3_T1_Value_Total;
 
-    ui->mZone3_Target_1_Status->setPixmap(offlineStatus);
-    ui->mZone3_Target_2_Status->setPixmap(offlineStatus);
-    ui->mZone3_Target_3_Status->setPixmap(offlineStatus);
+    mZone_Value_Label[PHN_ZONE_3][1][0] = ui->m_Zone_3_T2_Value_1;
+    mZone_Value_Label[PHN_ZONE_3][1][1] = ui->m_Zone_3_T2_Value_2;
+    mZone_Value_Label[PHN_ZONE_3][1][2] = ui->m_Zone_3_T2_Value_2;
+    mZone_Value_Label[PHN_ZONE_3][1][3] = ui->m_Zone_3_T2_Value_Total;
 
+    mZone_Value_Label[PHN_ZONE_3][2][0] = ui->m_Zone_3_T3_Value_1;
+    mZone_Value_Label[PHN_ZONE_3][2][1] = ui->m_Zone_3_T3_Value_2;
+    mZone_Value_Label[PHN_ZONE_3][2][2] = ui->m_Zone_3_T3_Value_2;
+    mZone_Value_Label[PHN_ZONE_3][2][3] = ui->m_Zone_3_T3_Value_Total;
+
+    //UI Zone 4
+    mZone_Status_Label[PHN_ZONE_4][0]   = ui->m_Zone_4_T1_Status;
+    mZone_Status_Label[PHN_ZONE_4][1]   = ui->m_Zone_4_T2_Status;
+    mZone_Status_Label[PHN_ZONE_4][2]   = ui->m_Zone_4_T3_Status;
+
+    mZone_Value_Label[PHN_ZONE_4][0][0] = ui->m_Zone_4_T1_Value_1;
+    mZone_Value_Label[PHN_ZONE_4][0][1] = ui->m_Zone_4_T1_Value_2;
+    mZone_Value_Label[PHN_ZONE_4][0][2] = ui->m_Zone_4_T1_Value_2;
+    mZone_Value_Label[PHN_ZONE_4][0][3] = ui->m_Zone_4_T1_Value_Total;
+
+    mZone_Value_Label[PHN_ZONE_4][1][0] = ui->m_Zone_4_T2_Value_1;
+    mZone_Value_Label[PHN_ZONE_4][1][1] = ui->m_Zone_4_T2_Value_2;
+    mZone_Value_Label[PHN_ZONE_4][1][2] = ui->m_Zone_4_T2_Value_2;
+    mZone_Value_Label[PHN_ZONE_4][1][3] = ui->m_Zone_4_T2_Value_Total;
+
+    mZone_Value_Label[PHN_ZONE_4][2][0] = ui->m_Zone_4_T3_Value_1;
+    mZone_Value_Label[PHN_ZONE_4][2][1] = ui->m_Zone_4_T3_Value_2;
+    mZone_Value_Label[PHN_ZONE_4][2][2] = ui->m_Zone_4_T3_Value_2;
+    mZone_Value_Label[PHN_ZONE_4][2][3] = ui->m_Zone_4_T3_Value_Total;
+
+    //UI Zone 5
+    mZone_Status_Label[PHN_ZONE_5][0]   = ui->m_Zone_5_T1_Status;
+    mZone_Status_Label[PHN_ZONE_5][1]   = ui->m_Zone_5_T2_Status;
+    mZone_Status_Label[PHN_ZONE_5][2]   = ui->m_Zone_5_T3_Status;
+
+    mZone_Value_Label[PHN_ZONE_5][0][0] = ui->m_Zone_5_T1_Value_1;
+    mZone_Value_Label[PHN_ZONE_5][0][1] = ui->m_Zone_5_T1_Value_2;
+    mZone_Value_Label[PHN_ZONE_5][0][2] = ui->m_Zone_5_T1_Value_2;
+    mZone_Value_Label[PHN_ZONE_5][0][3] = ui->m_Zone_5_T1_Value_Total;
+
+    mZone_Value_Label[PHN_ZONE_5][1][0] = ui->m_Zone_5_T2_Value_1;
+    mZone_Value_Label[PHN_ZONE_5][1][1] = ui->m_Zone_5_T2_Value_2;
+    mZone_Value_Label[PHN_ZONE_5][1][2] = ui->m_Zone_5_T2_Value_2;
+    mZone_Value_Label[PHN_ZONE_5][1][3] = ui->m_Zone_5_T2_Value_Total;
+
+    mZone_Value_Label[PHN_ZONE_5][2][0] = ui->m_Zone_5_T3_Value_1;
+    mZone_Value_Label[PHN_ZONE_5][2][1] = ui->m_Zone_5_T3_Value_2;
+    mZone_Value_Label[PHN_ZONE_5][2][2] = ui->m_Zone_5_T3_Value_2;
+    mZone_Value_Label[PHN_ZONE_5][2][3] = ui->m_Zone_5_T3_Value_Total;
+
+    //UI Zone 6
+    mZone_Status_Label[PHN_ZONE_6][0]   = ui->m_Zone_6_T1_Status;
+    mZone_Status_Label[PHN_ZONE_6][1]   = ui->m_Zone_6_T2_Status;
+    mZone_Status_Label[PHN_ZONE_6][2]   = ui->m_Zone_6_T3_Status;
+
+    mZone_Value_Label[PHN_ZONE_6][0][0] = ui->m_Zone_6_T1_Value_1;
+    mZone_Value_Label[PHN_ZONE_6][0][1] = ui->m_Zone_6_T1_Value_2;
+    mZone_Value_Label[PHN_ZONE_6][0][2] = ui->m_Zone_6_T1_Value_2;
+    mZone_Value_Label[PHN_ZONE_6][0][3] = ui->m_Zone_6_T1_Value_Total;
+
+    mZone_Value_Label[PHN_ZONE_6][1][0] = ui->m_Zone_6_T2_Value_1;
+    mZone_Value_Label[PHN_ZONE_6][1][1] = ui->m_Zone_6_T2_Value_2;
+    mZone_Value_Label[PHN_ZONE_6][1][2] = ui->m_Zone_6_T2_Value_2;
+    mZone_Value_Label[PHN_ZONE_6][1][3] = ui->m_Zone_6_T2_Value_Total;
+
+    mZone_Value_Label[PHN_ZONE_6][2][0] = ui->m_Zone_6_T3_Value_1;
+    mZone_Value_Label[PHN_ZONE_6][2][1] = ui->m_Zone_6_T3_Value_2;
+    mZone_Value_Label[PHN_ZONE_6][2][2] = ui->m_Zone_6_T3_Value_2;
+    mZone_Value_Label[PHN_ZONE_6][2][3] = ui->m_Zone_6_T3_Value_Total;
+
+    //Inforamtion
+    for(int zone = 0; zone < PHN_NUMBER_ZONE; zone ++)
+    {
+        for(int trg =0; trg < 3; trg ++)
+        {
+            mZone_Index[zone][trg]      = 0;
+            mZone_Value[zone][trg][0]   = 0;
+            mZone_Value[zone][trg][1]   = 0;
+            mZone_Value[zone][trg][2]   = 0;
+        }
+    }
 
     mKqTotal        = 0;
     mKqGoi          = 0;
@@ -91,6 +183,57 @@ MainWindow::~MainWindow()
 }
 
 
+void MainWindow::UpdateZoneStatus(int zone, int target, int infor)
+{
+    if(infor == PHN_DEV_OFFLINE)
+    {
+        QPixmap errorStatus (mOfflineImagePath);
+        mZone_Status_Label[zone][target]->setPixmap(errorStatus);
+    }
+    else if(infor == PHN_DEV_ONLINE)
+    {
+        QPixmap errorStatus (mOnlineImagePath);
+        mZone_Status_Label[zone][target]->setPixmap(errorStatus);
+    }
+    else
+    {
+
+        QString valuenumber = QString("%1").arg(infor, 0, 10, QChar('0'));
+
+        mZone_Value[zone][target][mZone_Index[zone][target]] = infor;
+
+        if(mZone_Index[zone][target] == 0)
+        {
+            mZone_Value_Label[zone][target][1]->setText("0");
+            mZone_Value_Label[zone][target][2]->setText("0");
+
+            mZone_Value[zone][target][1] = 0;
+            mZone_Value[zone][target][2] = 0;
+
+            mZone_Value_Label[zone][target][0]->setText(valuenumber);
+
+            mZone_Index[zone][target] = 1;
+        }
+        else if(mZone_Index[zone][target] == 1)
+        {
+            mZone_Value_Label[zone][target][1]->setText(valuenumber);
+
+            mZone_Index[zone][target] = 2;
+        }
+        else
+        {
+            mZone_Value_Label[zone][target][2]->setText(valuenumber);
+            mZone_Index[zone][target] = 0;
+        }
+
+        int number = mZone_Value[zone][target][0] + mZone_Value[zone][target][1] + mZone_Value[zone][target][2];
+
+         valuenumber = QString("%1").arg(number, 0, 10, QChar('0'));
+
+        mZone_Value_Label[zone][target][3]->setText(valuenumber);
+    }
+}
+
 void MainWindow::onProgressChanged(int event, int infor) {
 
     switch (event)
@@ -101,17 +244,13 @@ void MainWindow::onProgressChanged(int event, int infor) {
             QPixmap errorStatus (mOfflineImagePath);
             ui->mAppStatus->setPixmap(errorStatus);
 
-            ui->mZone1_Target_1_Status->setPixmap(errorStatus);
-            ui->mZone1_Target_2_Status->setPixmap(errorStatus);
-            ui->mZone1_Target_3_Status->setPixmap(errorStatus);
-
-            ui->mZone2_Target_1_Status->setPixmap(errorStatus);
-            ui->mZone2_Target_2_Status->setPixmap(errorStatus);
-            ui->mZone2_Target_3_Status->setPixmap(errorStatus);
-
-            ui->mZone3_Target_1_Status->setPixmap(errorStatus);
-            ui->mZone3_Target_2_Status->setPixmap(errorStatus);
-            ui->mZone3_Target_3_Status->setPixmap(errorStatus);
+            for(int zone = 0; zone < PHN_NUMBER_ZONE; zone ++)
+            {
+                for(int trg =0; trg < 3; trg ++)
+                {
+                    mZone_Status_Label[PHN_ZONE_3][trg]->setPixmap(errorStatus);
+                }
+            }
         }
         else if(infor == APP_STATUS_ONLINE)
         {
@@ -125,17 +264,14 @@ void MainWindow::onProgressChanged(int event, int infor) {
             ui->mAppComport->setText("");
 
             QPixmap offlineStatus (mOfflineImagePath);
-            ui->mZone1_Target_1_Status->setPixmap(offlineStatus);
-            ui->mZone1_Target_2_Status->setPixmap(offlineStatus);
-            ui->mZone1_Target_3_Status->setPixmap(offlineStatus);
 
-            ui->mZone2_Target_1_Status->setPixmap(offlineStatus);
-            ui->mZone2_Target_2_Status->setPixmap(offlineStatus);
-            ui->mZone2_Target_3_Status->setPixmap(offlineStatus);
-
-            ui->mZone3_Target_1_Status->setPixmap(offlineStatus);
-            ui->mZone3_Target_2_Status->setPixmap(offlineStatus);
-            ui->mZone3_Target_3_Status->setPixmap(offlineStatus);
+            for(int zone = 0; zone < PHN_NUMBER_ZONE; zone ++)
+            {
+                for(int trg =0; trg < 3; trg ++)
+                {
+                    mZone_Status_Label[PHN_ZONE_3][trg]->setPixmap(offlineStatus);
+                }
+            }
         }
         break;
 
@@ -162,469 +298,117 @@ void MainWindow::onProgressChanged(int event, int infor) {
 
 /****************************** ZONE 1 *************************************/
     case EVNT_UD_Z1_TARGET_1:
-
-
-        if(infor == PHN_DEV_OFFLINE)
-        {
-            QPixmap errorStatus (mOfflineImagePath);
-            ui->mZone1_Target_1_Status->setPixmap(errorStatus);
-        }
-        else if(infor == PHN_DEV_ONLINE)
-        {
-            QPixmap errorStatus (mOnlineImagePath);
-            ui->mZone1_Target_1_Status->setPixmap(errorStatus);
-        }
-        else
-        {
-
-            QString valuenumber = QString("%1").arg(infor, 0, 10, QChar('0'));
-
-            mZone1_Target_1_Value[mZone1_Target_1_Index] = infor;
-
-            if(mZone1_Target_1_Index == 0)
-            {
-                ui->mZone1_Target_1_ThirdValue->setText("0");
-                ui->mZone1_Target_1_SecondValue->setText("0");
-
-                mZone1_Target_1_Value[1] = 0;
-                mZone1_Target_1_Value[2] = 0;
-
-                ui->mZone1_Target_1_FirstValue->setText(valuenumber);
-
-                mZone1_Target_1_Index = 1;
-            }
-            else if(mZone1_Target_1_Index == 1)
-            {
-                ui->mZone1_Target_1_SecondValue->setText(valuenumber);
-
-                mZone1_Target_1_Index = 2;
-            }
-            else
-            {
-                ui->mZone1_Target_1_ThirdValue->setText(valuenumber);
-                mZone1_Target_1_Index = 0;
-            }
-
-            int number = mZone1_Target_1_Value[0] + mZone1_Target_1_Value[1] + mZone1_Target_1_Value[2];
-
-             valuenumber = QString("%1").arg(number, 0, 10, QChar('0'));
-
-             ui->mZone1_Target_1_TotalValue->setText(valuenumber);
-        }
+    {
+        UpdateZoneStatus(PHN_ZONE_1, 0, infor);
         break;
+    }
 
     case EVNT_UD_Z1_TARGET_2:
-        if(infor == PHN_DEV_OFFLINE)
-        {
-            QPixmap errorStatus (mOfflineImagePath);
-            ui->mZone1_Target_2_Status->setPixmap(errorStatus);
-        }
-        else if(infor == PHN_DEV_ONLINE)
-        {
-            QPixmap errorStatus (mOnlineImagePath);
-            ui->mZone1_Target_2_Status->setPixmap(errorStatus);
-        }
-        else
-        {
-
-            QString valuenumber = QString("%1").arg(infor, 0, 10, QChar('0'));
-
-            mZone1_Target_2_Value[mZone1_Target_2_Index] = infor;
-
-            if(mZone1_Target_2_Index == 0)
-            {
-                ui->mZone1_Target_2_ThirdValue->setText("0");
-                ui->mZone1_Target_2_SecondValue->setText("0");
-
-
-                mZone1_Target_2_Value[1] = 0;
-                mZone1_Target_2_Value[2] = 0;
-
-                ui->mZone1_Target_2_FirstValue->setText(valuenumber);
-
-                mZone1_Target_2_Index = 1;
-            }
-            else if(mZone1_Target_2_Index == 1)
-            {
-                ui->mZone1_Target_2_SecondValue->setText(valuenumber);
-
-                mZone1_Target_2_Index = 2;
-            }
-            else
-            {
-               ui->mZone1_Target_2_ThirdValue->setText(valuenumber);
-                mZone1_Target_2_Index = 0;
-            }
-
-            int number = mZone1_Target_2_Value[0] + mZone1_Target_2_Value[1] + mZone1_Target_2_Value[2];
-
-            valuenumber = QString("%1").arg(number, 0, 10, QChar('0'));
-
-            ui->mZone1_Target_2_TotalValue->setText(valuenumber);
-        }
+    {
+        UpdateZoneStatus(PHN_ZONE_1, 1, infor);
         break;
+    }
 
     case EVNT_UD_Z1_TARGET_3:
-        if(infor == PHN_DEV_OFFLINE)
-        {
-            QPixmap errorStatus (mOfflineImagePath);
-            ui->mZone1_Target_3_Status->setPixmap(errorStatus);
-        }
-        else if(infor == PHN_DEV_ONLINE)
-        {
-            QPixmap errorStatus (mOnlineImagePath);
-            ui->mZone1_Target_3_Status->setPixmap(errorStatus);
-        }
-        else
-        {
-
-            QString valuenumber = QString("%1").arg(infor, 0, 10, QChar('0'));
-
-            mZone1_Target_3_Value[mZone1_Target_3_Index] = infor;
-
-            if(mZone1_Target_3_Index == 0)
-            {
-                ui->mZone1_Target_3_ThirdValue->setText("0");
-                ui->mZone1_Target_3_SecondValue->setText("0");
-
-
-                mZone1_Target_3_Value[1] = 0;
-                mZone1_Target_3_Value[2] = 0;
-
-                ui->mZone1_Target_3_FirstValue->setText(valuenumber);
-
-                mZone1_Target_3_Index = 1;
-            }
-            else if(mZone1_Target_3_Index == 1)
-            {
-                ui->mZone1_Target_3_SecondValue->setText(valuenumber);
-
-                mZone1_Target_3_Index = 2;
-            }
-            else
-            {
-                ui->mZone1_Target_3_ThirdValue->setText(valuenumber);
-                mZone1_Target_3_Index = 0;
-            }
-
-            int number = mZone1_Target_3_Value[0] + mZone1_Target_3_Value[1] + mZone1_Target_3_Value[2];
-
-            valuenumber = QString("%1").arg(number, 0, 10, QChar('0'));
-
-            ui->mZone1_Target_3_TotalValue->setText(valuenumber);
-        }
+    {
+        UpdateZoneStatus(PHN_ZONE_1, 2, infor);
         break;
+    }
 
 /****************************** ZONE 2 *************************************/
     case EVNT_UD_Z2_TARGET_1:
-
-
-        if(infor == PHN_DEV_OFFLINE)
-        {
-            QPixmap errorStatus (mOfflineImagePath);
-            ui->mZone2_Target_1_Status->setPixmap(errorStatus);
-        }
-        else if(infor == PHN_DEV_ONLINE)
-        {
-            QPixmap errorStatus (mOnlineImagePath);
-            ui->mZone2_Target_1_Status->setPixmap(errorStatus);
-        }
-        else
-        {
-
-            QString valuenumber = QString("%1").arg(infor, 0, 10, QChar('0'));
-
-            mZone2_Target_1_Value[mZone2_Target_1_Index] = infor;
-
-            if(mZone2_Target_1_Index == 0)
-            {
-                ui->mZone2_Target_1_ThirdValue->setText("0");
-                ui->mZone2_Target_1_SecondValue->setText("0");
-
-                mZone2_Target_1_Value[1] = 0;
-                mZone2_Target_1_Value[2] = 0;
-
-                ui->mZone2_Target_1_FirstValue->setText(valuenumber);
-
-                mZone2_Target_1_Index = 1;
-            }
-            else if(mZone2_Target_1_Index == 1)
-            {
-                ui->mZone2_Target_1_SecondValue->setText(valuenumber);
-
-                mZone2_Target_1_Index = 2;
-            }
-            else
-            {
-                ui->mZone2_Target_1_ThirdValue->setText(valuenumber);
-                mZone2_Target_1_Index = 0;
-            }
-
-            int number = mZone2_Target_1_Value[0] + mZone2_Target_1_Value[1] + mZone2_Target_1_Value[2];
-
-             valuenumber = QString("%1").arg(number, 0, 10, QChar('0'));
-
-             ui->mZone2_Target_1_TotalValue->setText(valuenumber);
-        }
+    {
+        UpdateZoneStatus(PHN_ZONE_2, 0, infor);
         break;
+    }
 
     case EVNT_UD_Z2_TARGET_2:
-        if(infor == PHN_DEV_OFFLINE)
-        {
-            QPixmap errorStatus (mOfflineImagePath);
-            ui->mZone2_Target_2_Status->setPixmap(errorStatus);
-        }
-        else if(infor == PHN_DEV_ONLINE)
-        {
-            QPixmap errorStatus (mOnlineImagePath);
-            ui->mZone2_Target_2_Status->setPixmap(errorStatus);
-        }
-        else
-        {
-
-            QString valuenumber = QString("%1").arg(infor, 0, 10, QChar('0'));
-
-            mZone2_Target_2_Value[mZone2_Target_2_Index] = infor;
-
-            if(mZone2_Target_2_Index == 0)
-            {
-                ui->mZone2_Target_2_ThirdValue->setText("0");
-                ui->mZone2_Target_2_SecondValue->setText("0");
-
-
-                mZone2_Target_2_Value[1] = 0;
-                mZone2_Target_2_Value[2] = 0;
-
-                ui->mZone2_Target_2_FirstValue->setText(valuenumber);
-
-                mZone2_Target_2_Index = 1;
-            }
-            else if(mZone2_Target_2_Index == 1)
-            {
-                ui->mZone2_Target_2_SecondValue->setText(valuenumber);
-
-                mZone2_Target_2_Index = 2;
-            }
-            else
-            {
-                ui->mZone2_Target_2_ThirdValue->setText(valuenumber);
-                mZone2_Target_2_Index = 0;
-            }
-
-            int number = mZone2_Target_2_Value[0] + mZone2_Target_2_Value[1] + mZone2_Target_2_Value[2];
-
-            valuenumber = QString("%1").arg(number, 0, 10, QChar('0'));
-
-            ui->mZone2_Target_2_TotalValue->setText(valuenumber);
-        }
+    {
+        UpdateZoneStatus(PHN_ZONE_2, 1, infor);
         break;
+    }
 
     case EVNT_UD_Z2_TARGET_3:
-        if(infor == PHN_DEV_OFFLINE)
-        {
-            QPixmap errorStatus (mOfflineImagePath);
-            ui->mZone2_Target_3_Status->setPixmap(errorStatus);
-        }
-        else if(infor == PHN_DEV_ONLINE)
-        {
-            QPixmap errorStatus (mOnlineImagePath);
-            ui->mZone2_Target_3_Status->setPixmap(errorStatus);
-        }
-        else
-        {
-
-            QString valuenumber = QString("%1").arg(infor, 0, 10, QChar('0'));
-
-            mZone2_Target_3_Value[mZone2_Target_3_Index] = infor;
-
-            if(mZone2_Target_3_Index == 0)
-            {
-                ui->mZone2_Target_3_ThirdValue->setText("0");
-                ui->mZone2_Target_3_SecondValue->setText("0");
-
-
-                mZone2_Target_3_Value[1] = 0;
-                mZone2_Target_3_Value[2] = 0;
-
-                ui->mZone2_Target_3_FirstValue->setText(valuenumber);
-
-                mZone2_Target_3_Index = 1;
-            }
-            else if(mZone2_Target_3_Index == 1)
-            {
-                ui->mZone2_Target_3_SecondValue->setText(valuenumber);
-
-                mZone2_Target_3_Index = 2;
-            }
-            else
-            {
-                ui->mZone2_Target_3_ThirdValue->setText(valuenumber);
-                mZone2_Target_3_Index = 0;
-            }
-
-            int number = mZone2_Target_3_Value[0] + mZone2_Target_3_Value[1] + mZone2_Target_3_Value[2];
-
-            valuenumber = QString("%1").arg(number, 0, 10, QChar('0'));
-
-            ui->mZone2_Target_3_TotalValue->setText(valuenumber);
-        }
+    {
+        UpdateZoneStatus(PHN_ZONE_2, 2, infor);
         break;
+    }
 
 /****************************** ZONE 3 *************************************/
-            case EVNT_UD_Z3_TARGET_1:
+    case EVNT_UD_Z3_TARGET_1:
+    {
+        UpdateZoneStatus(PHN_ZONE_3, 0, infor);
+        break;
+    }
 
+    case EVNT_UD_Z3_TARGET_2:
+    {
+        UpdateZoneStatus(PHN_ZONE_3, 1, infor);
+        break;
+    }
 
-                if(infor == PHN_DEV_OFFLINE)
-                {
-                    QPixmap errorStatus (mOfflineImagePath);
-                    ui->mZone3_Target_1_Status->setPixmap(errorStatus);
-                }
-                else if(infor == PHN_DEV_ONLINE)
-                {
-                    QPixmap errorStatus (mOnlineImagePath);
-                    ui->mZone3_Target_1_Status->setPixmap(errorStatus);
-                }
-                else
-                {
+    case EVNT_UD_Z3_TARGET_3:
+    {
+        UpdateZoneStatus(PHN_ZONE_3, 2, infor);
+        break;
+    }
 
-                    QString valuenumber = QString("%1").arg(infor, 0, 10, QChar('0'));
+/****************************** ZONE 4 *************************************/
+    case EVNT_UD_Z4_TARGET_1:
+    {
+        UpdateZoneStatus(PHN_ZONE_4, 0, infor);
+        break;
+    }
 
-                    mZone3_Target_1_Value[mZone3_Target_1_Index] = infor;
+    case EVNT_UD_Z4_TARGET_2:
+    {
+        UpdateZoneStatus(PHN_ZONE_4, 1, infor);
+        break;
+    }
 
-                    if(mZone3_Target_1_Index == 0)
-                    {
-                        ui->mZone3_Target_1_ThirdValue->setText("0");
-                        ui->mZone3_Target_1_SecondValue->setText("0");
+    case EVNT_UD_Z4_TARGET_3:
+    {
+        UpdateZoneStatus(PHN_ZONE_4, 2, infor);
+        break;
+    }
 
-                        mZone3_Target_1_Value[1] = 0;
-                        mZone3_Target_1_Value[2] = 0;
+/****************************** ZONE 5 *************************************/
+    case EVNT_UD_Z5_TARGET_1:
+    {
+        UpdateZoneStatus(PHN_ZONE_5, 0, infor);
+        break;
+    }
 
-                        ui->mZone3_Target_1_FirstValue->setText(valuenumber);
+    case EVNT_UD_Z5_TARGET_2:
+    {
+        UpdateZoneStatus(PHN_ZONE_5, 1, infor);
+        break;
+    }
 
-                        mZone3_Target_1_Index = 1;
-                    }
-                    else if(mZone3_Target_1_Index == 1)
-                    {
-                        ui->mZone3_Target_1_SecondValue->setText(valuenumber);
+    case EVNT_UD_Z5_TARGET_3:
+    {
+        UpdateZoneStatus(PHN_ZONE_5, 2, infor);
+        break;
+    }
 
-                        mZone3_Target_1_Index = 2;
-                    }
-                    else
-                    {
-                        ui->mZone3_Target_1_ThirdValue->setText(valuenumber);
-                        mZone3_Target_1_Index = 0;
-                    }
+/****************************** ZONE 6 *************************************/
+    case EVNT_UD_Z6_TARGET_1:
+    {
+        UpdateZoneStatus(PHN_ZONE_6, 0, infor);
+        break;
+    }
 
-                    int number = mZone3_Target_1_Value[0] + mZone3_Target_1_Value[1] + mZone3_Target_1_Value[2];
+    case EVNT_UD_Z6_TARGET_2:
+    {
+        UpdateZoneStatus(PHN_ZONE_6, 1, infor);
+        break;
+    }
 
-                     valuenumber = QString("%1").arg(number, 0, 10, QChar('0'));
-
-                     ui->mZone3_Target_1_TotalValue->setText(valuenumber);
-                }
-                break;
-
-            case EVNT_UD_Z3_TARGET_2:
-                if(infor == PHN_DEV_OFFLINE)
-                {
-                    QPixmap errorStatus (mOfflineImagePath);
-                    ui->mZone3_Target_2_Status->setPixmap(errorStatus);
-                }
-                else if(infor == PHN_DEV_ONLINE)
-                {
-                    QPixmap errorStatus (mOnlineImagePath);
-                    ui->mZone3_Target_2_Status->setPixmap(errorStatus);
-                }
-                else
-                {
-
-                    QString valuenumber = QString("%1").arg(infor, 0, 10, QChar('0'));
-
-                    mZone3_Target_2_Value[mZone3_Target_2_Index] = infor;
-
-                    if(mZone3_Target_2_Index == 0)
-                    {
-                        ui->mZone3_Target_2_ThirdValue->setText("0");
-                        ui->mZone3_Target_2_SecondValue->setText("0");
-
-
-                        mZone3_Target_2_Value[1] = 0;
-                        mZone3_Target_2_Value[2] = 0;
-
-                        ui->mZone3_Target_2_FirstValue->setText(valuenumber);
-
-                        mZone3_Target_2_Index = 1;
-                    }
-                    else if(mZone3_Target_2_Index == 1)
-                    {
-                        ui->mZone3_Target_2_SecondValue->setText(valuenumber);
-
-                        mZone3_Target_2_Index = 2;
-                    }
-                    else
-                    {
-                        ui->mZone3_Target_2_ThirdValue->setText(valuenumber);
-                        mZone3_Target_2_Index = 0;
-                    }
-
-                    int number = mZone3_Target_2_Value[0] + mZone3_Target_2_Value[1] + mZone3_Target_2_Value[2];
-
-                    valuenumber = QString("%1").arg(number, 0, 10, QChar('0'));
-
-                    ui->mZone3_Target_2_TotalValue->setText(valuenumber);
-                }
-                break;
-
-            case EVNT_UD_Z3_TARGET_3:
-                if(infor == PHN_DEV_OFFLINE)
-                {
-                    QPixmap errorStatus (mOfflineImagePath);
-                    ui->mZone3_Target_3_Status->setPixmap(errorStatus);
-                }
-                else if(infor == PHN_DEV_ONLINE)
-                {
-                    QPixmap errorStatus (mOnlineImagePath);
-                    ui->mZone3_Target_3_Status->setPixmap(errorStatus);
-                }
-                else
-                {
-
-                    QString valuenumber = QString("%1").arg(infor, 0, 10, QChar('0'));
-
-                    mZone3_Target_3_Value[mZone3_Target_3_Index] = infor;
-
-                    if(mZone3_Target_3_Index == 0)
-                    {
-                        ui->mZone3_Target_3_ThirdValue->setText("0");
-                        ui->mZone3_Target_3_SecondValue->setText("0");
-
-
-                        mZone3_Target_3_Value[1] = 0;
-                        mZone3_Target_3_Value[2] = 0;
-
-                        ui->mZone3_Target_3_FirstValue->setText(valuenumber);
-
-                        mZone3_Target_3_Index = 1;
-                    }
-                    else if(mZone3_Target_3_Index == 1)
-                    {
-                        ui->mZone3_Target_3_SecondValue->setText(valuenumber);
-
-                        mZone3_Target_3_Index = 2;
-                    }
-                    else
-                    {
-                        ui->mZone3_Target_3_ThirdValue->setText(valuenumber);
-                        mZone3_Target_3_Index = 0;
-                    }
-
-                    int number = mZone3_Target_3_Value[0] + mZone3_Target_3_Value[1] + mZone3_Target_3_Value[2];
-
-                    valuenumber = QString("%1").arg(number, 0, 10, QChar('0'));
-
-                    ui->mZone3_Target_3_TotalValue->setText(valuenumber);
-                }
-                break;
-
+    case EVNT_UD_Z6_TARGET_3:
+    {
+        UpdateZoneStatus(PHN_ZONE_6, 2, infor);
+        break;
+    }
     default:
         break;
     }
@@ -633,82 +417,12 @@ void MainWindow::onProgressChanged(int event, int infor) {
 
 void MainWindow::on_mAppClean_clicked()
 {
-
-    //Zone 1
-    mZone1_Target_1_Index = 0;
-    mZone1_Target_2_Index = 0;
-    mZone1_Target_3_Index = 0;
-
-    memset(mZone1_Target_1_Value, 0x00, sizeof(mZone1_Target_1_Value));
-    memset(mZone1_Target_2_Value, 0x00, sizeof(mZone1_Target_2_Value));
-    memset(mZone1_Target_3_Value, 0x00, sizeof(mZone1_Target_3_Value));
-
-    ui->mZone1_Target_1_FirstValue->setText("0");
-    ui->mZone1_Target_2_FirstValue->setText("0");
-    ui->mZone1_Target_3_FirstValue->setText("0");
-
-    ui->mZone1_Target_1_SecondValue->setText("0");
-    ui->mZone1_Target_2_SecondValue->setText("0");
-    ui->mZone1_Target_3_SecondValue->setText("0");
-
-    ui->mZone1_Target_1_ThirdValue->setText("0");
-    ui->mZone1_Target_2_ThirdValue->setText("0");
-    ui->mZone1_Target_3_ThirdValue->setText("0");
-
-    ui->mZone1_Target_1_TotalValue->setText("0");
-    ui->mZone1_Target_2_TotalValue->setText("0");
-    ui->mZone1_Target_3_TotalValue->setText("0");
-
-    //Zone 2
-    mZone2_Target_1_Index = 0;
-    mZone2_Target_2_Index = 0;
-    mZone2_Target_3_Index = 0;
-
-    memset(mZone2_Target_1_Value, 0x00, sizeof(mZone2_Target_1_Value));
-    memset(mZone2_Target_2_Value, 0x00, sizeof(mZone2_Target_2_Value));
-    memset(mZone2_Target_3_Value, 0x00, sizeof(mZone2_Target_3_Value));
-
-
-    ui->mZone2_Target_1_FirstValue->setText("0");
-    ui->mZone2_Target_2_FirstValue->setText("0");
-    ui->mZone2_Target_3_FirstValue->setText("0");
-
-    ui->mZone2_Target_1_SecondValue->setText("0");
-    ui->mZone2_Target_2_SecondValue->setText("0");
-    ui->mZone2_Target_3_SecondValue->setText("0");
-
-    ui->mZone2_Target_1_ThirdValue->setText("0");
-    ui->mZone2_Target_2_ThirdValue->setText("0");
-    ui->mZone2_Target_3_ThirdValue->setText("0");
-
-    ui->mZone2_Target_1_TotalValue->setText("0");
-    ui->mZone2_Target_2_TotalValue->setText("0");
-    ui->mZone2_Target_3_TotalValue->setText("0");
-
-    //Zone 3
-    mZone3_Target_1_Index = 0;
-    mZone3_Target_2_Index = 0;
-    mZone3_Target_3_Index = 0;
-
-    memset(mZone3_Target_1_Value, 0x00, sizeof(mZone3_Target_1_Value));
-    memset(mZone3_Target_2_Value, 0x00, sizeof(mZone3_Target_2_Value));
-    memset(mZone3_Target_3_Value, 0x00, sizeof(mZone3_Target_3_Value));
-
-    ui->mZone3_Target_1_FirstValue->setText("0");
-    ui->mZone3_Target_2_FirstValue->setText("0");
-    ui->mZone3_Target_3_FirstValue->setText("0");
-
-    ui->mZone3_Target_1_SecondValue->setText("0");
-    ui->mZone3_Target_2_SecondValue->setText("0");
-    ui->mZone3_Target_3_SecondValue->setText("0");
-
-    ui->mZone3_Target_1_ThirdValue->setText("0");
-    ui->mZone3_Target_2_ThirdValue->setText("0");
-    ui->mZone3_Target_3_ThirdValue->setText("0");
-
-    ui->mZone3_Target_1_TotalValue->setText("0");
-    ui->mZone3_Target_2_TotalValue->setText("0");
-    ui->mZone3_Target_3_TotalValue->setText("0");
+    on_m_Zone_1_Clear_clicked();
+    on_m_Zone_2_Clear_clicked();
+    on_m_Zone_3_Clear_clicked();
+    on_m_Zone_4_Clear_clicked();
+    on_m_Zone_5_Clear_clicked();
+    on_m_Zone_6_Clear_clicked();
 }
 
 void MainWindow::on_pushButton_clicked()
@@ -744,42 +458,187 @@ void MainWindow::on_pushButton_clicked()
 
 }
 
-void MainWindow::on_mTarget_1_Clean_clicked()
-{
-     mZone1_Target_1_Index = 0;
-     memset(mZone1_Target_1_Value, 0x00, sizeof(mZone1_Target_1_Value));
 
-     ui->mZone1_Target_1_FirstValue->setText("0");
-     ui->mZone1_Target_1_SecondValue->setText("0");
-     ui->mZone1_Target_1_ThirdValue->setText("0");
-     ui->mZone1_Target_1_TotalValue->setText("0");
+/**************** Clear Zone Code ***********************/
+
+void MainWindow::ClearZoneInformation(int zone)
+{
+    for(int trg =0; trg < 3; trg ++)
+    {
+        mZone_Index[zone][trg]      = 0;
+        mZone_Value[zone][trg][0]   = 0;
+        mZone_Value[zone][trg][1]   = 0;
+        mZone_Value[zone][trg][2]   = 0;
+
+        mZone_Value_Label[zone][trg][0]->setText("0");
+        mZone_Value_Label[zone][trg][1]->setText("0");
+        mZone_Value_Label[zone][trg][2]->setText("0");
+        mZone_Value_Label[zone][trg][3]->setText("0");
+    }
+}
+void MainWindow::on_m_Zone_1_Clear_clicked()
+{
+
+    ClearZoneInformation(PHN_ZONE_1);
+
+    //clear name
+    ui->m_Zone_1_Name->setText("");
 }
 
-void MainWindow::on_mTarget_2_Clean_clicked()
+void MainWindow::on_m_Zone_2_Clear_clicked()
 {
-    mZone1_Target_2_Index = 0;
-    memset(mZone1_Target_2_Value, 0x00, sizeof(mZone1_Target_2_Value));
+    ClearZoneInformation(PHN_ZONE_2);
 
-    ui->mZone1_Target_2_FirstValue->setText("0");
-    ui->mZone1_Target_2_SecondValue->setText("0");
-    ui->mZone1_Target_2_ThirdValue->setText("0");
-    ui->mZone1_Target_2_TotalValue->setText("0");
+    //clear name
+    ui->m_Zone_2_Name->setText("");
 }
 
-void MainWindow::on_mTarget_3_Clean_clicked()
+void MainWindow::on_m_Zone_3_Clear_clicked()
 {
-    mZone1_Target_3_Index = 0;
-    memset(mZone1_Target_3_Value, 0x00, sizeof(mZone1_Target_3_Value));
-
-    ui->mZone1_Target_3_FirstValue->setText("0");
-    ui->mZone1_Target_3_SecondValue->setText("0");
-    ui->mZone1_Target_3_ThirdValue->setText("0");
-    ui->mZone1_Target_3_TotalValue->setText("0");
+    ClearZoneInformation(PHN_ZONE_3);
+    //clear name
+    ui->m_Zone_3_Name->setText("");
 }
 
-void MainWindow::on_mInofor1_Add_clicked()
+void MainWindow::on_m_Zone_4_Clear_clicked()
 {
-    if(ui->mInfor1_Name->text().isEmpty())
+    ClearZoneInformation(PHN_ZONE_4);
+    //clear name
+    ui->m_Zone_4_Name->setText("");
+}
+
+void MainWindow::on_m_Zone_5_Clear_clicked()
+{
+    ClearZoneInformation(PHN_ZONE_5);
+
+    //clear name
+    ui->m_Zone_5_Name->setText("");
+}
+
+void MainWindow::on_m_Zone_6_Clear_clicked()
+{
+    ClearZoneInformation(PHN_ZONE_6);
+
+    //clear name
+    ui->m_Zone_6_Name->setText("");
+}
+
+
+
+
+/**************** Add Code ***********************/
+
+void MainWindow::AddScoreToTableView(uint8_t zone, QString name)
+{
+    int row = ui->tableWidget->rowCount();
+    ui->tableWidget->insertRow(row);
+
+    //Ten
+    QTableWidgetItem *stt = new QTableWidgetItem(name);
+    stt->setTextAlignment(Qt::AlignVCenter);
+    ui->tableWidget->setItem(row, 0, stt);
+
+    //Be
+    stt = new QTableWidgetItem( QString("%1").arg(zone + 1, 0, 10, QChar('0')));
+    stt->setTextAlignment(Qt::AlignCenter);
+    ui->tableWidget->setItem(row, 1, stt);
+
+    //BS4 - Lan 1
+    stt = new QTableWidgetItem( QString("%1").arg(mZone_Value[zone][0][0], 0, 10, QChar('0')));
+    stt->setTextAlignment(Qt::AlignCenter);
+    ui->tableWidget->setItem(row, 2, stt);
+
+    //BS4 - Lan 2
+    stt = new QTableWidgetItem( QString("%1").arg(mZone_Value[zone][0][1], 0, 10, QChar('0')));
+    stt->setTextAlignment(Qt::AlignCenter);
+    ui->tableWidget->setItem(row, 3, stt);
+
+
+    //BS4 - Lan 3
+    stt = new QTableWidgetItem( QString("%1").arg(mZone_Value[zone][0][2], 0, 10, QChar('0')));
+    stt->setTextAlignment(Qt::AlignCenter);
+    ui->tableWidget->setItem(row, 4, stt);
+
+    //BS7 - Lan 1
+    stt = new QTableWidgetItem( QString("%1").arg(mZone_Value[zone][1][0], 0, 10, QChar('0')));
+    stt->setTextAlignment(Qt::AlignCenter);
+    ui->tableWidget->setItem(row, 5, stt);
+
+    //BS7 - Lan 2
+    stt = new QTableWidgetItem( QString("%1").arg(mZone_Value[zone][1][1], 0, 10, QChar('0')));
+    stt->setTextAlignment(Qt::AlignCenter);
+    ui->tableWidget->setItem(row, 6, stt);
+
+
+    //BS7 - Lan 3
+    stt = new QTableWidgetItem( QString("%1").arg(mZone_Value[zone][1][2], 0, 10, QChar('0')));
+    stt->setTextAlignment(Qt::AlignCenter);
+    ui->tableWidget->setItem(row, 7, stt);
+
+    //BS8 - Lan 1
+    stt = new QTableWidgetItem( QString("%1").arg(mZone_Value[zone][2][0], 0, 10, QChar('0')));
+    stt->setTextAlignment(Qt::AlignCenter);
+    ui->tableWidget->setItem(row, 8, stt);
+
+    //BS8 - Lan 2
+    stt = new QTableWidgetItem( QString("%1").arg(mZone_Value[zone][2][1], 0, 10, QChar('0')));
+    stt->setTextAlignment(Qt::AlignCenter);
+    ui->tableWidget->setItem(row, 9, stt);
+
+
+    //BS8 - Lan 3
+    stt = new QTableWidgetItem( QString("%1").arg(mZone_Value[zone][2][2], 0, 10, QChar('0')));
+    stt->setTextAlignment(Qt::AlignCenter);
+    ui->tableWidget->setItem(row, 10, stt);
+
+    int total = 0;
+    for(int index =0; index < 3; index ++)
+    {
+        total += mZone_Value[zone][0][index];
+        total += mZone_Value[zone][1][index];
+        total += mZone_Value[zone][2][index];
+    }
+
+    mKqTotal += 1;
+
+    //Tong
+    stt = new QTableWidgetItem( QString("%1").arg(total, 0, 10, QChar('0')));
+    stt->setTextAlignment(Qt::AlignCenter);
+    ui->tableWidget->setItem(row, 11, stt);
+
+    if(total >= 72)
+    {
+        mKqGoi += 1;
+        stt = new QTableWidgetItem("Giỏi");
+    }
+    else if(total >= 59)
+    {
+        mKqKha += 1;
+        stt = new QTableWidgetItem("Khá");
+    }
+    else if(total >= 45)
+    {
+        mKqDat += 1;
+        stt = new QTableWidgetItem("Đạt");
+    }
+    else
+    {
+        mKqKhongDat += 1;
+        stt = new QTableWidgetItem("Không đạt");
+    }
+
+    stt->setTextAlignment(Qt::AlignVCenter);
+    ui->tableWidget->setItem(row, 12, stt);
+
+    ui->mKqGoi->setText(QString().sprintf("%.2f %", mKqGoi*100/mKqTotal));
+    ui->mKqKha->setText(QString().sprintf("%.2f %", mKqKha*100/mKqTotal));
+    ui->mKqDat->setText(QString().sprintf("%.2f %", mKqDat*100/mKqTotal));
+    ui->mKqKhongDat->setText(QString().sprintf("%.2f %", mKqKhongDat*100/mKqTotal));
+}
+
+void MainWindow::on_m_Zone_1_Add_clicked()
+{
+    if(ui->m_Zone_1_Name->text().isEmpty())
     {
         QMessageBox msgBox;
         msgBox.setWindowTitle("Thông Tin");
@@ -788,160 +647,16 @@ void MainWindow::on_mInofor1_Add_clicked()
     }
     else
     {
-        //randomnNumber();
+        AddScoreToTableView(PHN_ZONE_1, ui->m_Zone_1_Name->text());
 
-        int row = ui->tableWidget->rowCount();
-        ui->tableWidget->insertRow(row);
+        on_m_Zone_1_Clear_clicked();
 
-        //Ten
-        QTableWidgetItem *stt = new QTableWidgetItem(ui->mInfor1_Name->text());
-        stt->setTextAlignment(Qt::AlignVCenter);
-        ui->tableWidget->setItem(row, 0, stt);
-
-        //Be
-        stt = new QTableWidgetItem("1");
-        stt->setTextAlignment(Qt::AlignCenter);
-        ui->tableWidget->setItem(row, 1, stt);
-
-        //BS4 - Lan 1
-        stt = new QTableWidgetItem( QString("%1").arg(mZone1_Target_1_Value[0], 0, 10, QChar('0')));
-        stt->setTextAlignment(Qt::AlignCenter);
-        ui->tableWidget->setItem(row, 2, stt);
-
-        //BS4 - Lan 2
-        stt = new QTableWidgetItem( QString("%1").arg(mZone1_Target_1_Value[1], 0, 10, QChar('0')));
-        stt->setTextAlignment(Qt::AlignCenter);
-        ui->tableWidget->setItem(row, 3, stt);
-
-
-        //BS4 - Lan 3
-        stt = new QTableWidgetItem( QString("%1").arg(mZone1_Target_1_Value[2], 0, 10, QChar('0')));
-        stt->setTextAlignment(Qt::AlignCenter);
-        ui->tableWidget->setItem(row, 4, stt);
-
-        //BS7 - Lan 1
-        stt = new QTableWidgetItem( QString("%1").arg(mZone1_Target_2_Value[0], 0, 10, QChar('0')));
-        stt->setTextAlignment(Qt::AlignCenter);
-        ui->tableWidget->setItem(row, 5, stt);
-
-        //BS7 - Lan 2
-        stt = new QTableWidgetItem( QString("%1").arg(mZone1_Target_2_Value[1], 0, 10, QChar('0')));
-        stt->setTextAlignment(Qt::AlignCenter);
-        ui->tableWidget->setItem(row, 6, stt);
-
-
-        //BS7 - Lan 3
-        stt = new QTableWidgetItem( QString("%1").arg(mZone1_Target_2_Value[2], 0, 10, QChar('0')));
-        stt->setTextAlignment(Qt::AlignCenter);
-        ui->tableWidget->setItem(row, 7, stt);
-
-        //BS8 - Lan 1
-        stt = new QTableWidgetItem( QString("%1").arg(mZone1_Target_3_Value[0], 0, 10, QChar('0')));
-        stt->setTextAlignment(Qt::AlignCenter);
-        ui->tableWidget->setItem(row, 8, stt);
-
-        //BS8 - Lan 2
-        stt = new QTableWidgetItem( QString("%1").arg(mZone1_Target_3_Value[1], 0, 10, QChar('0')));
-        stt->setTextAlignment(Qt::AlignCenter);
-        ui->tableWidget->setItem(row, 9, stt);
-
-
-        //BS8 - Lan 3
-        stt = new QTableWidgetItem( QString("%1").arg(mZone1_Target_3_Value[2], 0, 10, QChar('0')));
-        stt->setTextAlignment(Qt::AlignCenter);
-        ui->tableWidget->setItem(row, 10, stt);
-
-        int total = 0;
-        for(int index =0; index < 3; index ++)
-        {
-            total += mZone1_Target_1_Value[index];
-            total += mZone1_Target_2_Value[index];
-            total += mZone1_Target_3_Value[index];
-        }
-
-        mKqTotal += 1;
-
-        //Tong
-        stt = new QTableWidgetItem( QString("%1").arg(total, 0, 10, QChar('0')));
-        stt->setTextAlignment(Qt::AlignCenter);
-        ui->tableWidget->setItem(row, 11, stt);
-
-        if(total >= 72)
-        {
-            mKqGoi += 1;
-            stt = new QTableWidgetItem("Giỏi");
-        }
-        else if(total >= 59)
-        {
-            mKqKha += 1;
-            stt = new QTableWidgetItem("Khá");
-        }
-        else if(total >= 45)
-        {
-            mKqDat += 1;
-            stt = new QTableWidgetItem("Đạt");
-        }
-        else
-        {
-            mKqKhongDat += 1;
-            stt = new QTableWidgetItem("Không đạt");
-        }
-
-        stt->setTextAlignment(Qt::AlignVCenter);
-        ui->tableWidget->setItem(row, 12, stt);
-
-        ui->mKqGoi->setText(QString().sprintf("%.2f %", mKqGoi*100/mKqTotal));
-        ui->mKqKha->setText(QString().sprintf("%.2f %", mKqKha*100/mKqTotal));
-        ui->mKqDat->setText(QString().sprintf("%.2f %", mKqDat*100/mKqTotal));
-        ui->mKqKhongDat->setText(QString().sprintf("%.2f %", mKqKhongDat*100/mKqTotal));
-
-
-        //clear data
-        ui->mInfor1_Name->setText("");
-
-        on_mTarget_1_Clean_clicked();
-        on_mTarget_2_Clean_clicked();
-        on_mTarget_3_Clean_clicked();
     }
 }
 
-
-void MainWindow::on_mZone2_Target_1_Clean_clicked()
+void MainWindow::on_m_Zone_2_Add_clicked()
 {
-    mZone2_Target_1_Index = 0;
-    memset(mZone2_Target_1_Value, 0x00, sizeof(mZone2_Target_1_Value));
-
-    ui->mZone2_Target_1_FirstValue->setText("0");
-    ui->mZone2_Target_1_SecondValue->setText("0");
-    ui->mZone2_Target_1_ThirdValue->setText("0");
-    ui->mZone2_Target_1_TotalValue->setText("0");
-}
-
-void MainWindow::on_mZone2_Target_2_Clean_clicked()
-{
-    mZone2_Target_2_Index = 0;
-    memset(mZone2_Target_2_Value, 0x00, sizeof(mZone2_Target_2_Value));
-
-    ui->mZone2_Target_2_FirstValue->setText("0");
-    ui->mZone2_Target_2_SecondValue->setText("0");
-    ui->mZone2_Target_2_ThirdValue->setText("0");
-    ui->mZone2_Target_2_TotalValue->setText("0");
-}
-
-void MainWindow::on_mZone2_Target_3_Clean_clicked()
-{
-    mZone2_Target_3_Index = 0;
-    memset(mZone2_Target_1_Value, 0x00, sizeof(mZone2_Target_1_Value));
-
-    ui->mZone2_Target_3_FirstValue->setText("0");
-    ui->mZone2_Target_3_SecondValue->setText("0");
-    ui->mZone2_Target_3_ThirdValue->setText("0");
-    ui->mZone2_Target_3_TotalValue->setText("0");
-}
-
-void MainWindow::on_mInofor2_Add_clicked()
-{
-    if(ui->mInfor2_Name->text().isEmpty())
+    if(ui->m_Zone_2_Name->text().isEmpty())
     {
         QMessageBox msgBox;
         msgBox.setWindowTitle("Thông Tin");
@@ -950,157 +665,16 @@ void MainWindow::on_mInofor2_Add_clicked()
     }
     else
     {
-        int row = ui->tableWidget->rowCount();
-        ui->tableWidget->insertRow(row);
+        AddScoreToTableView(PHN_ZONE_2, ui->m_Zone_2_Name->text());
 
-        //Ten
-        QTableWidgetItem *stt = new QTableWidgetItem(ui->mInfor2_Name->text());
-        stt->setTextAlignment(Qt::AlignVCenter);
-        ui->tableWidget->setItem(row, 0, stt);
+        on_m_Zone_2_Clear_clicked();
 
-        //Be
-        stt = new QTableWidgetItem("2");
-        stt->setTextAlignment(Qt::AlignCenter);
-        ui->tableWidget->setItem(row, 1, stt);
-
-        //BS4 - Lan 1
-        stt = new QTableWidgetItem( QString("%1").arg(mZone2_Target_1_Value[0], 0, 10, QChar('0')));
-        stt->setTextAlignment(Qt::AlignCenter);
-        ui->tableWidget->setItem(row, 2, stt);
-
-        //BS4 - Lan 2
-        stt = new QTableWidgetItem( QString("%1").arg(mZone2_Target_1_Value[1], 0, 10, QChar('0')));
-        stt->setTextAlignment(Qt::AlignCenter);
-        ui->tableWidget->setItem(row, 3, stt);
-
-
-        //BS4 - Lan 3
-        stt = new QTableWidgetItem( QString("%1").arg(mZone2_Target_1_Value[2], 0, 10, QChar('0')));
-        stt->setTextAlignment(Qt::AlignCenter);
-        ui->tableWidget->setItem(row, 4, stt);
-
-        //BS7 - Lan 1
-        stt = new QTableWidgetItem( QString("%1").arg(mZone2_Target_2_Value[0], 0, 10, QChar('0')));
-        stt->setTextAlignment(Qt::AlignCenter);
-        ui->tableWidget->setItem(row, 5, stt);
-
-        //BS7 - Lan 2
-        stt = new QTableWidgetItem( QString("%1").arg(mZone2_Target_2_Value[1], 0, 10, QChar('0')));
-        stt->setTextAlignment(Qt::AlignCenter);
-        ui->tableWidget->setItem(row, 6, stt);
-
-
-        //BS7 - Lan 3
-        stt = new QTableWidgetItem( QString("%1").arg(mZone2_Target_2_Value[2], 0, 10, QChar('0')));
-        stt->setTextAlignment(Qt::AlignCenter);
-        ui->tableWidget->setItem(row, 7, stt);
-
-        //BS8 - Lan 1
-        stt = new QTableWidgetItem( QString("%1").arg(mZone2_Target_3_Value[0], 0, 10, QChar('0')));
-        stt->setTextAlignment(Qt::AlignCenter);
-        ui->tableWidget->setItem(row, 8, stt);
-
-        //BS8 - Lan 2
-        stt = new QTableWidgetItem( QString("%1").arg(mZone2_Target_3_Value[1], 0, 10, QChar('0')));
-        stt->setTextAlignment(Qt::AlignCenter);
-        ui->tableWidget->setItem(row, 9, stt);
-
-
-        //BS8 - Lan 3
-        stt = new QTableWidgetItem( QString("%1").arg(mZone2_Target_3_Value[2], 0, 10, QChar('0')));
-        stt->setTextAlignment(Qt::AlignCenter);
-        ui->tableWidget->setItem(row, 10, stt);
-
-        int total = 0;
-        for(int index =0; index < 3; index ++)
-        {
-            total += mZone2_Target_1_Value[index];
-            total += mZone2_Target_2_Value[index];
-            total += mZone2_Target_3_Value[index];
-        }
-
-        mKqTotal += 1;
-
-        //Tong
-        stt = new QTableWidgetItem( QString("%1").arg(total, 0, 10, QChar('0')));
-        stt->setTextAlignment(Qt::AlignCenter);
-        ui->tableWidget->setItem(row, 11, stt);
-
-        if(total >= 72)
-        {
-            mKqGoi += 1;
-            stt = new QTableWidgetItem("Giỏi");
-        }
-        else if(total >= 59)
-        {
-            mKqKha += 1;
-            stt = new QTableWidgetItem("Khá");
-        }
-        else if(total >= 45)
-        {
-            mKqDat += 1;
-            stt = new QTableWidgetItem("Đạt");
-        }
-        else
-        {
-            mKqKhongDat += 1;
-            stt = new QTableWidgetItem("Không đạt");
-        }
-
-        stt->setTextAlignment(Qt::AlignVCenter);
-        ui->tableWidget->setItem(row, 12, stt);
-
-        ui->mKqGoi->setText(QString().sprintf("%.2f %", mKqGoi*100/mKqTotal));
-        ui->mKqKha->setText(QString().sprintf("%.2f %", mKqKha*100/mKqTotal));
-        ui->mKqDat->setText(QString().sprintf("%.2f %", mKqDat*100/mKqTotal));
-        ui->mKqKhongDat->setText(QString().sprintf("%.2f %", mKqKhongDat*100/mKqTotal));
-
-
-        //clear data
-        ui->mInfor2_Name->setText("");
-
-        on_mZone2_Target_1_Clean_clicked();
-        on_mZone2_Target_2_Clean_clicked();
-        on_mZone2_Target_3_Clean_clicked();
     }
 }
 
-void MainWindow::on_mZone3_Target_1_Clean_clicked()
+void MainWindow::on_m_Zone_3_Add_clicked()
 {
-    mZone3_Target_1_Index = 0;
-    memset(mZone3_Target_1_Value, 0x00, sizeof(mZone3_Target_1_Value));
-
-    ui->mZone3_Target_1_FirstValue->setText("0");
-    ui->mZone3_Target_1_SecondValue->setText("0");
-    ui->mZone3_Target_1_ThirdValue->setText("0");
-    ui->mZone3_Target_1_TotalValue->setText("0");
-}
-
-void MainWindow::on_mZone3_Target_2_Clean_clicked()
-{
-    mZone3_Target_2_Index = 0;
-    memset(mZone3_Target_2_Value, 0x00, sizeof(mZone3_Target_2_Value));
-
-    ui->mZone3_Target_2_FirstValue->setText("0");
-    ui->mZone3_Target_2_SecondValue->setText("0");
-    ui->mZone3_Target_2_ThirdValue->setText("0");
-    ui->mZone3_Target_2_TotalValue->setText("0");
-}
-
-void MainWindow::on_mZone3_Target_3_Clean_clicked()
-{
-    mZone3_Target_3_Index = 0;
-    memset(mZone3_Target_3_Value, 0x00, sizeof(mZone3_Target_3_Value));
-
-    ui->mZone3_Target_3_FirstValue->setText("0");
-    ui->mZone3_Target_3_SecondValue->setText("0");
-    ui->mZone3_Target_3_ThirdValue->setText("0");
-    ui->mZone3_Target_3_TotalValue->setText("0");
-}
-
-void MainWindow::on_mInofor3_Add_clicked()
-{
-    if(ui->mInfor3_Name->text().isEmpty())
+    if(ui->m_Zone_3_Name->text().isEmpty())
     {
         QMessageBox msgBox;
         msgBox.setWindowTitle("Thông Tin");
@@ -1109,117 +683,63 @@ void MainWindow::on_mInofor3_Add_clicked()
     }
     else
     {
-        int row = ui->tableWidget->rowCount();
-        ui->tableWidget->insertRow(row);
+        AddScoreToTableView(PHN_ZONE_3, ui->m_Zone_3_Name->text());
 
-        //Ten
-        QTableWidgetItem *stt = new QTableWidgetItem(ui->mInfor3_Name->text());
-        stt->setTextAlignment(Qt::AlignVCenter);
-        ui->tableWidget->setItem(row, 0, stt);
+        on_m_Zone_3_Clear_clicked();
 
-        //Be
-        stt = new QTableWidgetItem("3");
-        stt->setTextAlignment(Qt::AlignCenter);
-        ui->tableWidget->setItem(row, 1, stt);
+    }
+}
 
-        //BS4 - Lan 1
-        stt = new QTableWidgetItem( QString("%1").arg(mZone3_Target_1_Value[0], 0, 10, QChar('0')));
-        stt->setTextAlignment(Qt::AlignCenter);
-        ui->tableWidget->setItem(row, 2, stt);
+void MainWindow::on_m_Zone_4_Add_clicked()
+{
+    if(ui->m_Zone_4_Name->text().isEmpty())
+    {
+        QMessageBox msgBox;
+        msgBox.setWindowTitle("Thông Tin");
+        msgBox.setText("Hãy nhập Họ & Tên vào ô Thông Tin");
+        msgBox.exec();
+    }
+    else
+    {
+        AddScoreToTableView(PHN_ZONE_4, ui->m_Zone_4_Name->text());
 
-        //BS4 - Lan 2
-        stt = new QTableWidgetItem( QString("%1").arg(mZone3_Target_1_Value[1], 0, 10, QChar('0')));
-        stt->setTextAlignment(Qt::AlignCenter);
-        ui->tableWidget->setItem(row, 3, stt);
+        on_m_Zone_4_Clear_clicked();
 
+    }
+}
 
-        //BS4 - Lan 3
-        stt = new QTableWidgetItem( QString("%1").arg(mZone3_Target_1_Value[2], 0, 10, QChar('0')));
-        stt->setTextAlignment(Qt::AlignCenter);
-        ui->tableWidget->setItem(row, 4, stt);
+void MainWindow::on_m_Zone_5_Add_clicked()
+{
+    if(ui->m_Zone_5_Name->text().isEmpty())
+    {
+        QMessageBox msgBox;
+        msgBox.setWindowTitle("Thông Tin");
+        msgBox.setText("Hãy nhập Họ & Tên vào ô Thông Tin");
+        msgBox.exec();
+    }
+    else
+    {
+        AddScoreToTableView(PHN_ZONE_5, ui->m_Zone_5_Name->text());
 
-        //BS7 - Lan 1
-        stt = new QTableWidgetItem( QString("%1").arg(mZone3_Target_2_Value[0], 0, 10, QChar('0')));
-        stt->setTextAlignment(Qt::AlignCenter);
-        ui->tableWidget->setItem(row, 5, stt);
+        on_m_Zone_5_Clear_clicked();
 
-        //BS7 - Lan 2
-        stt = new QTableWidgetItem( QString("%1").arg(mZone3_Target_2_Value[1], 0, 10, QChar('0')));
-        stt->setTextAlignment(Qt::AlignCenter);
-        ui->tableWidget->setItem(row, 6, stt);
+    }
+}
 
+void MainWindow::on_m_Zone_6_Add_clicked()
+{
+    if(ui->m_Zone_6_Name->text().isEmpty())
+    {
+        QMessageBox msgBox;
+        msgBox.setWindowTitle("Thông Tin");
+        msgBox.setText("Hãy nhập Họ & Tên vào ô Thông Tin");
+        msgBox.exec();
+    }
+    else
+    {
+        AddScoreToTableView(PHN_ZONE_6, ui->m_Zone_6_Name->text());
 
-        //BS7 - Lan 3
-        stt = new QTableWidgetItem( QString("%1").arg(mZone3_Target_2_Value[2], 0, 10, QChar('0')));
-        stt->setTextAlignment(Qt::AlignCenter);
-        ui->tableWidget->setItem(row, 7, stt);
+        on_m_Zone_6_Clear_clicked();
 
-        //BS8 - Lan 1
-        stt = new QTableWidgetItem( QString("%1").arg(mZone3_Target_3_Value[0], 0, 10, QChar('0')));
-        stt->setTextAlignment(Qt::AlignCenter);
-        ui->tableWidget->setItem(row, 8, stt);
-
-        //BS8 - Lan 2
-        stt = new QTableWidgetItem( QString("%1").arg(mZone3_Target_3_Value[1], 0, 10, QChar('0')));
-        stt->setTextAlignment(Qt::AlignCenter);
-        ui->tableWidget->setItem(row, 9, stt);
-
-
-        //BS8 - Lan 3
-        stt = new QTableWidgetItem( QString("%1").arg(mZone3_Target_3_Value[2], 0, 10, QChar('0')));
-        stt->setTextAlignment(Qt::AlignCenter);
-        ui->tableWidget->setItem(row, 10, stt);
-
-        int total = 0;
-        for(int index =0; index < 3; index ++)
-        {
-            total += mZone3_Target_1_Value[index];
-            total += mZone3_Target_2_Value[index];
-            total += mZone3_Target_3_Value[index];
-        }
-
-        mKqTotal += 1;
-
-        //Tong
-        stt = new QTableWidgetItem( QString("%1").arg(total, 0, 10, QChar('0')));
-        stt->setTextAlignment(Qt::AlignCenter);
-        ui->tableWidget->setItem(row, 11, stt);
-
-        if(total >= 72)
-        {
-            mKqGoi += 1;
-            stt = new QTableWidgetItem("Giỏi");
-        }
-        else if(total >= 59)
-        {
-            mKqKha += 1;
-            stt = new QTableWidgetItem("Khá");
-        }
-        else if(total >= 45)
-        {
-            mKqDat += 1;
-            stt = new QTableWidgetItem("Đạt");
-        }
-        else
-        {
-            mKqKhongDat += 1;
-            stt = new QTableWidgetItem("Không đạt");
-        }
-
-        stt->setTextAlignment(Qt::AlignVCenter);
-        ui->tableWidget->setItem(row, 12, stt);
-
-        ui->mKqGoi->setText(QString().sprintf("%.2f %", mKqGoi*100/mKqTotal));
-        ui->mKqKha->setText(QString().sprintf("%.2f %", mKqKha*100/mKqTotal));
-        ui->mKqDat->setText(QString().sprintf("%.2f %", mKqDat*100/mKqTotal));
-        ui->mKqKhongDat->setText(QString().sprintf("%.2f %", mKqKhongDat*100/mKqTotal));
-
-
-        //clear data
-        ui->mInfor3_Name->setText("");
-
-        on_mZone3_Target_1_Clean_clicked();
-        on_mZone3_Target_2_Clean_clicked();
-        on_mZone3_Target_3_Clean_clicked();
     }
 }

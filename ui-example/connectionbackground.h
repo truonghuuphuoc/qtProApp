@@ -47,6 +47,20 @@ typedef enum
     EVNT_UD_Z3_TARGET_1 = 0x0A,
     EVNT_UD_Z3_TARGET_2 = 0x0B,
     EVNT_UD_Z3_TARGET_3 = 0x0C,
+
+    EVNT_UD_Z4_TARGET_1 = 0x0D,
+    EVNT_UD_Z4_TARGET_2 = 0x0E,
+    EVNT_UD_Z4_TARGET_3 = 0x0F,
+
+    EVNT_UD_Z5_TARGET_1 = 0x10,
+    EVNT_UD_Z5_TARGET_2 = 0x11,
+    EVNT_UD_Z5_TARGET_3 = 0x12,
+
+    EVNT_UD_Z6_TARGET_1 = 0x13,
+    EVNT_UD_Z6_TARGET_2 = 0x14,
+    EVNT_UD_Z6_TARGET_3 = 0x15,
+
+    EVNT_UD_MAX         = 0x16,
 }phnConnectionEvent;
 
 typedef enum
