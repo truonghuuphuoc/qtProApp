@@ -44,17 +44,17 @@ MainWindow::MainWindow(QWidget *parent) :
 
     mZone_Value_Label[PHN_ZONE_1][0][0] = ui->m_Zone_1_T1_Value_1;
     mZone_Value_Label[PHN_ZONE_1][0][1] = ui->m_Zone_1_T1_Value_2;
-    mZone_Value_Label[PHN_ZONE_1][0][2] = ui->m_Zone_1_T1_Value_2;
+    mZone_Value_Label[PHN_ZONE_1][0][2] = ui->m_Zone_1_T1_Value_3;
     mZone_Value_Label[PHN_ZONE_1][0][3] = ui->m_Zone_1_T1_Value_Total;
 
     mZone_Value_Label[PHN_ZONE_1][1][0] = ui->m_Zone_1_T2_Value_1;
     mZone_Value_Label[PHN_ZONE_1][1][1] = ui->m_Zone_1_T2_Value_2;
-    mZone_Value_Label[PHN_ZONE_1][1][2] = ui->m_Zone_1_T2_Value_2;
+    mZone_Value_Label[PHN_ZONE_1][1][2] = ui->m_Zone_1_T2_Value_3;
     mZone_Value_Label[PHN_ZONE_1][1][3] = ui->m_Zone_1_T2_Value_Total;
 
     mZone_Value_Label[PHN_ZONE_1][2][0] = ui->m_Zone_1_T3_Value_1;
     mZone_Value_Label[PHN_ZONE_1][2][1] = ui->m_Zone_1_T3_Value_2;
-    mZone_Value_Label[PHN_ZONE_1][2][2] = ui->m_Zone_1_T3_Value_2;
+    mZone_Value_Label[PHN_ZONE_1][2][2] = ui->m_Zone_1_T3_Value_3;
     mZone_Value_Label[PHN_ZONE_1][2][3] = ui->m_Zone_1_T3_Value_Total;
 
     //UI Zone 2
@@ -64,17 +64,17 @@ MainWindow::MainWindow(QWidget *parent) :
 
     mZone_Value_Label[PHN_ZONE_2][0][0] = ui->m_Zone_2_T1_Value_1;
     mZone_Value_Label[PHN_ZONE_2][0][1] = ui->m_Zone_2_T1_Value_2;
-    mZone_Value_Label[PHN_ZONE_2][0][2] = ui->m_Zone_2_T1_Value_2;
+    mZone_Value_Label[PHN_ZONE_2][0][2] = ui->m_Zone_2_T1_Value_3;
     mZone_Value_Label[PHN_ZONE_2][0][3] = ui->m_Zone_2_T1_Value_Total;
 
     mZone_Value_Label[PHN_ZONE_2][1][0] = ui->m_Zone_2_T2_Value_1;
     mZone_Value_Label[PHN_ZONE_2][1][1] = ui->m_Zone_2_T2_Value_2;
-    mZone_Value_Label[PHN_ZONE_2][1][2] = ui->m_Zone_2_T2_Value_2;
+    mZone_Value_Label[PHN_ZONE_2][1][2] = ui->m_Zone_2_T2_Value_3;
     mZone_Value_Label[PHN_ZONE_2][1][3] = ui->m_Zone_2_T2_Value_Total;
 
     mZone_Value_Label[PHN_ZONE_2][2][0] = ui->m_Zone_2_T3_Value_1;
     mZone_Value_Label[PHN_ZONE_2][2][1] = ui->m_Zone_2_T3_Value_2;
-    mZone_Value_Label[PHN_ZONE_2][2][2] = ui->m_Zone_2_T3_Value_2;
+    mZone_Value_Label[PHN_ZONE_2][2][2] = ui->m_Zone_2_T3_Value_3;
     mZone_Value_Label[PHN_ZONE_2][2][3] = ui->m_Zone_2_T3_Value_Total;
 
 
@@ -85,17 +85,17 @@ MainWindow::MainWindow(QWidget *parent) :
 
     mZone_Value_Label[PHN_ZONE_3][0][0] = ui->m_Zone_3_T1_Value_1;
     mZone_Value_Label[PHN_ZONE_3][0][1] = ui->m_Zone_3_T1_Value_2;
-    mZone_Value_Label[PHN_ZONE_3][0][2] = ui->m_Zone_3_T1_Value_2;
+    mZone_Value_Label[PHN_ZONE_3][0][2] = ui->m_Zone_3_T1_Value_3;
     mZone_Value_Label[PHN_ZONE_3][0][3] = ui->m_Zone_3_T1_Value_Total;
 
     mZone_Value_Label[PHN_ZONE_3][1][0] = ui->m_Zone_3_T2_Value_1;
     mZone_Value_Label[PHN_ZONE_3][1][1] = ui->m_Zone_3_T2_Value_2;
-    mZone_Value_Label[PHN_ZONE_3][1][2] = ui->m_Zone_3_T2_Value_2;
+    mZone_Value_Label[PHN_ZONE_3][1][2] = ui->m_Zone_3_T2_Value_3;
     mZone_Value_Label[PHN_ZONE_3][1][3] = ui->m_Zone_3_T2_Value_Total;
 
     mZone_Value_Label[PHN_ZONE_3][2][0] = ui->m_Zone_3_T3_Value_1;
     mZone_Value_Label[PHN_ZONE_3][2][1] = ui->m_Zone_3_T3_Value_2;
-    mZone_Value_Label[PHN_ZONE_3][2][2] = ui->m_Zone_3_T3_Value_2;
+    mZone_Value_Label[PHN_ZONE_3][2][2] = ui->m_Zone_3_T3_Value_3;
     mZone_Value_Label[PHN_ZONE_3][2][3] = ui->m_Zone_3_T3_Value_Total;
 
     //UI Zone 4
@@ -105,17 +105,17 @@ MainWindow::MainWindow(QWidget *parent) :
 
     mZone_Value_Label[PHN_ZONE_4][0][0] = ui->m_Zone_4_T1_Value_1;
     mZone_Value_Label[PHN_ZONE_4][0][1] = ui->m_Zone_4_T1_Value_2;
-    mZone_Value_Label[PHN_ZONE_4][0][2] = ui->m_Zone_4_T1_Value_2;
+    mZone_Value_Label[PHN_ZONE_4][0][2] = ui->m_Zone_4_T1_Value_3;
     mZone_Value_Label[PHN_ZONE_4][0][3] = ui->m_Zone_4_T1_Value_Total;
 
     mZone_Value_Label[PHN_ZONE_4][1][0] = ui->m_Zone_4_T2_Value_1;
     mZone_Value_Label[PHN_ZONE_4][1][1] = ui->m_Zone_4_T2_Value_2;
-    mZone_Value_Label[PHN_ZONE_4][1][2] = ui->m_Zone_4_T2_Value_2;
+    mZone_Value_Label[PHN_ZONE_4][1][2] = ui->m_Zone_4_T2_Value_3;
     mZone_Value_Label[PHN_ZONE_4][1][3] = ui->m_Zone_4_T2_Value_Total;
 
     mZone_Value_Label[PHN_ZONE_4][2][0] = ui->m_Zone_4_T3_Value_1;
     mZone_Value_Label[PHN_ZONE_4][2][1] = ui->m_Zone_4_T3_Value_2;
-    mZone_Value_Label[PHN_ZONE_4][2][2] = ui->m_Zone_4_T3_Value_2;
+    mZone_Value_Label[PHN_ZONE_4][2][2] = ui->m_Zone_4_T3_Value_3;
     mZone_Value_Label[PHN_ZONE_4][2][3] = ui->m_Zone_4_T3_Value_Total;
 
     //UI Zone 5
@@ -125,17 +125,17 @@ MainWindow::MainWindow(QWidget *parent) :
 
     mZone_Value_Label[PHN_ZONE_5][0][0] = ui->m_Zone_5_T1_Value_1;
     mZone_Value_Label[PHN_ZONE_5][0][1] = ui->m_Zone_5_T1_Value_2;
-    mZone_Value_Label[PHN_ZONE_5][0][2] = ui->m_Zone_5_T1_Value_2;
+    mZone_Value_Label[PHN_ZONE_5][0][2] = ui->m_Zone_5_T1_Value_3;
     mZone_Value_Label[PHN_ZONE_5][0][3] = ui->m_Zone_5_T1_Value_Total;
 
     mZone_Value_Label[PHN_ZONE_5][1][0] = ui->m_Zone_5_T2_Value_1;
     mZone_Value_Label[PHN_ZONE_5][1][1] = ui->m_Zone_5_T2_Value_2;
-    mZone_Value_Label[PHN_ZONE_5][1][2] = ui->m_Zone_5_T2_Value_2;
+    mZone_Value_Label[PHN_ZONE_5][1][2] = ui->m_Zone_5_T2_Value_3;
     mZone_Value_Label[PHN_ZONE_5][1][3] = ui->m_Zone_5_T2_Value_Total;
 
     mZone_Value_Label[PHN_ZONE_5][2][0] = ui->m_Zone_5_T3_Value_1;
     mZone_Value_Label[PHN_ZONE_5][2][1] = ui->m_Zone_5_T3_Value_2;
-    mZone_Value_Label[PHN_ZONE_5][2][2] = ui->m_Zone_5_T3_Value_2;
+    mZone_Value_Label[PHN_ZONE_5][2][2] = ui->m_Zone_5_T3_Value_3;
     mZone_Value_Label[PHN_ZONE_5][2][3] = ui->m_Zone_5_T3_Value_Total;
 
     //UI Zone 6
@@ -145,17 +145,17 @@ MainWindow::MainWindow(QWidget *parent) :
 
     mZone_Value_Label[PHN_ZONE_6][0][0] = ui->m_Zone_6_T1_Value_1;
     mZone_Value_Label[PHN_ZONE_6][0][1] = ui->m_Zone_6_T1_Value_2;
-    mZone_Value_Label[PHN_ZONE_6][0][2] = ui->m_Zone_6_T1_Value_2;
+    mZone_Value_Label[PHN_ZONE_6][0][2] = ui->m_Zone_6_T1_Value_3;
     mZone_Value_Label[PHN_ZONE_6][0][3] = ui->m_Zone_6_T1_Value_Total;
 
     mZone_Value_Label[PHN_ZONE_6][1][0] = ui->m_Zone_6_T2_Value_1;
     mZone_Value_Label[PHN_ZONE_6][1][1] = ui->m_Zone_6_T2_Value_2;
-    mZone_Value_Label[PHN_ZONE_6][1][2] = ui->m_Zone_6_T2_Value_2;
+    mZone_Value_Label[PHN_ZONE_6][1][2] = ui->m_Zone_6_T2_Value_3;
     mZone_Value_Label[PHN_ZONE_6][1][3] = ui->m_Zone_6_T2_Value_Total;
 
     mZone_Value_Label[PHN_ZONE_6][2][0] = ui->m_Zone_6_T3_Value_1;
     mZone_Value_Label[PHN_ZONE_6][2][1] = ui->m_Zone_6_T3_Value_2;
-    mZone_Value_Label[PHN_ZONE_6][2][2] = ui->m_Zone_6_T3_Value_2;
+    mZone_Value_Label[PHN_ZONE_6][2][2] = ui->m_Zone_6_T3_Value_3;
     mZone_Value_Label[PHN_ZONE_6][2][3] = ui->m_Zone_6_T3_Value_Total;
 
     //Inforamtion
@@ -248,7 +248,7 @@ void MainWindow::onProgressChanged(int event, int infor) {
             {
                 for(int trg =0; trg < 3; trg ++)
                 {
-                    mZone_Status_Label[PHN_ZONE_3][trg]->setPixmap(errorStatus);
+                    mZone_Status_Label[zone][trg]->setPixmap(errorStatus);
                 }
             }
         }
@@ -269,7 +269,7 @@ void MainWindow::onProgressChanged(int event, int infor) {
             {
                 for(int trg =0; trg < 3; trg ++)
                 {
-                    mZone_Status_Label[PHN_ZONE_3][trg]->setPixmap(offlineStatus);
+                    mZone_Status_Label[zone][trg]->setPixmap(offlineStatus);
                 }
             }
         }

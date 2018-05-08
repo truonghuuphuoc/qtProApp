@@ -50,7 +50,7 @@ void ConnectionBackground::run()
     emit progressChanged(EVNT_UD_START_ADDR, mRf_RecvAddress);
     emit progressChanged(EVNT_UD_DEST_ADDR, mRf_TransAddress);
 
-    memset(status, 0x00, sizeof(0x00));
+    memset(status, 0x00, sizeof(status));
 
     while(true)
     {
@@ -64,7 +64,7 @@ void ConnectionBackground::run()
                {
                    mSerialPort = new QSerialPort;
                    mSerialPort->setPortName(info.portName());
-                   mSerialPort->setBaudRate(QSerialPort::Baud9600);
+                   mSerialPort->setBaudRate(QSerialPort::Baud115200);
                    mSerialPort->setDataBits(QSerialPort::Data8);
                    mSerialPort->setStopBits(QSerialPort::OneStop);
                    mSerialPort->setParity(QSerialPort::NoParity);
@@ -183,7 +183,12 @@ void ConnectionBackground::run()
             {
                 emit progressChanged(EVNT_UD_APP_STATUS, APP_STATUS_OFFLINE);
                 status[0] = APP_STATUS_OFFLINE;
+
+
             }
+
+            memset(status, 0x00, sizeof(status));
+
             step = STAT_WRIT_DATA;
             break;
         }
@@ -200,6 +205,8 @@ void ConnectionBackground::run()
                 emit progressChanged(EVNT_UD_APP_STATUS, APP_STATUS_ERROR);
                 status[0] = APP_STATUS_ERROR;
             }
+
+            memset(status, 0x00, sizeof(0x00));
 
             //delete
             mSerialPort->close();

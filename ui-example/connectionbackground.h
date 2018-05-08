@@ -11,9 +11,9 @@
 #include <QtSerialPort/QSerialPort>
 #include <QtSerialPort/QSerialPortInfo>
 
-#define LOG_MESSAGE     0
+#define LOG_MESSAGE     1
 
-#define MESG_BUFFER_SIZE    200
+#define MESG_BUFFER_SIZE    500
 
 typedef enum
 {
