@@ -8,6 +8,7 @@
 #include <QtCore>
 #include <QThread>
 #include <QString>
+#include <QMutex>
 #include <QtSerialPort/QSerialPort>
 #include <QtSerialPort/QSerialPortInfo>
 
@@ -79,8 +80,8 @@ public:
 
     void run() Q_DECL_OVERRIDE;
 
-    void setAddress(uint8_t start, uint8_t destination);
-
+    void setAddress(QString portname, uint8_t id, QMutex *mutex, uint8_t start, uint8_t destination);
+    QString getPortName();
 private:
     void phnRfReceive_Reset();
     bool phRfReceive_ReceiveMessage();
@@ -93,7 +94,7 @@ private:
 
 
 signals:
-    void progressChanged(int event, int infor);
+    void progressChanged(int event, int id, int infor);
 
 private:
     bool mSerialError;
@@ -109,6 +110,7 @@ private:
 
     uint8_t mRf_RecvAddress;
     uint8_t mRf_TransAddress;
+    QString mRF_PortName;
 
 
     uint8_t mRf_MessageData[MESG_BUFFER_SIZE];
@@ -119,6 +121,12 @@ private:
     uint16_t mRf_RequestLength;
     uint8_t mRf_Ack;
 
+    uint8_t mDv_Id;
+    QMutex  *mRf_Mutex;
+
+public:
+    uint8_t mDv_Status[EVNT_UD_MAX];
+    qint64  mDv_StatusTime[EVNT_UD_MAX];
 };
 
 #endif // CONNECTIONBACKGROUND_H

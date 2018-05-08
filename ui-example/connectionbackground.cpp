@@ -4,7 +4,7 @@
 #include <QtSerialPort/QSerialPortInfo>
 #include <QTime>
 #include <QDebug>
-
+#include <QDateTime>
 #include <string.h>
 
 #include "phnmessage.h"
@@ -35,6 +35,9 @@ ConnectionBackground::ConnectionBackground(QObject *parent)
     memset(mRf_RequestData, 0x00, MESG_BUFFER_SIZE);
     mRf_RequestLength = 0;
     mRf_Ack = 0x00;
+
+    memset(mDv_Status, 0x00, sizeof(mDv_Status));
+    memset(mDv_StatusTime, 0x00, sizeof(mDv_StatusTime));
 }
 
 ConnectionBackground::~ConnectionBackground()
@@ -45,37 +48,23 @@ void ConnectionBackground::run()
 {
     ConnectionProcess step = STAT_SCAN_DEVICE;
 
-    uint8_t status[EVNT_UD_MAX];
-
-    emit progressChanged(EVNT_UD_START_ADDR, mRf_RecvAddress);
-    emit progressChanged(EVNT_UD_DEST_ADDR, mRf_TransAddress);
-
-    memset(status, 0x00, sizeof(status));
+    emit progressChanged(EVNT_UD_START_ADDR, mDv_Id, mRf_RecvAddress);
+    emit progressChanged(EVNT_UD_DEST_ADDR, mDv_Id, mRf_TransAddress);
 
     while(true)
     {
         switch (step) {
         case STAT_SCAN_DEVICE:
         {
-            const auto infos = QSerialPortInfo::availablePorts();
-            for (const QSerialPortInfo &info : infos)
-            {
-               if(!info.isBusy())
-               {
-                   mSerialPort = new QSerialPort;
-                   mSerialPort->setPortName(info.portName());
-                   mSerialPort->setBaudRate(QSerialPort::Baud115200);
-                   mSerialPort->setDataBits(QSerialPort::Data8);
-                   mSerialPort->setStopBits(QSerialPort::OneStop);
-                   mSerialPort->setParity(QSerialPort::NoParity);
-                   mSerialPort->setFlowControl(QSerialPort::NoFlowControl);
+            mSerialPort = new QSerialPort;
+            mSerialPort->setPortName(mRF_PortName);
+            mSerialPort->setBaudRate(QSerialPort::Baud115200);
+            mSerialPort->setDataBits(QSerialPort::Data8);
+            mSerialPort->setStopBits(QSerialPort::OneStop);
+            mSerialPort->setParity(QSerialPort::NoParity);
+            mSerialPort->setFlowControl(QSerialPort::NoFlowControl);
 
-                   step = STAT_OPEN_DEVICE;
-                   break;
-               }
-            }
-
-            QThread::sleep(2);
+            step = STAT_OPEN_DEVICE;
             break;
         }
 
@@ -87,18 +76,20 @@ void ConnectionBackground::run()
                 delete mSerialPort;
                 mSerialPort = NULL;
 
+                QThread::sleep(1);
+
                 step = STAT_SCAN_DEVICE;
                 break;
             }
 
             QString portName = mSerialPort->portName();
 
-            emit progressChanged(EVNT_UD_SERIAL_PORT, portName.mid(3, portName.length() - 3).toInt());
+            emit progressChanged(EVNT_UD_SERIAL_PORT, mDv_Id, portName.mid(3, portName.length() - 3).toInt());
 
-            if(status[0] != APP_STATUS_OFFLINE)
+            if(mDv_Status[0] != APP_STATUS_OFFLINE)
             {
-                emit progressChanged(EVNT_UD_APP_STATUS, APP_STATUS_OFFLINE);
-                status[0] = APP_STATUS_OFFLINE;
+                emit progressChanged(EVNT_UD_APP_STATUS, mDv_Id, APP_STATUS_OFFLINE);
+                mDv_Status[0] = APP_STATUS_OFFLINE;
             }
 
             step = STAT_WRIT_DATA;
@@ -140,27 +131,30 @@ void ConnectionBackground::run()
 
         case STAT_PROC_DATA:
         {
-            if(status[0] != APP_STATUS_ONLINE)
+            if(mDv_Status[0] != APP_STATUS_ONLINE)
             {
-                emit progressChanged(EVNT_UD_APP_STATUS, APP_STATUS_ONLINE);
+                emit progressChanged(EVNT_UD_APP_STATUS, mDv_Id, APP_STATUS_ONLINE);
 
-                status[0] = APP_STATUS_ONLINE;
+                mDv_Status[0] = APP_STATUS_ONLINE;
             }
 
             for(int target = 3; target < mRf_DataPosition; target ++)
             {
+                qint64 currTime = QDateTime::currentSecsSinceEpoch();
                 //Be n - Bia so 4
-                if(status[target] != mRf_MessageData[target])
+                if((mDv_Status[target] != mRf_MessageData[target]) && (mRf_MessageData[target] == PHN_DEV_ONLINE))
                 {
-                    emit progressChanged(EVNT_UD_Z1_TARGET_1 + (target -3), mRf_MessageData[target]);
+                    mDv_StatusTime[target] = currTime;
+                    emit progressChanged(EVNT_UD_Z1_TARGET_1 + (target -3), mDv_Id, mRf_MessageData[target]);
                 }
                 else if(mRf_MessageData[target] != PHN_DEV_OFFLINE && mRf_MessageData[target] !=PHN_DEV_ONLINE)
                 {
-                    emit progressChanged(EVNT_UD_Z1_TARGET_1 + (target -3), mRf_MessageData[target]);
+                    mDv_StatusTime[target] = currTime;
+                    emit progressChanged(EVNT_UD_Z1_TARGET_1 + (target -3), mDv_Id, mRf_MessageData[target]);
                 }
             }
 
-            memcpy(&status[3], &mRf_MessageData[3], mRf_DataPosition - 3);
+            memcpy(&mDv_Status[3], &mRf_MessageData[3], mRf_DataPosition - 3);
 
             if(mRf_Ack)
             {
@@ -179,15 +173,14 @@ void ConnectionBackground::run()
 
         case STAT_TOUT_READ:
         {
-            if(status[0] != APP_STATUS_OFFLINE)
+            if(mDv_Status[0] != APP_STATUS_OFFLINE)
             {
-                emit progressChanged(EVNT_UD_APP_STATUS, APP_STATUS_OFFLINE);
-                status[0] = APP_STATUS_OFFLINE;
-
-
+                emit progressChanged(EVNT_UD_APP_STATUS, mDv_Id, APP_STATUS_OFFLINE);
             }
 
-            memset(status, 0x00, sizeof(status));
+            memset(mDv_Status, 0x00, sizeof(mDv_Status));
+            memset(mDv_StatusTime, 0x00, sizeof(mDv_StatusTime));
+            mDv_Status[0] = APP_STATUS_OFFLINE;
 
             step = STAT_WRIT_DATA;
             break;
@@ -200,13 +193,14 @@ void ConnectionBackground::run()
 
         case STAT_DEVI_ERROR:
         {
-            if(status[0] != APP_STATUS_ERROR)
+            if(mDv_Status[0] != APP_STATUS_ERROR)
             {
-                emit progressChanged(EVNT_UD_APP_STATUS, APP_STATUS_ERROR);
-                status[0] = APP_STATUS_ERROR;
+                emit progressChanged(EVNT_UD_APP_STATUS, mDv_Id, APP_STATUS_ERROR);
             }
 
-            memset(status, 0x00, sizeof(0x00));
+            memset(mDv_Status, 0x00, sizeof(mDv_Status));
+            memset(mDv_StatusTime, 0x00, sizeof(mDv_StatusTime));
+            mDv_Status[0] = APP_STATUS_ERROR;
 
             //delete
             mSerialPort->close();
@@ -316,7 +310,11 @@ bool ConnectionBackground::phnRfReceive_SendMessage(uint8_t *data, uint16_t leng
     //clear all data before send
     mSerialPort->clear(QSerialPort::Direction::AllDirections);
 
+    mRf_Mutex->tryLock(100);
+
     int16_t lenwritted = (int16_t)mSerialPort->write((const char*)data, length);
+
+    mRf_Mutex->unlock();
 
     if (lenwritted == -1)
     {
@@ -457,6 +455,10 @@ void ConnectionBackground::phnRfReceive_DebugLog(QString message, uint8_t *data,
 #if(LOG_MESSAGE)
     QString resHex;
     QString s;
+    QString log;
+
+    log.sprintf("[%d] ", mDv_Id);
+
 
     for (int i = 0; i < length; i++)
     {
@@ -465,7 +467,7 @@ void ConnectionBackground::phnRfReceive_DebugLog(QString message, uint8_t *data,
         resHex.append(" ");
     }
 
-    qDebug() << (message + resHex.toUpper());
+    qDebug() << (log + message + resHex.toUpper());
 #else
     Q_UNUSED (data);
     Q_UNUSED (length);
@@ -475,12 +477,24 @@ void ConnectionBackground::phnRfReceive_DebugLog(QString message, uint8_t *data,
 void ConnectionBackground::phnRfReceive_MessageLog(QString message)
 {
 #if(LOG_MESSAGE)
-    qDebug() << message;
+    QString log;
+
+    log.sprintf("[%d] ", mDv_Id);
+
+    qDebug() << (log + message);
 #endif
 }
 
-void ConnectionBackground::setAddress(uint8_t start, uint8_t destination)
+void ConnectionBackground::setAddress(QString portname, uint8_t id, QMutex *mutex, uint8_t start, uint8_t destination)
 {
+    mRf_Mutex = mutex;
+    mDv_Id = id;
+    mRF_PortName = portname;
     mRf_RecvAddress = start;
     mRf_TransAddress = destination;
+}
+
+QString ConnectionBackground::getPortName()
+{
+    return mRF_PortName;
 }

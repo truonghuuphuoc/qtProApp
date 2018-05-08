@@ -30,7 +30,8 @@ SOURCES += main.cpp\
     phnsysconfig.cpp \
     phnexcel.cpp \
     phnevent.cpp \
-    phnsoundplayer.cpp
+    phnsoundplayer.cpp \
+    phnmiddleware.cpp
 
 HEADERS  += mainwindow.h \
     connectionbackground.h \
@@ -38,7 +39,8 @@ HEADERS  += mainwindow.h \
     phnsysconfig.h \
     phnexcel.h \
     phnevent.h \
-    phnsoundplayer.h
+    phnsoundplayer.h \
+    phnmiddleware.h
 
 FORMS    += mainwindow.ui
 
@@ -54,4 +56,5 @@ win32 {
 
 win32:RC_ICONS = app_100.ico
 
-DISTFILES +=
+DISTFILES += \
+    icons/24/red.png

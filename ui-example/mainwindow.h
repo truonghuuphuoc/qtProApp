@@ -71,7 +71,7 @@ private:
     void AddScoreToTableView(uint8_t zone, QString name);
 
 public slots:
-   void onProgressChanged(int event, int infor);
+   void onProgressChanged(int event, int id, int infor);
 private slots:
    void on_mAppClean_clicked();
    void on_pushButton_clicked();

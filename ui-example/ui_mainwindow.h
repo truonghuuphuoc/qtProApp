@@ -43,6 +43,7 @@ public:
     QGroupBox *groupBox_20;
     QGridLayout *gridLayout_21;
     QLabel *mAppStatus;
+    QLabel *mAppStatus_2;
     QGroupBox *groupBox_24;
     QGridLayout *gridLayout_25;
     QPushButton *mAppClean;
@@ -52,6 +53,7 @@ public:
     QGroupBox *groupBox_21;
     QGridLayout *gridLayout_22;
     QLabel *mAppComport;
+    QLabel *mAppComport_2;
     QTabWidget *tabWidget;
     QWidget *tab;
     QGridLayout *gridLayout_27;
@@ -577,10 +579,17 @@ public:
         gridLayout_21->setObjectName(QStringLiteral("gridLayout_21"));
         mAppStatus = new QLabel(groupBox_20);
         mAppStatus->setObjectName(QStringLiteral("mAppStatus"));
-        mAppStatus->setPixmap(QPixmap(QString::fromUtf8(":/icons/24/yellow.png")));
+        mAppStatus->setPixmap(QPixmap(QString::fromUtf8(":/icons/24/red.png")));
         mAppStatus->setAlignment(Qt::AlignCenter);
 
         gridLayout_21->addWidget(mAppStatus, 0, 0, 1, 1);
+
+        mAppStatus_2 = new QLabel(groupBox_20);
+        mAppStatus_2->setObjectName(QStringLiteral("mAppStatus_2"));
+        mAppStatus_2->setPixmap(QPixmap(QString::fromUtf8(":/icons/24/red.png")));
+        mAppStatus_2->setAlignment(Qt::AlignCenter);
+
+        gridLayout_21->addWidget(mAppStatus_2, 0, 1, 1, 1);
 
 
         gridLayout_3->addWidget(groupBox_20, 0, 0, 1, 1);
@@ -685,6 +694,13 @@ public:
         mAppComport->setAlignment(Qt::AlignCenter);
 
         gridLayout_22->addWidget(mAppComport, 0, 1, 1, 1);
+
+        mAppComport_2 = new QLabel(groupBox_21);
+        mAppComport_2->setObjectName(QStringLiteral("mAppComport_2"));
+        mAppComport_2->setFont(font);
+        mAppComport_2->setAlignment(Qt::AlignCenter);
+
+        gridLayout_22->addWidget(mAppComport_2, 0, 2, 1, 1);
 
 
         gridLayout_3->addWidget(groupBox_21, 0, 1, 1, 1);
@@ -4485,12 +4501,14 @@ public:
         mAddressStart->setText(QString());
         groupBox_20->setTitle(QApplication::translate("MainWindow", "K\341\272\277t n\341\273\221i", Q_NULLPTR));
         mAppStatus->setText(QString());
+        mAppStatus_2->setText(QString());
         groupBox_24->setTitle(QApplication::translate("MainWindow", "X\303\263a d\341\273\257 li\341\273\207u", Q_NULLPTR));
         mAppClean->setText(QApplication::translate("MainWindow", "X\303\263a", Q_NULLPTR));
         groupBox_23->setTitle(QApplication::translate("MainWindow", "ID Ph\303\241t", Q_NULLPTR));
         mAddressDest->setText(QString());
         groupBox_21->setTitle(QApplication::translate("MainWindow", "C\341\273\225ng COM", Q_NULLPTR));
-        mAppComport->setText(QString());
+        mAppComport->setText(QApplication::translate("MainWindow", "[1] : ", Q_NULLPTR));
+        mAppComport_2->setText(QApplication::translate("MainWindow", "[2] : ", Q_NULLPTR));
         groupBox_182->setTitle(QApplication::translate("MainWindow", "1. B\341\273\207 s\341\273\221 1", Q_NULLPTR));
         groupBox_185->setTitle(QApplication::translate("MainWindow", "\304\220\341\273\223ng Ch\303\255", Q_NULLPTR));
         groupBox_390->setTitle(QApplication::translate("MainWindow", "Ho\303\240n Th\303\240nh", Q_NULLPTR));

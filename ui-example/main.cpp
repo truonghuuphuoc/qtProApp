@@ -6,6 +6,7 @@
 
 #include "connectionbackground.h"
 #include "phnsysconfig.h"
+#include "phnmiddleware.h"
 
 int main(int argc, char *argv[])
 {
@@ -14,15 +15,15 @@ int main(int argc, char *argv[])
 
     w.showMaximized();
 
-    ConnectionBackground *workerThread = new ConnectionBackground;
+    phnmiddleware *workerThread = new phnmiddleware;
 
     phnSysConfig::phnSysConfig_ReadConfig(QCoreApplication::applicationDirPath());
 
-    workerThread->setAddress(phnSysConfig::mRecvAddess, phnSysConfig::mTransAddress);
+    workerThread->setAddress(&w, phnSysConfig::mRecvAddess, phnSysConfig::mTransAddress);
 
     // Connect our signal and slot
-    QObject::connect(workerThread, SIGNAL(progressChanged(int, int)),&w,
-                         SLOT(onProgressChanged(int, int)));
+    QObject::connect(workerThread, SIGNAL(progressChanged(int, int, int)),&w,
+                         SLOT(onProgressChanged(int, int, int)));
 
     // Setup callback for cleanup when it finishes
     QObject::connect(workerThread, SIGNAL(finished()),

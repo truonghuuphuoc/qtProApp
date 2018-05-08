@@ -228,13 +228,13 @@ void MainWindow::UpdateZoneStatus(int zone, int target, int infor)
 
         int number = mZone_Value[zone][target][0] + mZone_Value[zone][target][1] + mZone_Value[zone][target][2];
 
-         valuenumber = QString("%1").arg(number, 0, 10, QChar('0'));
+        valuenumber = QString("%1").arg(number, 0, 10, QChar('0'));
 
         mZone_Value_Label[zone][target][3]->setText(valuenumber);
     }
 }
 
-void MainWindow::onProgressChanged(int event, int infor) {
+void MainWindow::onProgressChanged(int event, int id, int infor) {
 
     switch (event)
     {
@@ -242,57 +242,75 @@ void MainWindow::onProgressChanged(int event, int infor) {
         if(infor == APP_STATUS_OFFLINE)
         {
             QPixmap errorStatus (mOfflineImagePath);
-            ui->mAppStatus->setPixmap(errorStatus);
-
-            for(int zone = 0; zone < PHN_NUMBER_ZONE; zone ++)
+            if(id == 1)
             {
-                for(int trg =0; trg < 3; trg ++)
-                {
-                    mZone_Status_Label[zone][trg]->setPixmap(errorStatus);
-                }
+                ui->mAppStatus->setPixmap(errorStatus);
+            }
+            else if(id == 2)
+            {
+                ui->mAppStatus_2->setPixmap(errorStatus);
             }
         }
         else if(infor == APP_STATUS_ONLINE)
         {
             QPixmap errorStatus (mOnlineImagePath);
-            ui->mAppStatus->setPixmap(errorStatus);
+            if(id == 1)
+            {
+                ui->mAppStatus->setPixmap(errorStatus);
+            }
+            else if(id == 2)
+            {
+                ui->mAppStatus_2->setPixmap(errorStatus);
+            }
         }
         else
         {
             QPixmap errorStatus (mErrorImagePath);
-            ui->mAppStatus->setPixmap(errorStatus);
-            ui->mAppComport->setText("");
 
-            QPixmap offlineStatus (mOfflineImagePath);
-
-            for(int zone = 0; zone < PHN_NUMBER_ZONE; zone ++)
+            if(id == 1)
             {
-                for(int trg =0; trg < 3; trg ++)
-                {
-                    mZone_Status_Label[zone][trg]->setPixmap(offlineStatus);
-                }
+                ui->mAppStatus->setPixmap(errorStatus);
+                ui->mAppComport->setText("[1] : ");
+            }
+            else if(id == 2)
+            {
+                ui->mAppStatus_2->setPixmap(errorStatus);
+                ui->mAppComport_2->setText("[2] : ");
             }
         }
         break;
 
     case EVNT_UD_DEST_ADDR:
     {
-        QByteArray array((const char*)&infor, 1);
-        ui->mAddressDest->setText( "0x" + QString(array.toHex().toUpper()));
+        if(id == 1)
+        {
+            QByteArray array((const char*)&infor, 1);
+            ui->mAddressDest->setText( "0x" + QString(array.toHex().toUpper()));
+        }
         break;
     }
 
     case EVNT_UD_START_ADDR:
     {
-        QByteArray array((const char*)&infor, 1);
-        ui->mAddressStart->setText( "0x" + QString(array.toHex().toUpper()));
+        if(id == 1)
+        {
+            QByteArray array((const char*)&infor, 1);
+            ui->mAddressStart->setText( "0x" + QString(array.toHex().toUpper()));
+        }
         break;
     }
 
     case EVNT_UD_SERIAL_PORT:
     {
         QString comnumber = QString("%1").arg(infor, 0, 10, QChar('0'));
-        ui->mAppComport->setText("COM" + comnumber);
+        if(id == 1)
+        {
+            ui->mAppComport->setText("[1] : COM" + comnumber);
+        }
+        else if(id == 2)
+        {
+            ui->mAppComport_2->setText("[2] : COM" + comnumber);
+        }
         break;
     }
 

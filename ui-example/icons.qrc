@@ -22,9 +22,9 @@
         <file>icons/24/Info.png</file>
         <file>icons/24/Private.png</file>
         <file>icons/24/Refresh.png</file>
-        <file>icons/24/Restart.png</file>
         <file>icons/24/Shutdown.png</file>
         <file>icons/24/save.png</file>
         <file>icons/24/yellow.png</file>
+        <file>icons/24/red.png</file>
     </qresource>
 </RCC>
