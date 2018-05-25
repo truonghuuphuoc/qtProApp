@@ -16,6 +16,8 @@ TEMPLATE = app
 # depend on your compiler). Please consult the documentation of the
 # deprecated API in order to know how to port your code away from it.
 DEFINES += QT_DEPRECATED_WARNINGS
+DEFINES += _CRT_SECURE_NO_WARNINGS
+DEFINES -= UNICODE
 
 # You can also make your code fail to compile if you use deprecated APIs.
 # In order to do so, uncomment the following line.
@@ -31,7 +33,8 @@ SOURCES += main.cpp\
     phnexcel.cpp \
     phnevent.cpp \
     phnsoundplayer.cpp \
-    phnmiddleware.cpp
+    phnmiddleware.cpp \
+    serial_win32.c
 
 HEADERS  += mainwindow.h \
     connectionbackground.h \
@@ -40,7 +43,8 @@ HEADERS  += mainwindow.h \
     phnexcel.h \
     phnevent.h \
     phnsoundplayer.h \
-    phnmiddleware.h
+    phnmiddleware.h \
+    serial.h
 
 FORMS    += mainwindow.ui
 

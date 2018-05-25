@@ -36,7 +36,7 @@ ConnectionBackground::ConnectionBackground(QObject *parent)
     mRf_RequestLength = 0;
     mRf_Ack = 0x00;
 
-    memset(mDv_Status, 0x00, sizeof(mDv_Status));
+    memset(mDv_Status, PHN_DEV_OFFLINE, sizeof(mDv_Status));
     memset(mDv_StatusTime, 0x00, sizeof(mDv_StatusTime));
 }
 
@@ -178,7 +178,7 @@ void ConnectionBackground::run()
                 emit progressChanged(EVNT_UD_APP_STATUS, mDv_Id, APP_STATUS_OFFLINE);
             }
 
-            memset(mDv_Status, 0x00, sizeof(mDv_Status));
+            memset(mDv_Status, PHN_DEV_OFFLINE, sizeof(mDv_Status));
             memset(mDv_StatusTime, 0x00, sizeof(mDv_StatusTime));
             mDv_Status[0] = APP_STATUS_OFFLINE;
 
@@ -198,7 +198,7 @@ void ConnectionBackground::run()
                 emit progressChanged(EVNT_UD_APP_STATUS, mDv_Id, APP_STATUS_ERROR);
             }
 
-            memset(mDv_Status, 0x00, sizeof(mDv_Status));
+            memset(mDv_Status, PHN_DEV_OFFLINE, sizeof(mDv_Status));
             memset(mDv_StatusTime, 0x00, sizeof(mDv_StatusTime));
             mDv_Status[0] = APP_STATUS_ERROR;
 

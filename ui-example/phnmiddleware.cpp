@@ -36,8 +36,8 @@ void phnmiddleware::run()
     uint8_t prevStatus[EVNT_UD_MAX];
     uint8_t isUpdated = 0;
 
-    memset(currStatus, 0x00, sizeof(currStatus));
-    memset(prevStatus, 0x00, sizeof(prevStatus));
+    memset(currStatus, PHN_DEV_OFFLINE, sizeof(currStatus));
+    memset(prevStatus, PHN_DEV_OFFLINE, sizeof(prevStatus));
 
     prevTime = currTime = QDateTime::currentSecsSinceEpoch();
 
@@ -106,7 +106,7 @@ void phnmiddleware::run()
             {
                 for(int target = 3; target < EVNT_UD_MAX; target ++)
                 {
-                  if((currTime - mRf_Device_1->mDv_StatusTime[target]) > 2)
+                  if(((currTime - mRf_Device_1->mDv_StatusTime[target]) > 2) && (mRf_Device_1->mDv_Status[target] == PHN_DEV_OFFLINE))
                   {
                       currStatus[target] = PHN_DEV_OFFLINE;
                   }
@@ -123,7 +123,7 @@ void phnmiddleware::run()
             {
                 for(int target = 3; target < EVNT_UD_MAX; target ++)
                 {
-                  if((currTime - mRf_Device_2->mDv_StatusTime[target]) > 2)
+                  if(((currTime - mRf_Device_2->mDv_StatusTime[target]) > 2) && (mRf_Device_2->mDv_Status[target] == PHN_DEV_OFFLINE))
                   {
                       if(currStatus[target] != PHN_DEV_ONLINE)
                       {
