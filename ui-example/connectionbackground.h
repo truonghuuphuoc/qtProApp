@@ -12,6 +12,7 @@
 #include <QtSerialPort/QSerialPort>
 #include <QtSerialPort/QSerialPortInfo>
 
+#include "serial.h"
 #define LOG_MESSAGE     1
 
 #define MESG_BUFFER_SIZE    500
@@ -98,7 +99,7 @@ signals:
 
 private:
     bool mSerialError;
-    QSerialPort *mSerialPort;
+    ser_handler mSerialId;
 
     uint8_t mRf_IsStartFrame;
     uint8_t mRf_IsEndFrame;

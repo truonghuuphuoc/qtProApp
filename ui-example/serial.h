@@ -38,7 +38,7 @@ typedef HANDLE ser_handler;
 #define SER_DATABITS_8          8
 
 // Serial access functions (to be implemented by each platform)
-ser_handler ser_open( const char* sername );
+ser_handler ser_open( int com_id);
 
 void ser_close( ser_handler id );
 
@@ -46,7 +46,7 @@ int ser_setup( ser_handler id, uint32_t baud, int databits, int parity, int stop
 
 int ser_read( ser_handler id, uint8_t* dest, uint32_t maxsize );
 
-int ser_read_byte( ser_handler id );
+int ser_read_byte( ser_handler id, uint8_t *data);
 
 int ser_write( ser_handler id, const uint8_t *src, uint32_t size );
 

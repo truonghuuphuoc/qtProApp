@@ -37,13 +37,13 @@ static int ser_win32_set_timeouts( HANDLE hComm, DWORD ri, DWORD rtm, DWORD rtc,
 }
 
 // Open the serial port
-ser_handler ser_open( const char* sername )
+ser_handler ser_open( int com_id)
 {
     char portname[ WIN_MAX_PORT_NAME + 1 ];
     HANDLE hComm;
 
     portname[ 0 ] = portname[ WIN_MAX_PORT_NAME ] = '\0';
-    _snprintf( portname, WIN_MAX_PORT_NAME, "\\\\.\\%s", sername );
+    _snprintf( portname, WIN_MAX_PORT_NAME, "\\\\.\\COM%d", com_id );
 
     hComm = CreateFile( portname, GENERIC_READ | GENERIC_WRITE, 0, 0, OPEN_EXISTING, 0, 0 );
 
@@ -127,12 +127,11 @@ uint32_t ser_read( ser_handler id, uint8_t* dest, uint32_t maxsize )
 }
 
 // Read a single byte and return it (or -1 for error)
-int ser_read_byte( ser_handler id )
+int ser_read_byte( ser_handler id, uint8_t *data)
 {
-    uint8_t data;
-    int res = ser_read( id, &data, 1 );
+    int res = ser_read( id, data, 1 );
 
-    return res == 1 ? data : -1;
+    return res;
 }
 
 // Write up to the specified number of bytes, return bytes actually written
