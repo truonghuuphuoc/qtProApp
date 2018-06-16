@@ -349,7 +349,7 @@ bool ConnectionBackground::phRfReceive_ReceiveMessage()
     phnRfReceive_MessageHandler(rcv);
 
     //set timeout
-    ser_set_timeout_ms(mSerialId, 100);
+    ser_set_timeout_ms(mSerialId, 200);
 
     do
     {
